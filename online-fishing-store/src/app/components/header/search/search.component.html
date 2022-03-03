@@ -1,0 +1,12 @@
+<div>
+  <label class="search__wrapper">
+    <input
+      class="search"
+      type="text"
+      [placeholder]="placeholderValue"
+      [(ngModel)]="search"
+      name="search"
+      (input)="filterByProdukt()"
+    />
+  </label>
+</div>

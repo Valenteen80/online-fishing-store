@@ -1,0 +1,15 @@
+@import "../../../assets/scss/colors";
+@import "../../../assets/scss/mixins";
+
+.footer {
+  border-top: 2px solid $orange;
+  background-color: $yellow;
+  height: 35px;
+  @include display-flex;
+
+  .name__store {
+    margin-left: 15px;
+    color: $brown;
+    font-size: 2rem;
+  }
+}

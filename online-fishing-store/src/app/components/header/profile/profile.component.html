@@ -1,0 +1,17 @@
+<button class="button_profile" (click)="isMouseenterProfile = true">
+  <img
+    class="button__img"
+    [src]="profilePicture"
+    [alt]="avatarImgAltAttributeValue"
+  />
+</button>
+<div
+  class="profile-hidden-block"
+  (click)="isMouseenterProfile = false"
+  *ngIf="isMouseenterProfile"
+>
+  <button class="button">ПРОФИЛЬ</button>
+  <button class="button">ВЫЙТИ</button>
+  <button>X</button>
+</div>
+<!-- (mouseleave)="isMouseenterProfile = false" -->
