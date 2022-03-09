@@ -4,7 +4,6 @@ import { ShoppingCartPageComponent } from './shopping-cart-page.component';
 
 @NgModule({
   declarations: [ShoppingCartPageComponent],
-  imports: [CommonModule],
-  exports: [ShoppingCartPageComponent],
+  imports: [],
 })
 export class ShoppingCartModule {}

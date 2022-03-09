@@ -7,8 +7,6 @@
   width: 30px;
   position: relative;
 
-  // @include button-hover;
-
   &:hover {
     @include button-hover;
   }
@@ -18,7 +16,7 @@
   }
 }
 
-.profile-hidden-block {
+.profile-menu {
   display: flex;
   position: absolute;
   border: 1px solid $orange;

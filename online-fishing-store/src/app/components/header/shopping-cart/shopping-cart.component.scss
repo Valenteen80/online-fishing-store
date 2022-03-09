@@ -11,31 +11,7 @@
   min-width: 100px;
 
   &:hover {
-    color: $orange;
-    transition: 0.2s ease-in-out;
-    box-shadow: 2px -2px 25px $dark_beige;
-    cursor: pointer;
-  }
-
-  &:active {
-    background-color: $brown;
-  }
-}
-
-.button {
-  font-family: Lato, sans-serif;
-  border: 1px solid $orange;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  background-color: $dark_beige;
-  height: 30px;
-  min-width: 100px;
-
-  &:hover {
-    color: $orange;
-    transition: 0.2s ease-in-out;
-    box-shadow: 2px -2px 25px $dark_beige;
-    cursor: pointer;
+    @include button-hover;
   }
 
   &:active {

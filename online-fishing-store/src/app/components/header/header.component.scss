@@ -4,10 +4,9 @@
 .header {
   background-color: $yellow;
   height: 50px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   border-bottom: solid 2px $orange;
+
+  @include display-flex;
 
   &__title {
     margin-left: 15px;
@@ -16,8 +15,9 @@
   }
   &-content-wrapper {
     min-width: 40%;
-    @include display-flex;
     margin-right: 15px;
+
+    @include display-flex;
   }
 
   .button {
