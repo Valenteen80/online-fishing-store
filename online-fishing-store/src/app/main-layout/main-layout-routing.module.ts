@@ -1,28 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FooterComponent } from '../components/footer/footer.component';
-import { MainPageComponent } from '../pages/main-page/main-page.component';
-import { ProductDetailsPageComponent } from '../pages/product-details-page/product-details-page.component';
 import { MainLayoutComponent } from './main-layout.component';
 
 const routes: Routes = [
-  // { path: 'mainpage', component: MainPageComponent },
   {
     path: '',
     component: MainLayoutComponent,
     children: [
       {
         path: '',
-        component: MainPageComponent,
+        loadChildren: () =>
+          import('../pages/main-page/main.module').then(
+            (m) => m.MainModule
+        ),
       },
       {
-        path: 'main-page',
-        component: MainPageComponent,
+        path: 'product-details',
+        loadChildren: () =>
+          import('../pages/product-details-page/product-details.module').then(
+            (m) => m.ProductDetailsModule
+        ),
       },
-      // {
-      //   path: '/product-details',
-      //   component: ProductDetailsPageComponent,
-      // },
     ],
   },
 ];
@@ -32,12 +30,3 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class MainLayoutRoutingModule {}
-
-// {
-//   path: '',
-//   component: MainLayoutComponent,
-//   children: [
-//     { path: '', redirectTo: '/' },
-//     { path: '', component: MainPageComponent },
-//   ],
-// },
