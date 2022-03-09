@@ -6,6 +6,6 @@ import { ProfilePageComponent } from './profile-page.component';
 @NgModule({
   declarations: [ProfilePageComponent],
   imports: [CommonModule],
-  exports: [ProfileComponent],
+  // exports: [ProfileComponent],
 })
 export class ProfileModule {}

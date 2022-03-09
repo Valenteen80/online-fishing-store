@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
+import { MainLayoutModule } from './main-layout/main-layout.module';
 
 @NgModule({
   declarations: [AppComponent],

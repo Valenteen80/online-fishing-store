@@ -4,6 +4,7 @@ import { HeaderComponent } from './header.component';
 import { SearchComponent } from './search/search.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ProfileComponent } from './profile/profile.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,7 @@ import { ProfileComponent } from './profile/profile.component';
     SearchComponent,
     ShoppingCartComponent,
   ],
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   exports: [HeaderComponent],
 })
 export class HeaderModule {}
