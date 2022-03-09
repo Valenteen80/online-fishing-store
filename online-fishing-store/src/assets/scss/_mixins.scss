@@ -7,6 +7,34 @@
   // @include display-flex;
 }
 
+@mixin button-hover {
+  color: $orange;
+  transition: 0.2s ease-in-out;
+  box-shadow: 2px -2px 25px $dark_beige;
+  cursor: pointer;
+
+  // @include button-hover;
+}
+
+// @mixin link ($link, $visit, $hover, $active) {
+//   a {
+//     color: $link;
+//     &:visited {
+//       color: $visit;
+//     }
+//     &:hover {
+//       color: $hover;
+//     }
+//     &:active {
+//       color: $active;
+//     }
+//   }
+// }
+
+// .card{
+//   @include link(red, green, yellow, pink);
+// }
+
 // @mixin flex-end {
 //   display: flex;
 //   justify-content: end;

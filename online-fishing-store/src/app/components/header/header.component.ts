@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  public logInTitle: string = 'ВХОД';
+  public logInButtonTitle: string = 'ВХОД';
 
   constructor() {}
 

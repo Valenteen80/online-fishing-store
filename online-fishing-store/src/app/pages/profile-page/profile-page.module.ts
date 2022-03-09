@@ -8,4 +8,4 @@ import { ProfilePageComponent } from './profile-page.component';
   imports: [CommonModule],
   // exports: [ProfileComponent],
 })
-export class ProfileModule {}
+export class ProfilePageModule {}

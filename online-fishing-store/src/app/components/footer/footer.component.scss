@@ -5,6 +5,7 @@
   border-top: 2px solid $orange;
   background-color: $yellow;
   height: 35px;
+
   @include display-flex;
 
   .name__store {
