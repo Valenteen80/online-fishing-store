@@ -6,14 +6,7 @@ import { MainLayoutRoutingModule } from './main-layout-routing.module';
 import { FooterComponent } from '../components/footer/footer.component';
 
 @NgModule({
-  declarations: [
-    MainLayoutComponent,
-    FooterComponent,
-  ],
-  imports: [
-    HeaderModule,
-    SharedModule,
-    MainLayoutRoutingModule,
-  ],
+  declarations: [MainLayoutComponent, FooterComponent],
+  imports: [HeaderModule, SharedModule, MainLayoutRoutingModule],
 })
 export class MainLayoutModule {}

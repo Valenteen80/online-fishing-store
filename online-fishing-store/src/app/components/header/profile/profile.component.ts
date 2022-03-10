@@ -9,6 +9,8 @@ export class ProfileComponent implements OnInit {
   public isMouseenterProfile: boolean = false;
   public avatarImgAltAttributeValue: string = 'photo';
   public profilePicture: string = 'assets/img/profile_picture.png';
+  public profileButtonTitle: string = 'ПРОФИЛЬ';
+  public logOutButtonTitle: string = 'ВЫЙТИ';
 
   constructor() {}
 
