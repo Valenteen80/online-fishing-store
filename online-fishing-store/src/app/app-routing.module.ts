@@ -16,4 +16,3 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
-// import('../app/main-layout/main-layout.module').then(
