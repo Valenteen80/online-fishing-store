@@ -1,0 +1,41 @@
+@import "../../../../assets/scss/colors";
+@import "../../../../assets/scss/mixins";
+
+.button_profile {
+  padding: 0;
+  height: 30px;
+  width: 30px;
+  position: relative;
+
+  &:hover {
+    @include button-hover;
+  }
+
+  .button__img {
+    height: 100%;
+  }
+}
+
+.profile-menu {
+  display: flex;
+  position: absolute;
+  border: 1px solid $orange;
+  width: 225px;
+  height: 30px;
+  left: 80%;
+  left: calc(100% - 250px);
+}
+
+.button {
+  font-family: Lato, sans-serif;
+  border: 1px solid $orange;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  background-color: $dark_beige;
+  height: 30px;
+  min-width: 100px;
+
+  &:hover {
+    @include button-hover;
+  }
+}

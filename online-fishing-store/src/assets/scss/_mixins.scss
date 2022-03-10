@@ -1,0 +1,14 @@
+@import "../scss/screen-size";
+
+@mixin display-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin button-hover {
+  color: $orange;
+  transition: 0.2s ease-in-out;
+  box-shadow: 2px -2px 25px $dark_beige;
+  cursor: pointer;
+}
