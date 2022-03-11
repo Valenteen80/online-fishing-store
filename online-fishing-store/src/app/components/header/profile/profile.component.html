@@ -10,7 +10,7 @@
   (click)="isMouseenterProfile = false"
   *ngIf="isMouseenterProfile"
 >
-  <button class="button">ПРОФИЛЬ</button>
-  <button class="button">ВЫЙТИ</button>
+  <app-button [title]="profileButtonTitle"></app-button>
+  <app-button [title]="logOutButtonTitle"></app-button>
   <button>X</button>
 </div>

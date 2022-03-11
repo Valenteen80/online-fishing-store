@@ -25,17 +25,3 @@
   left: 80%;
   left: calc(100% - 250px);
 }
-
-.button {
-  font-family: Lato, sans-serif;
-  border: 1px solid $orange;
-  border-radius: 5px;
-  font-size: 1.2rem;
-  background-color: $dark_beige;
-  height: 30px;
-  min-width: 100px;
-
-  &:hover {
-    @include button-hover;
-  }
-}

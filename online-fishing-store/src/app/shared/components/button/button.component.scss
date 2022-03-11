@@ -13,4 +13,8 @@
   &:hover {
     @include button-hover;
   }
+
+  &:active {
+    background-color: $brown;
+  }
 }

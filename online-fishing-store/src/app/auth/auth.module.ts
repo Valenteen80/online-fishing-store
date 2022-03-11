@@ -4,6 +4,6 @@ import { AuthPageModule } from '../pages/auth-page/auth-page.module';
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, AuthPageModule],
+  imports: [AuthPageModule],
 })
 export class AuthModule {}

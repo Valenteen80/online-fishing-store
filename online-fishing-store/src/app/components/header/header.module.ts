@@ -5,6 +5,7 @@ import { SearchComponent } from './search/search.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,7 @@ import { FormsModule } from '@angular/forms';
     SearchComponent,
     ShoppingCartComponent,
   ],
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, SharedModule],
   exports: [HeaderComponent],
 })
 export class HeaderModule {}

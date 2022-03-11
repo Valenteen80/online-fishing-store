@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   public logInButtonTitle: string = 'ВХОД';
+  public signUpButtonTitle: string = 'РЕГИСТРАЦИЯ';
 
   constructor() {}
 
