@@ -1,36 +1,34 @@
 @import "../../../../../assets/scss/colors";
 
-.product__wrapper {
+.product {
   margin: 5px;
   display: flex;
-}
-
-.product__img {
-  border: 2px solid $yellow;
-  width: 40%;
-  min-width: 10%;
-  margin: 5px;
-  max-width: 20%;
-}
-
-.product__info-wrapper {
-  font-size: 1.2rem;
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-
-  .price-rating__wrapper {
-    display: flex;
-    flex-direction: column;
-    margin-right: 10px;
+  .product__img {
+    border: 2px solid $yellow;
+    width: 40%;
+    min-width: 10%;
+    margin: 5px;
+    max-width: 20%;
   }
-}
 
-.product__button {
-  max-width: 100px;
-}
+  &__info-wrapper {
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    .price-rating__wrapper {
+      display: flex;
+      flex-direction: column;
+      margin-right: 10px;
+    }
 
-.product__price-rating-button {
-  display: flex;
-  flex-direction: row;
+    &__price-rating-button {
+      display: flex;
+      flex-direction: row;
+
+      &__button {
+        max-width: 100px;
+      }
+    }
+  }
 }
