@@ -4,7 +4,7 @@ import { MainPageRoutingModule } from './main-page-routing.module';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { SidebarMenuComponent } from './side-bar/sidebar-menu/sidebar-menu.component';
 import { SidebarMenuItemComponent } from './side-bar/sidebar-menu/sidebar-menu-item/sidebar-menu-item.component';
-import { CommonModule } from '@angular/common';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -13,6 +13,6 @@ import { CommonModule } from '@angular/common';
     SidebarMenuComponent,
     SidebarMenuItemComponent,
   ],
-  imports: [MainPageRoutingModule, CommonModule],
+  imports: [MainPageRoutingModule, SharedModule],
 })
 export class MainModule {}

@@ -9,5 +9,4 @@ import { CATIGORIES } from 'src/app/mocks/mock-categories';
 })
 export class SidebarMenuComponent {
   public categories: Category[] = CATIGORIES;
-  public category: Category;
 }
