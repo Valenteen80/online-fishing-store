@@ -1,0 +1,11 @@
+@import "../../../assets/scss/colors";
+.main {
+  font-size: 1.6rem;
+  &-product-container {
+    display: flex;
+    .said-bar {
+      width: 30%;
+      border: 2px solid $orange;
+    }
+  }
+}
