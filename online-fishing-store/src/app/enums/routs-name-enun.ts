@@ -1,4 +1,4 @@
-export enum RoutsNames {
+export enum RoutesNames {
   PRODUCT_DETAILS = 'product-details',
   PROFILE = 'profile',
   SHOPPING_CART = 'shopping-cart',
