@@ -12,7 +12,7 @@
     }
 
     .products {
-      @include display-flex;
+      @include display-flex(space-between, center);
       height: auto;
       max-width: 70%;
       border: 2px solid $yellow;

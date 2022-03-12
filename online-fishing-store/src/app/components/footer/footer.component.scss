@@ -2,11 +2,11 @@
 @import "../../../assets/scss/mixins";
 
 .footer {
+  @include display-flex(space-between, center);
+  flex-wrap: nowrap;
   border-top: 2px solid $orange;
   background-color: $yellow;
   height: 35px;
-
-  @include display-flex;
 
   .name__store {
     margin-left: 15px;

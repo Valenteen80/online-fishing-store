@@ -1,6 +1,6 @@
 @import "../scss/screen-size";
 
-@mixin display-flex($justifyContent: space-between, $alignItems: center) {
+@mixin display-flex($justifyContent: flex-start, $alignItems: flex-start) {
   display: flex;
   justify-content: $justifyContent;
   align-items: $alignItems;

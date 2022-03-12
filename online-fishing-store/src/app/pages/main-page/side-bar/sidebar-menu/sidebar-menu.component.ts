@@ -7,5 +7,5 @@ import { Category } from 'src/app/interfaces/category';
   styleUrls: ['./sidebar-menu.component.scss'],
 })
 export class SidebarMenuComponent {
-  @Input() categories: Category[];
+  @Input() public categories: Category[];
 }

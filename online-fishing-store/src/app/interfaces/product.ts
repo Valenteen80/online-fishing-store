@@ -6,5 +6,5 @@ export interface Product {
   description: string;
   price: number;
   rating: number;
-  isShoppingCart: boolean;
+  inShoppingCart: boolean;
 }

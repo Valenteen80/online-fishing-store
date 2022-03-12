@@ -6,7 +6,7 @@
   height: 50px;
   border-bottom: solid 2px $orange;
 
-  @include display-flex;
+  @include display-flex(space-between, center);
 
   &__title {
     margin-left: 15px;
@@ -17,6 +17,6 @@
     min-width: 40%;
     margin-right: 15px;
 
-    @include display-flex;
+    @include display-flex(space-between, center);
   }
 }

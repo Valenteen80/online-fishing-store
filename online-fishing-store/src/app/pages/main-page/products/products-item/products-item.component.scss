@@ -16,17 +16,18 @@
   &__info-wrapper {
     width: 70%;
     font-size: 1.2rem;
-    @include display-flex(space-between, flex-start);
+    @include display-flex(space-between, center);
 
     .price-rating__wrapper {
-      @include display-flex(space-between, flex-start);
+      @include display-flex(space-between);
       flex-direction: column;
       margin-right: 10px;
     }
   }
 
   &__price-rating-button {
-    @include display-flex(space-between);
+    @include display-flex(space-between, center);
+    width: 100%;
 
     &__button {
       max-width: 100px;

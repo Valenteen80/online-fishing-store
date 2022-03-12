@@ -1,7 +1,7 @@
 import { NameCategory } from '../enums/name-category-enum';
 import { Category } from '../interfaces/category';
 
-export const CATIGORIES: Category[] = [
+export const CATEGORIES: Category[] = [
   {
     id: 1,
     name: NameCategory.SUMMER_FISHING,
