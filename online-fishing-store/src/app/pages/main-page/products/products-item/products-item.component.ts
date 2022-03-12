@@ -9,7 +9,8 @@ import { Product } from 'src/app/interfaces/product';
 export class ProductsItemComponent implements OnInit {
   @Input() public product: Product;
 
-  public productButtonText: string = 'В КОРЗИНУ';
+  public productAltImgAttribute: string = 'photo';
+  public shoppingCartButtonText: string = 'В КОРЗИНУ';
 
   constructor() {}
 

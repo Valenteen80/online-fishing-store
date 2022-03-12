@@ -12,6 +12,7 @@
   }
 
   &__info-wrapper {
+    width: 70%;
     font-size: 1.2rem;
     display: flex;
     justify-content: space-around;
@@ -21,14 +22,14 @@
       flex-direction: column;
       margin-right: 10px;
     }
+  }
 
-    &__price-rating-button {
-      display: flex;
-      flex-direction: row;
+  &__price-rating-button {
+    display: flex;
+    justify-content: space-between;
 
-      &__button {
-        max-width: 100px;
-      }
+    &__button {
+      max-width: 100px;
     }
   }
 }
