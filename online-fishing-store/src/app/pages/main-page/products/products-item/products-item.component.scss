@@ -1,8 +1,10 @@
 @import "../../../../../assets/scss/colors";
+@import "../../../../../assets/scss/mixins";
 
 .product {
   margin: 5px;
   display: flex;
+
   .product__img {
     border: 2px solid $yellow;
     width: 40%;
@@ -14,19 +16,17 @@
   &__info-wrapper {
     width: 70%;
     font-size: 1.2rem;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
+    @include display-flex(space-between, flex-start);
+
     .price-rating__wrapper {
-      display: flex;
+      @include display-flex(space-between, flex-start);
       flex-direction: column;
       margin-right: 10px;
     }
   }
 
   &__price-rating-button {
-    display: flex;
-    justify-content: space-between;
+    @include display-flex(space-between);
 
     &__button {
       max-width: 100px;

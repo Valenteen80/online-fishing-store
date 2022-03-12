@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Category } from 'src/app/interfaces/category';
-import { CATIGORIES } from 'src/app/mocks/mock-categories';
 
 @Component({
   selector: 'app-sidebar-menu',
@@ -8,5 +7,5 @@ import { CATIGORIES } from 'src/app/mocks/mock-categories';
   styleUrls: ['./sidebar-menu.component.scss'],
 })
 export class SidebarMenuComponent {
-  public categories: Category[] = CATIGORIES;
+  @Input() categories: Category[];
 }
