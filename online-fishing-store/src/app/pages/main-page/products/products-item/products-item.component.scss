@@ -2,8 +2,8 @@
 @import "../../../../../assets/scss/mixins";
 
 .product {
+  @include display-flex;
   margin: 5px;
-  display: flex;
 
   .product__img {
     border: 2px solid $yellow;
