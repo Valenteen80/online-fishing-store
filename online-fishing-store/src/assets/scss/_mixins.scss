@@ -1,9 +1,11 @@
-@import "../scss/screen-size";
+@import "../scss/variables";
+@import "../scss/colors";
 
-@mixin display-flex {
+@mixin display-flex($justifyContent: $flexStart, $alignItems: $flexStart) {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: $justifyContent;
+  align-items: $alignItems;
+  flex-wrap: wrap;
 }
 
 @mixin button-hover {

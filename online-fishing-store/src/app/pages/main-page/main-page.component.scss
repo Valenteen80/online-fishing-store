@@ -1,13 +1,23 @@
 @import "../../../assets/scss/colors";
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/mixins";
 
 .main {
   font-size: 1.6rem;
 
   &-product-container {
     display: flex;
+
     .said-bar {
       width: 30%;
       border: 2px solid $orange;
+    }
+
+    .products {
+      @include display-flex($spaceBetween, $center);
+      height: auto;
+      max-width: 70%;
+      border: 2px solid $yellow;
     }
   }
 }

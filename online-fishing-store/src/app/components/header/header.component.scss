@@ -1,4 +1,5 @@
 @import "../../../assets/scss/colors";
+@import "../../../assets/scss/variables";
 @import "../../../assets/scss/mixins";
 
 .header {
@@ -6,17 +7,18 @@
   height: 50px;
   border-bottom: solid 2px $orange;
 
-  @include display-flex;
+  @include display-flex($spaceBetween, $center);
 
   &__title {
     margin-left: 15px;
     color: $brown;
     font-size: 2rem;
   }
+
   &-content-wrapper {
     min-width: 40%;
     margin-right: 15px;
 
-    @include display-flex;
+    @include display-flex($spaceBetween, $center);
   }
 }

@@ -1,12 +1,13 @@
 @import "../../../assets/scss/colors";
+@import "../../../assets/scss/variables";
 @import "../../../assets/scss/mixins";
 
 .footer {
+  @include display-flex($spaceBetween, $center);
+  flex-wrap: nowrap;
   border-top: 2px solid $orange;
   background-color: $yellow;
   height: 35px;
-
-  @include display-flex;
 
   .name__store {
     margin-left: 15px;

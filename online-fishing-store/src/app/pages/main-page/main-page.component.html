@@ -1,7 +1,6 @@
 <div class="main">
-  <div class="main-search"></div>
   <div class="main-product-container">
-    <app-side-bar class="said-bar"></app-side-bar>
-    <div class="products"></div>
+    <app-side-bar class="side-bar" [categories]="categories"></app-side-bar>
+    <app-products class="products" [products]="products"></app-products>
   </div>
 </div>

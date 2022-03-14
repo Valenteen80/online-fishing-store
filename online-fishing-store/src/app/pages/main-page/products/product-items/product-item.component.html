@@ -1,0 +1,23 @@
+<div class="product">
+  <img
+    class="product__img"
+    [src]="product.img"
+    [alt]="productAltImgAttribute"
+  />
+  <div class="product__info-wrapper">
+    <h3>{{ product.name }}</h3>
+    <div class="product__price-rating-button">
+      <div class="price-rating__wrapper">
+        <span
+          >Цена:
+          {{ product.price | currency: "USD":"symbol-narrow":"1.2" }}</span
+        >
+        <span>Рейтинг: {{ product.rating }}</span>
+      </div>
+      <app-button
+        class="product__button"
+        [title]="shoppingCartButtonText"
+      ></app-button>
+    </div>
+  </div>
+</div>
