@@ -1,6 +1,7 @@
-@import "../scss/screen-size";
+@import "../scss/variables";
+@import "../scss/colors";
 
-@mixin display-flex($justifyContent: flex-start, $alignItems: flex-start) {
+@mixin display-flex($justifyContent: $flexStart, $alignItems: $flexStart) {
   display: flex;
   justify-content: $justifyContent;
   align-items: $alignItems;
