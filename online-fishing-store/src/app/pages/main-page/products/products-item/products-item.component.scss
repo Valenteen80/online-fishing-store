@@ -14,9 +14,9 @@
   }
 
   &__info-wrapper {
+    @include display-flex(space-between, center);
     width: 70%;
     font-size: 1.2rem;
-    @include display-flex(space-between, center);
 
     .price-rating__wrapper {
       @include display-flex(space-between);
