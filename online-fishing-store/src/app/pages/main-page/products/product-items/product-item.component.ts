@@ -2,11 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/interfaces/product';
 
 @Component({
-  selector: 'app-product-items',
-  templateUrl: './product-items.component.html',
-  styleUrls: ['./product-items.component.scss'],
+  selector: 'app-product-item',
+  templateUrl: './product-item.component.html',
+  styleUrls: ['./product-item.component.scss'],
 })
-export class ProductItemsComponent implements OnInit {
+export class ProductItemComponent implements OnInit {
   @Input() public product: Product;
 
   public productAltImgAttribute: string = 'photo';
