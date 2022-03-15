@@ -1,9 +1,8 @@
 @import "../../../../assets/scss/colors";
+@import "../../../../assets/scss/mixins";
 
 .sort-switch {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  @include display-flex($flexEnd, $center);
   margin: 5px 10px;
 
   &__explanation,

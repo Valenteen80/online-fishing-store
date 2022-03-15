@@ -3,13 +3,13 @@
   <app-button
     class="sort-switch__button"
     [title]="raitingButtonTitle"
-    [isActive]="isSortByPrice"
-    (click)="toggleSorting(true)"
+    [isActive]="!isSortByPrice"
+    (click)="toggleSorting(false)"
   ></app-button>
   <app-button
     class="sort-switch__button"
     [title]="priceButtonTitle"
-    [isActive]="!isSortByPrice"
-    (click)="toggleSorting(false)"
+    [isActive]="isSortByPrice"
+    (click)="toggleSorting(true)"
   ></app-button>
 </div>

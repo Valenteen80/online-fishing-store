@@ -6,16 +6,12 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './sort-switch.component.html',
   styleUrls: ['./sort-switch.component.scss'],
 })
-export class SortSwitchComponent implements OnInit {
+export class SortSwitchComponent {
   public raitingButtonTitle: string = 'ПО РЕЙТИНГУ ⇧';
   public priceButtonTitle: string = 'ПО ЦЕНЕ ⇩';
-  public isSortByPrice: boolean = true;
-
-  constructor() {}
+  public isSortByPrice: boolean = false;
 
   public toggleSorting(state: boolean): void {
     this.isSortByPrice = state;
   }
-
-  ngOnInit(): void {}
 }
