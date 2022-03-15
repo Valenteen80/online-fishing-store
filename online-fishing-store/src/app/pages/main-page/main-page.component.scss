@@ -16,7 +16,7 @@
     .products {
       @include display-flex($spaceBetween, $center);
       height: auto;
-      max-width: 70%;
+      max-width: 77%;
       border: 2px solid $yellow;
     }
   }

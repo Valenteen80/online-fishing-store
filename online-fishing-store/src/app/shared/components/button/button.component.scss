@@ -17,4 +17,9 @@
   &:active {
     background-color: $brown;
   }
+
+  &_active {
+    background-color: $brown;
+    color: $light_beige;
+  }
 }

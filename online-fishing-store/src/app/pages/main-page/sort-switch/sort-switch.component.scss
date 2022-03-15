@@ -1,0 +1,13 @@
+@import "../../../../assets/scss/colors";
+
+.sort-switch {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 5px 10px;
+
+  &__explanation,
+  &__button {
+    margin: 5px;
+  }
+}

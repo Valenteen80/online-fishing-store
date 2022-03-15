@@ -1,1 +1,15 @@
-<p>sort-switch works!</p>
+<div class="sort-switch">
+  <span class="sort-switch__explanation">Сортировка:</span>
+  <app-button
+    class="sort-switch__button"
+    [title]="raitingButtonTitle"
+    [isActive]="isSortByPrice"
+    (click)="toggleSorting(true)"
+  ></app-button>
+  <app-button
+    class="sort-switch__button"
+    [title]="priceButtonTitle"
+    [isActive]="!isSortByPrice"
+    (click)="toggleSorting(false)"
+  ></app-button>
+</div>
