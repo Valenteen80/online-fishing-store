@@ -7,7 +7,7 @@ import { SidebarMenuItemComponent } from './side-bar/sidebar-menu/sidebar-menu-i
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ProductsComponent } from './products/products.component';
 import { ProductItemComponent } from './products/product-items/product-item.component';
-import { SortSwitchComponent } from './sort-switch/sort-switch.component';
+import { SortPanelComponent } from './sort-panel/sort-panel.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { SortSwitchComponent } from './sort-switch/sort-switch.component';
     SidebarMenuItemComponent,
     ProductsComponent,
     ProductItemComponent,
-    SortSwitchComponent,
+    SortPanelComponent,
   ],
   imports: [MainPageRoutingModule, SharedModule],
 })

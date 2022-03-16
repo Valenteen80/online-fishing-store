@@ -1,13 +1,12 @@
-<div class="sort-switch">
-  <span class="sort-switch__explanation">Сортировка:</span>
+<div class="sort-panel">
   <app-button
-    class="sort-switch__button"
-    [title]="raitingButtonTitle"
+    class="sort-panel__button"
+    [title]="ratingButtonTitle"
     [isActive]="!isSortByPrice"
     (click)="toggleSorting(false)"
   ></app-button>
   <app-button
-    class="sort-switch__button"
+    class="sort-panel__button"
     [title]="priceButtonTitle"
     [isActive]="isSortByPrice"
     (click)="toggleSorting(true)"

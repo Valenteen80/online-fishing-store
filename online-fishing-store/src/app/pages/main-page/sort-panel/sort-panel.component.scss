@@ -1,11 +1,10 @@
 @import "../../../../assets/scss/colors";
 @import "../../../../assets/scss/mixins";
 
-.sort-switch {
+.sort-panel {
   @include display-flex($flexEnd, $center);
   margin: 5px 10px;
 
-  &__explanation,
   &__button {
     margin: 5px;
   }
