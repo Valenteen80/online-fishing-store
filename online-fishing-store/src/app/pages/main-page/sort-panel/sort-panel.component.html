@@ -1,14 +1,10 @@
 <div class="sort-panel">
-  <app-button
-    class="sort-panel__button"
-    [title]="ratingButtonTitle"
-    [isActive]="!isSortByPrice"
-    (click)="toggleSorting(false)"
-  ></app-button>
-  <app-button
-    class="sort-panel__button"
-    [title]="priceButtonTitle"
-    [isActive]="isSortByPrice"
-    (click)="toggleSorting(true)"
-  ></app-button>
+  <div *ngFor="let sortButton of sortButtons">
+    <app-button
+      class="sort-panel__button"
+      [title]="sortButton.label"
+      [isActive]="sortButton.isActive"
+      (click)="toggleSorting(sortButton)"
+    ></app-button>
+  </div>
 </div>

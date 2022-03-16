@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/interfaces/category';
 import { Product } from 'src/app/interfaces/product';
+import { SortButton } from 'src/app/interfaces/sort-button';
 import { CATEGORIES } from 'src/app/mocks/mock-categories';
 import { PRODUCTS } from 'src/app/mocks/mock-products';
+import { SORTBUTTONS } from 'src/app/mocks/mock-sortButton';
 
 @Component({
   selector: 'app-main-page',
@@ -12,8 +14,13 @@ import { PRODUCTS } from 'src/app/mocks/mock-products';
 export class MainPageComponent implements OnInit {
   public categories: Category[] = CATEGORIES;
   public products: Product[] = PRODUCTS;
+  public sortButtons: SortButton[] = SORTBUTTONS;
 
   constructor() {}
+
+  public updateSortButtons(sortButtons: SortButton[]): void {
+    this.sortButtons = sortButtons;
+  }
 
   ngOnInit(): void {}
 }
