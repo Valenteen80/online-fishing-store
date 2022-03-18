@@ -1,8 +1,8 @@
 <div class="main">
-  <app-sort-panel
-    (onAdd)="updateSortButtons($event)"
+  <app-sortPanel
+    (sorting)="sortProducts($event)"
     [sortButtons]="sortButtons"
-  ></app-sort-panel>
+  ></app-sortPanel>
   <div class="main-product-container">
     <app-side-bar class="side-bar" [categories]="categories"></app-side-bar>
     <app-products class="products" [products]="products"></app-products>

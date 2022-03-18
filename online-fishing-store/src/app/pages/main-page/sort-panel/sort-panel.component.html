@@ -3,8 +3,8 @@
     <app-button
       class="sort-panel__button"
       [title]="sortButton.label"
-      [isActive]="sortButton.isActive"
-      (click)="toggleSorting(sortButton)"
+      [isActive]="sortButton.value === selectedButton"
+      (click)="sort(sortButton)"
     ></app-button>
   </div>
 </div>
