@@ -19,14 +19,11 @@ export class MainPageComponent implements OnInit {
   constructor() {}
 
   public sortProducts(sortButton: SortButton): void {
-    this.sortButtons = this.sortButtons.map((button) => {
-      let container = { ...button };
+    const index: number = this.sortButtons.findIndex(
+      (item: SortButton) => item.value === sortButton.value
+    );
 
-      if (button.value === sortButton.value) {
-        container = sortButton;
-      }
-      return container;
-    });
+    this.sortButtons[index] = sortButton;
   }
 
   ngOnInit(): void {}

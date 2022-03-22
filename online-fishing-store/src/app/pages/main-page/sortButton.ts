@@ -10,7 +10,7 @@ export const SORTBUTTONS: SortButton[] = [
     sortDirection: SortButtonDirection.DESC,
   },
   {
-    label: SortButtonLabel.BY_PRICE_ASC,
+    label: SortButtonLabel.BY_PRICE,
     value: SortButtonValue.PRICE,
     sortDirection: SortButtonDirection.ASC,
   },

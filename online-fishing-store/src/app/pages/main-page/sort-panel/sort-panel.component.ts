@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SortButtonDirection } from 'src/app/enums/sort-button-direction-enum';
-import { SortButtonLabel } from 'src/app/enums/sort-button-label-enum';
 import { SortButtonValue } from 'src/app/enums/sort-button-value-enum';
 import { SortButton } from 'src/app/interfaces/sort-button';
 
@@ -11,27 +10,20 @@ import { SortButton } from 'src/app/interfaces/sort-button';
 })
 export class SortPanelComponent {
   @Input() public sortButtons: SortButton[];
-  @Output() public sorting: EventEmitter<SortButton> =
+  @Output() public sortEvent: EventEmitter<SortButton> =
     new EventEmitter<SortButton>();
 
-  public isSortByPriceASC: boolean = true;
-  public selectedButton: string = SortButtonValue.RATING;
+  public selectedButton: SortButton = {} as SortButton;
+  public sortButtonDirectionASC: string = SortButtonDirection.ASC;
+  public sortButtonDirectionDESC: string = SortButtonDirection.DESC;
 
   public sort(selectedButton: SortButton): void {
-    let newSortButton = { ...selectedButton };
-    this.selectedButton = selectedButton.value;
+    this.selectedButton = { ...selectedButton };
 
-    if (selectedButton.value === SortButtonValue.PRICE) {
-      this.isSortByPriceASC = !this.isSortByPriceASC;
+    selectedButton.sortDirection === SortButtonDirection.ASC
+      ? (this.selectedButton.sortDirection = SortButtonDirection.DESC)
+      : (this.selectedButton.sortDirection = SortButtonDirection.ASC);
 
-      if (!this.isSortByPriceASC) {
-        newSortButton.label = SortButtonLabel.BY_PRICE_DESC;
-        newSortButton.sortDirection = SortButtonDirection.DESC;
-      } else {
-        newSortButton.label = SortButtonLabel.BY_PRICE_ASC;
-        newSortButton.sortDirection = SortButtonDirection.ASC;
-      }
-    }
-    this.sorting.emit(newSortButton);
+    this.sortEvent.emit(this.selectedButton);
   }
 }

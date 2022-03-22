@@ -1,6 +1,13 @@
 @import "../../../../assets/scss/colors";
+@import "../../../../assets/scss/variables";
+@import "../../../../assets/scss/mixins";
 
 .products {
+  @include break-point(1020px) {
+    max-width: 100%;
+    flex-direction: column;
+  }
+
   max-width: 48%;
   margin: 5px;
   border: 2px solid $yellow;
