@@ -14,3 +14,9 @@
   box-shadow: 2px -2px 25px $dark_beige;
   cursor: pointer;
 }
+
+@mixin break-point($max-width) {
+  @media (max-width: $max-width) {
+    @content;
+  }
+}

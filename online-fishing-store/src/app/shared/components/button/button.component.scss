@@ -14,7 +14,8 @@
     @include button-hover;
   }
 
-  &:active {
+  &_active {
     background-color: $brown;
+    color: $light_beige;
   }
 }

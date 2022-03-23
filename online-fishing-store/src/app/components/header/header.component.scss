@@ -3,22 +3,54 @@
 @import "../../../assets/scss/mixins";
 
 .header {
+  @include display-flex($spaceBetween, $center);
+  @include break-point($laptop) {
+    @include display-flex($center, $center);
+    flex-direction: column;
+    height: 70px;
+  }
   background-color: $yellow;
   height: 50px;
   border-bottom: solid 2px $orange;
 
-  @include display-flex($spaceBetween, $center);
-
   &__title {
+    @include break-point($laptop) {
+      font-size: 1.6rem;
+      margin: 3px;
+    }
     margin-left: 15px;
     color: $brown;
     font-size: 2rem;
   }
 
   &-content-wrapper {
+    @include display-flex($spaceBetween, $center);
     min-width: 40%;
     margin-right: 15px;
+    .burger_menu {
+      @include break-point($laptop) {
+        display: block;
+      }
 
-    @include display-flex($spaceBetween, $center);
+      display: none;
+      background-image: url(../../../assets/img/burger-menu.png);
+      width: 24px;
+      height: 24px;
+      margin: 5px;
+      border: 2px solid $orange;
+      border-radius: 5px;
+
+      &:hover {
+        @include button-hover;
+      }
+
+      &__active {
+        background-image: url(../../../assets/img/burger-menu-open.png);
+      }
+    }
+
+    .header-item {
+      margin-right: 5px;
+    }
   }
 }

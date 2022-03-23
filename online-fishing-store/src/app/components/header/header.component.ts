@@ -8,8 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
   public logInButtonTitle: string = 'ВХОД';
   public signUpButtonTitle: string = 'РЕГИСТРАЦИЯ';
+  public isActiveButtonMenu = false;
 
   constructor() {}
+
+  public showSidebar(): void {
+    this.isActiveButtonMenu = !this.isActiveButtonMenu;
+  }
 
   ngOnInit(): void {}
 }
