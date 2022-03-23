@@ -24,7 +24,6 @@ export class SortPanelComponent {
       selectedButton.sortDirection === SortButtonDirection.ASC
         ? SortButtonDirection.DESC
         : SortButtonDirection.ASC;
-
     this.sortEvent.emit(this.selectedButton);
   }
 }
