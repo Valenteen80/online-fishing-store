@@ -14,15 +14,16 @@ export class SortPanelComponent {
     new EventEmitter<SortButton>();
 
   public selectedButton: SortButton = {} as SortButton;
-  public sortButtonDirectionASC: string = SortButtonDirection.ASC;
-  public sortButtonDirectionDESC: string = SortButtonDirection.DESC;
+  public readonly sortButtonDirectionASC: string = SortButtonDirection.ASC;
+  public readonly sortButtonDirectionDESC: string = SortButtonDirection.DESC;
 
   public sort(selectedButton: SortButton): void {
     this.selectedButton = { ...selectedButton };
 
-    selectedButton.sortDirection === SortButtonDirection.ASC
-      ? (this.selectedButton.sortDirection = SortButtonDirection.DESC)
-      : (this.selectedButton.sortDirection = SortButtonDirection.ASC);
+    this.selectedButton.sortDirection =
+      selectedButton.sortDirection === SortButtonDirection.ASC
+        ? SortButtonDirection.DESC
+        : SortButtonDirection.ASC;
 
     this.sortEvent.emit(this.selectedButton);
   }

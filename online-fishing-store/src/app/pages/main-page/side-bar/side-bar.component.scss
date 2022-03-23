@@ -2,7 +2,7 @@
 @import "../../../../assets/scss/variables";
 
 .categories {
-  @include break-point($screen-medium) {
+  @include break-point($laptop) {
     display: none;
   }
 }

@@ -23,7 +23,7 @@ export class MainPageComponent implements OnInit {
       (item: SortButton) => item.value === sortButton.value
     );
 
-    this.sortButtons[index] = sortButton;
+    this.sortButtons[index] = { ...sortButton };
   }
 
   ngOnInit(): void {}
