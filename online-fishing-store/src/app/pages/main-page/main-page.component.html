@@ -4,7 +4,11 @@
     [sortButtons]="sortButtons"
   ></app-sortPanel>
   <div class="main-product-container">
-    <app-side-bar class="side-bar" [categories]="categories"></app-side-bar>
-    <app-products class="products" [products]="products"></app-products>
+    <app-side-bar
+      class="side-bar"
+      [categories]="categories"
+      (selectCategoryEvent)="onSelectCategory($event)"
+    ></app-side-bar>
+    <app-products class="products" [products]="sortedProducts"></app-products>
   </div>
 </div>
