@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { SortButtonDirection } from 'src/app/enums/sort-button-direction-enum';
-import { Category } from 'src/app/interfaces/category';
 import { Product } from 'src/app/interfaces/product';
 
 @Injectable({
@@ -15,10 +14,7 @@ export class SortService {
     });
   }
 
-  public sortBySelectCategory(
-    categoryId: number,
-    products: Product[]
-  ): Product[] {
+  public sortBySelectCategory(categoryId: number,products: Product[]): Product[] {
     return categoryId === 6
       ? products
       : products.filter((product) => {
@@ -44,5 +40,11 @@ export class SortService {
       : products.sort((a, b) => {
           return b.price - a.price;
         });
+  }
+
+  public sortingByFavorites(products: Product[]): Product[] {
+    return products.sort((a, b) => {
+      return +b.inFavorites - +a.inFavorites;
+    });
   }
 }

@@ -12,6 +12,8 @@ export class ProductItemComponent implements OnInit {
   public productAltImgAttribute: string = 'photo';
   public shoppingCartButtonText: string = 'В КОРЗИНУ';
 
+  public addInShoppingCart(): void {}
+
   constructor() {}
 
   ngOnInit(): void {}

@@ -15,6 +15,7 @@
 
     .products {
       @include display-flex($spaceBetween, $center);
+      align-content: flex-start;
       height: auto;
       flex: 1;
       border: 2px solid $yellow;

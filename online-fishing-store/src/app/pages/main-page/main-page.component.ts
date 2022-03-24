@@ -23,22 +23,15 @@ export class MainPageComponent implements OnInit {
   constructor(public sortServise: SortService) {}
 
   public sortProducts(sortButton: SortButton): void {
-    const index: number = this.sortButtons.findIndex(
-      (item: SortButton) => item.value === sortButton.value
-    );
-
+    const index: number = this.sortButtons.findIndex((item: SortButton) => item.value === sortButton.value);
     this.sortButtons[index] = { ...sortButton };
 
     this.sortedProducts =
       sortButton.value === SortButtonValue.RATING
-        ? this.sortServise.sortByRaiting(
-            sortButton.sortDirection,
-            this.sortedProducts
-          )
-        : this.sortServise.sortByPrice(
-            sortButton.sortDirection,
-            this.sortedProducts
-          );
+        ? this.sortServise.sortByRaiting(sortButton.sortDirection,this.sortedProducts)
+        : this.sortServise.sortByPrice(sortButton.sortDirection, this.sortedProducts);
+
+    this.sortedProducts = this.sortServise.sortingByFavorites(this.sortedProducts);
   }
 
   public setDefaultProducts(): void {
@@ -46,14 +39,13 @@ export class MainPageComponent implements OnInit {
   }
 
   public getDefaultProducts(): Product[] {
-    return this.sortServise.sortByDefault(this.products);
+    const sortedProducts = this.sortServise.sortByDefault(this.products);
+    return this.sortServise.sortingByFavorites(sortedProducts);
   }
 
   public onSelectCategory(category: Category): void {
-    this.sortedProducts = this.sortServise.sortBySelectCategory(
-      category.id,
-      this.products
-    );
+    this.sortedProducts = this.sortServise.sortBySelectCategory(category.id,this.products);
+    this.sortedProducts = this.sortServise.sortingByFavorites(this.sortedProducts);
   }
 
   ngOnInit(): void {
