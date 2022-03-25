@@ -1,5 +1,5 @@
 <div class="products" *ngFor="let product of products">
-  <div [ngClass]="{ inFavorites: product.inFavorites }">
+  <div [ngClass]="{ inFavorites: product.isFavorite }">
     <app-product-item [product]="product"></app-product-item>
   </div>
 </div>

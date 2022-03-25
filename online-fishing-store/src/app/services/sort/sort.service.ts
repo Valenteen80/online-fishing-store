@@ -8,20 +8,6 @@ import { Product } from 'src/app/interfaces/product';
 export class SortService {
   constructor() {}
 
-  public sortByDefault(products): Product[] {
-    return products.filter((product) => {
-      return product.categoryId === 1;
-    });
-  }
-
-  public sortBySelectCategory(categoryId: number,products: Product[]): Product[] {
-    return categoryId === 6
-      ? products
-      : products.filter((product) => {
-          return product.categoryId === categoryId;
-        });
-  }
-
   public sortByRaiting(sortDirection: string, products: Product[]): Product[] {
     return sortDirection === SortButtonDirection.ASC
       ? products.sort((a, b) => {
@@ -44,7 +30,7 @@ export class SortService {
 
   public sortingByFavorites(products: Product[]): Product[] {
     return products.sort((a, b) => {
-      return +b.inFavorites - +a.inFavorites;
+      return +b.isFavorite - +a.isFavorite;
     });
   }
 }

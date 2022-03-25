@@ -11,7 +11,7 @@ export class SideBarComponent {
   @Output() public selectCategoryEvent: EventEmitter<Category> =
     new EventEmitter<Category>();
 
-  public transferSelectCategory(category: Category): void {
+  public onSelectCategory(category: Category): void {
     this.selectCategoryEvent.emit(category);
   }
 }

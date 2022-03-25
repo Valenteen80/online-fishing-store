@@ -11,10 +11,10 @@ export class SidebarMenuComponent {
   @Output() public selectCategoryEvent: EventEmitter<Category> =
     new EventEmitter<Category>();
 
-  public idSelectedCategory: number;
+  public nameSelectedCategory: string;
 
-  public transferSelectCategory(category: Category): void {
-    this.idSelectedCategory = category.id;
+  public onSelectCategory(category: Category): void {
+    this.nameSelectedCategory = category.name;
     this.selectCategoryEvent.emit(category);
   }
 }

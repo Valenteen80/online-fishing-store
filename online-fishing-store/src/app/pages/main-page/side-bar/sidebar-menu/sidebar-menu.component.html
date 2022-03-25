@@ -1,8 +1,8 @@
-<div *ngFor="let category of categories; let i = index">
-  <div [ngClass]="{ category__active: idSelectedCategory === i + 1 }">
+<div *ngFor="let category of categories">
+  <div [ngClass]="{ category__active: nameSelectedCategory === category.name}">
     <app-sidebar-menu-item
       [category]="category"
-      (click)="transferSelectCategory(category)"
+      (click)="onSelectCategory(category)"
     ></app-sidebar-menu-item>
   </div>
 </div>

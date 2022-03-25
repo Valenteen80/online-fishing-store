@@ -6,6 +6,6 @@ export interface Product {
   description: string;
   price: number;
   rating: number;
-  inFavorites: boolean;
-  inShoppingCart: boolean;
+  isFavorite: boolean;
+  isShoppingCart: boolean;
 }
