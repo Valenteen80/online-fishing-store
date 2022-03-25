@@ -28,7 +28,7 @@ export class SortService {
         });
   }
 
-  public sortingByFavorites(products: Product[]): Product[] {
+  public sortByFavorites(products: Product[]): Product[] {
     return products.sort((a, b) => {
       return +b.isFavorite - +a.isFavorite;
     });

@@ -31,6 +31,6 @@ export class MainPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.products = this.sortServise.sortingByFavorites(this.products);
+    this.products = this.sortServise.sortByFavorites(this.products);
   }
 }
