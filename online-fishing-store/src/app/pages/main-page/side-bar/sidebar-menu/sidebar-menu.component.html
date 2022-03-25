@@ -1,5 +1,5 @@
 <div *ngFor="let category of categories">
-  <div [ngClass]="{ category__active: nameSelectedCategory === category.name}">
+  <div [ngClass]="{ category__active: selectedCategory.name === category.name}">
     <app-sidebar-menu-item
       [category]="category"
       (click)="onSelectCategory(category)"

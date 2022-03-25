@@ -11,7 +11,7 @@ export const PRODUCTS: Product[] = [
     price: 28.34,
     rating: 1,
     isFavorite: false,
-    isShoppingCart: false,
+    inShoppingCart: false,
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ export const PRODUCTS: Product[] = [
     price: 49,
     rating: 5,
     isFavorite: false,
-    isShoppingCart: false,
+    inShoppingCart: false,
   },
   {
     id: 3,
@@ -35,7 +35,7 @@ export const PRODUCTS: Product[] = [
     price: 17.37,
     rating: 7,
     isFavorite: true,
-    isShoppingCart: false,
+    inShoppingCart: false,
   },
   {
     id: 4,
@@ -47,7 +47,7 @@ export const PRODUCTS: Product[] = [
     price: 72,
     rating: 2,
     isFavorite: false,
-    isShoppingCart: false,
+    inShoppingCart: false,
   },
   {
     id: 5,
@@ -59,7 +59,7 @@ export const PRODUCTS: Product[] = [
     price: 290,
     rating: 12,
     isFavorite: false,
-    isShoppingCart: false,
+    inShoppingCart: false,
   },
   {
     id: 6,
@@ -71,7 +71,7 @@ export const PRODUCTS: Product[] = [
     price: 4,
     rating: 10,
     isFavorite: false,
-    isShoppingCart: false,
+    inShoppingCart: false,
   },
   {
     id: 7,
@@ -83,7 +83,7 @@ export const PRODUCTS: Product[] = [
     price: 430,
     rating: 4,
     isFavorite: false,
-    isShoppingCart: false,
+    inShoppingCart: false,
   },
   {
     id: 8,
@@ -95,7 +95,7 @@ export const PRODUCTS: Product[] = [
     price: 820,
     rating: 0,
     isFavorite: false,
-    isShoppingCart: false,
+    inShoppingCart: false,
   },
   {
     id: 9,
@@ -107,7 +107,7 @@ export const PRODUCTS: Product[] = [
     price: 2800,
     rating: 3,
     isFavorite: false,
-    isShoppingCart: false,
+    inShoppingCart: false,
   },
   {
     id: 10,
@@ -119,7 +119,7 @@ export const PRODUCTS: Product[] = [
     price: 76,
     rating: 6,
     isFavorite: false,
-    isShoppingCart: false,
+    inShoppingCart: false,
   },
   {
     id: 11,
@@ -131,7 +131,7 @@ export const PRODUCTS: Product[] = [
     price: 79,
     rating: 8,
     isFavorite: false,
-    isShoppingCart: false,
+    inShoppingCart: false,
   },
   {
     id: 12,
@@ -143,7 +143,7 @@ export const PRODUCTS: Product[] = [
     price: 380,
     rating: 1,
     isFavorite: false,
-    isShoppingCart: false,
+    inShoppingCart: false,
   },
   {
     id: 13,
@@ -155,7 +155,7 @@ export const PRODUCTS: Product[] = [
     price: 250,
     rating: 8,
     isFavorite: false,
-    isShoppingCart: false,
+    inShoppingCart: false,
   },
   {
     id: 14,
@@ -167,7 +167,7 @@ export const PRODUCTS: Product[] = [
     price: 1734,
     rating: 6,
     isFavorite: false,
-    isShoppingCart: false,
+    inShoppingCart: false,
   },
   {
     id: 15,
@@ -179,6 +179,6 @@ export const PRODUCTS: Product[] = [
     price: 89,
     rating: 17,
     isFavorite: true,
-    isShoppingCart: false,
+    inShoppingCart: false,
   },
 ];

@@ -16,7 +16,6 @@ import { SortService } from 'src/app/services/sort/sort.service';
 export class MainPageComponent implements OnInit {
   public categories: Category[] = CATEGORIES;
   public products: Product[] = PRODUCTS;
-  // public sortedProducts: Product[];////удалить
   public sortButtons: SortButton[] = SORTBUTTONS;
 
   constructor(public sortServise: SortService) {}
@@ -29,11 +28,9 @@ export class MainPageComponent implements OnInit {
       sortButton.value === SortButtonValue.RATING
         ? this.sortServise.sortByRaiting(sortButton.sortDirection,this.products)
         : this.sortServise.sortByPrice(sortButton.sortDirection, this.products);
-
-    this.products = this.sortServise.sortingByFavorites(this.products);
   }
 
   ngOnInit(): void {
-  this.products = this.sortServise.sortingByFavorites(this.products);
+    this.products = this.sortServise.sortingByFavorites(this.products);
   }
 }

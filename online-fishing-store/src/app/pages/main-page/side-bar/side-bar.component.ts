@@ -8,8 +8,7 @@ import { Category } from 'src/app/interfaces/category';
 })
 export class SideBarComponent {
   @Input() public categories: Category[];
-  @Output() public selectCategoryEvent: EventEmitter<Category> =
-    new EventEmitter<Category>();
+  @Output() public selectCategoryEvent: EventEmitter<Category> = new EventEmitter<Category>();
 
   public onSelectCategory(category: Category): void {
     this.selectCategoryEvent.emit(category);

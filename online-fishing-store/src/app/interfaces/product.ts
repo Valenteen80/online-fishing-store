@@ -7,5 +7,5 @@ export interface Product {
   price: number;
   rating: number;
   isFavorite: boolean;
-  isShoppingCart: boolean;
+  inShoppingCart: boolean;
 }
