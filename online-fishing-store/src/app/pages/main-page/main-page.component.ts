@@ -6,6 +6,7 @@ import { SortButton } from 'src/app/interfaces/sort-button';
 import { CATEGORIES } from 'src/app/mocks/mock-categories';
 import { PRODUCTS } from 'src/app/mocks/mock-products';
 import { SORTBUTTONS } from 'src/app/pages/main-page/sortButton';
+import { FilterService } from 'src/app/services/filter/filter.service';
 import { SortService } from 'src/app/services/sort/sort.service';
 
 @Component({
@@ -18,7 +19,18 @@ export class MainPageComponent implements OnInit {
   public products: Product[] = PRODUCTS;
   public sortButtons: SortButton[] = SORTBUTTONS;
 
-  constructor(public sortServise: SortService) {}
+  constructor(
+    public filterServise: FilterService,
+    public sortServise: SortService
+    ) {}
+
+  public setDefaultProducts(): void {
+    this.products = this.getDefaultProducts();
+  }
+
+  public getDefaultProducts(): Product[] {
+    return this.filterServise.filterByDefault(this.products);
+  }
 
   public sortProducts(sortButton: SortButton): void {
     const index: number = this.sortButtons.findIndex((item: SortButton) => item.value === sortButton.value);
@@ -30,7 +42,10 @@ export class MainPageComponent implements OnInit {
         : this.sortServise.sortByPrice(sortButton.sortDirection, this.products);
   }
 
+
+
   ngOnInit(): void {
+    this.setDefaultProducts();
     this.products = this.sortServise.sortByFavorites(this.products);
   }
 }
