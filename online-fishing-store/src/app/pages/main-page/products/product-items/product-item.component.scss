@@ -4,7 +4,7 @@
 
 .product {
   @include display-flex;
-  margin: 5px;
+  padding: 5px;
 
   .product__img {
     border: 2px solid $yellow;

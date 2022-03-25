@@ -1,2 +1,6 @@
-<app-sidebar-menu class="categories" [categories]="categories">
+<app-sidebar-menu
+  class="categories"
+  [categories]="categories"
+  (selectCategoryEvent)="onSelectCategory($event)"
+>
 </app-sidebar-menu>

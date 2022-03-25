@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Category } from 'src/app/interfaces/category';
 
 @Component({
@@ -8,4 +8,12 @@ import { Category } from 'src/app/interfaces/category';
 })
 export class SidebarMenuComponent {
   @Input() public categories: Category[];
+  @Output() public selectCategoryEvent: EventEmitter<Category> = new EventEmitter<Category>();
+
+  public selectedCategory: Category = {} as Category;
+
+  public onSelectCategory(category: Category): void {
+    this.selectedCategory = category;
+    this.selectCategoryEvent.emit(category);
+  }
 }
