@@ -6,6 +6,7 @@ import { SortButton } from 'src/app/interfaces/sort-button';
 import { CATEGORIES } from 'src/app/mocks/mock-categories';
 import { PRODUCTS } from 'src/app/mocks/mock-products';
 import { SORTBUTTONS } from 'src/app/pages/main-page/sortButton';
+import { FilterService } from 'src/app/services/filter/filter.service';
 import { SortService } from 'src/app/services/sort/sort.service';
 
 @Component({
@@ -17,8 +18,18 @@ export class MainPageComponent implements OnInit {
   public categories: Category[] = CATEGORIES;
   public products: Product[] = PRODUCTS;
   public sortButtons: SortButton[] = SORTBUTTONS;
+  public selectedButton: SortButton = {} as SortButton; 
+  public іnitialProducts: Product[] = PRODUCTS;
 
-  constructor(public sortServise: SortService) {}
+  constructor(
+    public filterServise: FilterService,
+    public sortServise: SortService
+    ) {}
+
+  public onSelectCategory(category: Category): void {
+    this.products = this.filterServise.filterBySelectedCategory(category, this.іnitialProducts);
+    this.selectedButton = {} as SortButton;
+  } 
 
   public sortProducts(sortButton: SortButton): void {
     const index: number = this.sortButtons.findIndex((item: SortButton) => item.value === sortButton.value);
