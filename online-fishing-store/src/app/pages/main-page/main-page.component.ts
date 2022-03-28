@@ -4,9 +4,10 @@ import { Category } from 'src/app/interfaces/category';
 import { Product } from 'src/app/interfaces/product';
 import { SortButton } from 'src/app/interfaces/sort-button';
 import { CATEGORIES } from 'src/app/mocks/mock-categories';
-import { PRODUCTS } from 'src/app/mocks/mock-products';
+// import { PRODUCTS } from 'src/app/mocks/mock-products';
 import { SORTBUTTONS } from 'src/app/pages/main-page/sortButton';
 import { FilterService } from 'src/app/services/filter/filter.service';
+import { ProductService } from 'src/app/services/product/product.service';
 import { SortService } from 'src/app/services/sort/sort.service';
 
 @Component({
@@ -16,20 +17,35 @@ import { SortService } from 'src/app/services/sort/sort.service';
 })
 export class MainPageComponent implements OnInit {
   public categories: Category[] = CATEGORIES;
-  public products: Product[] = PRODUCTS;
+  public products: Product[];
   public sortButtons: SortButton[] = SORTBUTTONS;
   public selectedButton: SortButton = {} as SortButton; 
-  public іnitialProducts: Product[] = PRODUCTS;
+  public іnitialProducts: Product[];
+  public selectProduct: Product;
 
   constructor(
     public filterServise: FilterService,
-    public sortServise: SortService
+    public sortServise: SortService,
+    public productServise: ProductService
     ) {}
+
+  public getProducts(){
+    this.productServise.getProducts().subscribe((products) => {
+      this.products = products;
+      this.іnitialProducts = products;
+    })
+  }
+
+  public getProductById(id: number){
+    this.productServise.getProductsById(id).subscribe((product) => {
+      this.selectProduct = product
+    })
+  }
 
   public onSelectCategory(category: Category): void {
     this.products = this.filterServise.filterBySelectedCategory(category, this.іnitialProducts);
     this.selectedButton = {} as SortButton;
-  } 
+  }
 
   public sortProducts(sortButton: SortButton): void {
     const index: number = this.sortButtons.findIndex((item: SortButton) => item.value === sortButton.value);
@@ -42,6 +58,7 @@ export class MainPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getProducts()
     this.products = this.sortServise.sortByFavorites(this.products);
   }
 }

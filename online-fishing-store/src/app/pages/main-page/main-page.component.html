@@ -10,6 +10,9 @@
       [categories]="categories"
       (selectCategoryEvent)="onSelectCategory($event)"
     ></app-side-bar>
-    <app-products class="products" [products]="products"></app-products>
+    <app-products class="products" 
+    [products]="products"
+    (selectProductEvent)="getProductById($event)"
+    ></app-products>
   </div>
 </div>

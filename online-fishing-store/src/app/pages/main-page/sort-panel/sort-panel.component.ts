@@ -10,8 +10,7 @@ import { SortButton } from 'src/app/interfaces/sort-button';
 export class SortPanelComponent {
   @Input() public sortButtons: SortButton[];
   @Input() public selectedButton: SortButton = {} as SortButton;
-  @Output() public sortEvent: EventEmitter<SortButton> =
-    new EventEmitter<SortButton>();
+  @Output() public sortEvent: EventEmitter<SortButton> = new EventEmitter<SortButton>();
 
   public readonly sortButtonDirectionASC: string = SortButtonDirection.ASC;
   public readonly sortButtonDirectionDESC: string = SortButtonDirection.DESC;
