@@ -18,6 +18,8 @@ export class MainPageComponent implements OnInit {
   public categories: Category[] = CATEGORIES;
   public products: Product[] = PRODUCTS;
   public sortButtons: SortButton[] = SORTBUTTONS;
+  public defaultSortButton: SortButton = {} as SortButton;
+  public originalProducts: Product[] = PRODUCTS;
 
   constructor(
     public filterServise: FilterService,
@@ -25,12 +27,18 @@ export class MainPageComponent implements OnInit {
     ) {}
 
   public setDefaultProducts(): void {
+    this.originalProducts = this.products;
     this.products = this.getDefaultProducts();
   }
 
   public getDefaultProducts(): Product[] {
     return this.filterServise.filterByDefault(this.products);
   }
+
+  public onSelectCategory(category: Category): void {
+    this.products = this.filterServise.filterBySelectCategory(category, this.originalProducts);
+    this.defaultSortButton = {} as SortButton;
+  } 
 
   public sortProducts(sortButton: SortButton): void {
     const index: number = this.sortButtons.findIndex((item: SortButton) => item.value === sortButton.value);
@@ -41,8 +49,6 @@ export class MainPageComponent implements OnInit {
         ? this.sortServise.sortByRaiting(sortButton.sortDirection,this.products)
         : this.sortServise.sortByPrice(sortButton.sortDirection, this.products);
   }
-
-
 
   ngOnInit(): void {
     this.setDefaultProducts();

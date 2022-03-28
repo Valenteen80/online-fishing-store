@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { SortButtonDirection } from 'src/app/enums/sort-button-direction-enum';
-import { SortButtonValue } from 'src/app/enums/sort-button-value-enum';
 import { SortButton } from 'src/app/interfaces/sort-button';
 
 @Component({
@@ -10,10 +9,10 @@ import { SortButton } from 'src/app/interfaces/sort-button';
 })
 export class SortPanelComponent {
   @Input() public sortButtons: SortButton[];
+  @Input() public selectedButton: SortButton = {} as SortButton;
   @Output() public sortEvent: EventEmitter<SortButton> =
     new EventEmitter<SortButton>();
 
-  public selectedButton: SortButton = {} as SortButton;
   public readonly sortButtonDirectionASC: string = SortButtonDirection.ASC;
   public readonly sortButtonDirectionDESC: string = SortButtonDirection.DESC;
 
@@ -26,4 +25,6 @@ export class SortPanelComponent {
         : SortButtonDirection.ASC;
     this.sortEvent.emit(this.selectedButton);
   }
+
+
 }
