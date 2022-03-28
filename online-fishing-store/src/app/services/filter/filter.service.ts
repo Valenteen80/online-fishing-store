@@ -10,13 +10,7 @@ export class FilterService {
 
   constructor() { }
 
-  public filterByDefault(products: Product []):Product [] {
-    return products.filter((product) => {
-      return product.categoryId === 1;
-    })
-  }
-
-  public filterBySelectCategory(category: Category, products: Product []): Product [] {
+  public filterBySelectedCategory(category: Category, products: Product []): Product [] {
     return category.name === NameCategory.ALL_PRODUCTS
       ? products
       : products.filter((product) => {

@@ -3,7 +3,7 @@ import { Product } from '../interfaces/product';
 export const PRODUCTS: Product[] = [
   {
     id: 1,
-    categoryId: 1,
+    categoryId: 2,
     name: 'Удочка с кольцами Libao Snow Wolf 6 м',
     img: 'https://karas.by/image/cache/catalog/Libao/wolf-750x750.jpg',
     description:
@@ -15,7 +15,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 2,
-    categoryId: 1,
+    categoryId: 2,
     name: 'Спиннинг Samurai Shock Leader 9, углеволокно',
     img: 'https://karas.by/image/cache/catalog/demo/samurai-red-750x750.jpg',
     description:
@@ -27,7 +27,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 3,
-    categoryId: 1,
+    categoryId: 2,
     name: 'Катушка мультипликаторная Xing Sheg ME-103',
     img: 'https://karas.by/image/cache/catalog/demo/products/12334/xing-sheg-750x750.jpeg',
     description:
@@ -39,7 +39,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 4,
-    categoryId: 2,
+    categoryId: 3,
     name: 'Ледобур Ленинград 130 двуручный',
     img: 'https://karas.by/image/cache/catalog/Leningrad/leningradskiy-bur-1-750x750.jpg',
     description:
@@ -51,7 +51,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 5,
-    categoryId: 2,
+    categoryId: 3,
     name: 'Палатка зимняя Следопыт Куб 3 бело-синяя',
     img: 'https://karas.by/image/cache/catalog/Sledopit/palatka-sledopyt-kub-3-210d-750x750.jpg',
     description:
@@ -63,7 +63,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 6,
-    categoryId: 2,
+    categoryId: 3,
     name: 'Удочка зимняя ПИРС 50 С',
     img: 'https://karas.by/image/cache/catalog/Pirs/pirs-50-c-750x750.jpg',
     description:
@@ -75,7 +75,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 7,
-    categoryId: 3,
+    categoryId: 4,
     name: 'Электромотор Wahoo GJ-32lb (до 1050кг)',
     img: 'https://karas.by/image/cache/catalog/Wahoo/wahoo-1-500x500-750x750.jpg',
     description:
@@ -87,7 +87,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 8,
-    categoryId: 3,
+    categoryId: 4,
     name: 'Подвесной 2-х тактный бензиновый лодочный мотор HDX T 2.6 CBMS',
     img: 'https://karas.by/image/cache/catalog/HDX/T-2-3-750x750.jpg',
     description:
@@ -99,7 +99,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 9,
-    categoryId: 3,
+    categoryId: 4,
     name: 'Подвесной 2-х тактный бензиновый лодочный мотор Tarpon OTH 9.9S (Sea-Pro)',
     img: 'https://karas.by/image/cache/catalog/Sea-Pro/tarpon/tarpon-oth9-750x750.jpg',
     description:
@@ -111,7 +111,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 10,
-    categoryId: 4,
+    categoryId: 5,
     name: 'Костюм влагозащитный Vabik Waterstop',
     img: 'https://karas.by/image/cache/catalog/Vabik/Odezhda/kostyum-vlagozaschitnyj-vabik-waterstop-750x750.jpg',
     description:
@@ -123,7 +123,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 11,
-    categoryId: 4,
+    categoryId: 5,
     name: 'Сапоги забродные NordMan Expert с нейлоновым верхом (ЭВА, ТЭП)',
     img: 'https://karas.by/image/cache/catalog/NordMan/PE22_RN/sapogi-zabrodnye-nordman-expert-pe22-rn-750x750.jpg',
     description:
@@ -135,7 +135,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 12,
-    categoryId: 4,
+    categoryId: 5,
     name: 'Полукомбинезон забродный Norfin RAPID',
     img: 'https://karas.by/image/cache/catalog/Norfin/zabrodniki-norfin-rapid-750x750.jpg',
     description:
@@ -147,7 +147,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 13,
-    categoryId: 5,
+    categoryId: 6,
     name: 'Эхолот Lucky Fish Finder FF168D',
     img: 'https://karas.by/image/cache/catalog/Lucky/FF168D/FF168D-750x750.jpg',
     description:
@@ -159,7 +159,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 14,
-    categoryId: 5,
+    categoryId: 6,
     name: 'Эхолот Garmin Striker Vivid 7sv, 7 дюймов (сканер ClearVü, сканер SideVü, GPS)',
     img: 'https://karas.by/image/cache/catalog/Garmin/vivid/vivid72sv-1-750x750.jpg',
     description:
@@ -171,7 +171,7 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 15,
-    categoryId: 5,
+    categoryId: 6,
     name: 'Автоматическое зарядное устройство Вымпел 20',
     img: 'https://karas.by/image/cache/catalog/demo/vimpel-20-750x750.jpg',
     description:
