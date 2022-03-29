@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable, of } from 'rxjs';
 import { Product } from 'src/app/interfaces/product';
 import { PRODUCTS } from 'src/app/mocks/mock-products';
+import { SortService } from '../sort/sort.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +10,12 @@ import { PRODUCTS } from 'src/app/mocks/mock-products';
 export class ProductService {
 public products: Product[] = PRODUCTS;
 
-  constructor() { }
+  constructor(
+    public sortServise: SortService
+  ) { }
 
   public getProducts():Observable<Product[]> {
-    return of(this.products).pipe(map(products => products.sort((a,b) => {
-      return +b.isFavorite - +a.isFavorite;
-    })))
+    return of(this.products).pipe(map(products => this.sortServise.sortByFavorites(products)))
   }
 
   public getProductsById(id):Observable<Product> {

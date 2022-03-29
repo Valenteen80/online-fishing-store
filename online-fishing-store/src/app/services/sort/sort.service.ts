@@ -27,4 +27,10 @@ export class SortService {
           return b.price - a.price;
         });
   }
+
+  public sortByFavorites(products: Product[]): Product[] {
+    return products.sort((a, b) => {
+      return +b.isFavorite - +a.isFavorite;
+    });
+  }
 }
