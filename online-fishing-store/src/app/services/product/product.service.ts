@@ -12,8 +12,7 @@ public products: Product[] = PRODUCTS;
   constructor() { }
 
   public getProducts():Observable<Product[]> {
-    const products = of(this.products);
-    return products.pipe(map(products => products.sort((a,b) => {
+    return of(this.products).pipe(map(products => products.sort((a,b) => {
       return +b.isFavorite - +a.isFavorite;
     })))
   }
