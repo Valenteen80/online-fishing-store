@@ -28,9 +28,9 @@ export class SortService {
         });
   }
 
-  public sortByFavorites(products: Product[]): Product[] {
-    return products.sort((a, b) => {
-      return +b.isFavorite - +a.isFavorite;
-    });
-  }
+  // public sortByFavorites(products: Product[]): Product[] {
+  //   return products.sort((a, b) => {
+  //     return +b.isFavorite - +a.isFavorite;
+  //   });
+  // }
 }

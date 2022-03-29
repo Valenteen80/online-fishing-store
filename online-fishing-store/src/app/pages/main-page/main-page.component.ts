@@ -4,7 +4,6 @@ import { Category } from 'src/app/interfaces/category';
 import { Product } from 'src/app/interfaces/product';
 import { SortButton } from 'src/app/interfaces/sort-button';
 import { CATEGORIES } from 'src/app/mocks/mock-categories';
-// import { PRODUCTS } from 'src/app/mocks/mock-products';
 import { SORTBUTTONS } from 'src/app/pages/main-page/sortButton';
 import { FilterService } from 'src/app/services/filter/filter.service';
 import { ProductService } from 'src/app/services/product/product.service';
@@ -21,7 +20,7 @@ export class MainPageComponent implements OnInit {
   public sortButtons: SortButton[] = SORTBUTTONS;
   public selectedButton: SortButton = {} as SortButton; 
   public іnitialProducts: Product[];
-  public selectProduct: Product;
+  public selectedProduct: Product;
 
   constructor(
     public filterServise: FilterService,
@@ -38,7 +37,7 @@ export class MainPageComponent implements OnInit {
 
   public getProductById(id: number){
     this.productServise.getProductsById(id).subscribe((product) => {
-      this.selectProduct = product
+      this.selectedProduct = product
     })
   }
 
@@ -59,6 +58,5 @@ export class MainPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProducts()
-    this.products = this.sortServise.sortByFavorites(this.products);
   }
 }
