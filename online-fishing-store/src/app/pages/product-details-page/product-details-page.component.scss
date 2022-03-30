@@ -9,11 +9,11 @@
         flex-direction: column
     }
     padding: 5px;
-
     .product__img {
         @include break-point($tablet) {
             max-width: 90%;
         }
+
         border: 2px solid $yellow;
         min-width: 10%;
         margin: 5px;
@@ -25,11 +25,11 @@
             @include break-point($tablet) {
             max-width: 90%;
         }
+
         min-width: 10%;
         margin: 5px;
         max-width: 47%;
         font-size: 1.8rem;
-
         .product__name {
             max-width: 600px;
             height: 50px;
@@ -41,7 +41,6 @@
     &__price-rating-button {
         @include display-flex($spaceBetween, $center);
         width: 100%;
-
         .price-rating__wrapper {
             @include display-flex($spaceBetween);
             flex-direction: column;
