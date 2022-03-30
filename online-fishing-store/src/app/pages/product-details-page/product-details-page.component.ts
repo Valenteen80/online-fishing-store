@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ActivatedRoute, Params } from '@angular/router';
+import { Product } from 'src/app/interfaces/product';
+import { ProductService } from 'src/app/services/product/product.service';
+import { switchMap } from 'rxjs/operators'; 
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-product-details-page',
   templateUrl: './product-details-page.component.html',
@@ -7,9 +11,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductDetailsPageComponent implements OnInit {
 
-  constructor() { }
+  public product: Product;
+  public productAltImgAttribute: string = 'photo';
+  public shoppingCartButtonText: string = 'В КОРЗИНУ';
+  public favoritesButtonText: string = 'В ИЗБРАННОЕ';
 
+  constructor(
+    private route: ActivatedRoute,
+    private productServise: ProductService
+  ) {}
+
+  public addShoppingCart(): void {}
+  
   ngOnInit(): void {
+        this.route.params.pipe(switchMap((params: Params) => {
+          return this.productServise.getProductsById(+params['id']) 
+          }))
+          .subscribe((product:Product) => this.product = product)
   }
-
 }

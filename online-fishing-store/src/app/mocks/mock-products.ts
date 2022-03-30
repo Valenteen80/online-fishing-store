@@ -161,7 +161,7 @@ export const PRODUCTS: Product[] = [
     id: 14,
     categoryId: 6,
     name: 'Эхолот Garmin Striker Vivid 7sv, 7 дюймов (сканер ClearVü, сканер SideVü, GPS)',
-    img: 'https://karas.by/image/cache/catalog/Garmin/vivid/vivid72sv-1-750x750.jpg',
+    img: 'https://karas.by/image/cache/catalog/Garmin/vivid/vivid72sv-1-750x750.jpg ',
     description:
       'С эхолотом STRIKER Vivid 7sv с трансдьюсером GT52HW-TM вы сможете увидеть рыбу и ее структуру с максимальной детализацией, выбрав цвет дисплея, свое местоположение на воде и гидролокатор для дня.',
     price: 1734,

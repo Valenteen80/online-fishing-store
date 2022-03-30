@@ -6,12 +6,23 @@
   @include break-point($small-desktops) {
     max-width: 100%;
   }
-
+  
   max-width: 47%;
   margin: 5px;
   border: 2px solid $yellow;
+  &:hover {
+    color: $brown;
+    transition: 0.2s ease-in-out;
+    box-shadow: 2px -2px 25px $dark_beige;
+    cursor: pointer;
+    background-color: $yellow;
+    opacity: 0.7;
+  }
 }
 
 .isFavorite {
   background-color: $dark_beige;
+  &:hover {
+    background-color: $yellow;
+  }
 }
