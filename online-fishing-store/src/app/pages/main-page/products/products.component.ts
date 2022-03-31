@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { RoutesNames } from 'src/app/enums/routs-name-enun';
 import { Product } from 'src/app/interfaces/product';
 
 @Component({
@@ -15,7 +16,7 @@ export class ProductsComponent implements OnInit {
   ) {}
 
   public onSelectProduct(product): void {
-    this.router.navigate([`/product-details/${product.id}`])
+    this.router.navigate([`/${RoutesNames.PRODUCT_DETAILS}/${product.id}`])
     this.selectedProduct.emit(product.id);
   }
 
