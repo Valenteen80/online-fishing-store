@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile-page.component.scss'],
 })
 export class ProfilePageComponent implements OnInit {
+  public personalDataButtonTitle: string = 'ЛИЧНЫЕ ДАННЫЕ';
+  public favoritesProductsButtonTitle: string = 'ИЗБРАННЫЕ ТОВАРЫ';
+  
   constructor() {}
 
   ngOnInit(): void {}

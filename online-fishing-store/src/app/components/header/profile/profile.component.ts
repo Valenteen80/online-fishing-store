@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { RoutesNames } from 'src/app/enums/routs-name-enun';
 
 @Component({
   selector: 'app-profile',
@@ -12,7 +14,13 @@ export class ProfileComponent implements OnInit {
   public profileButtonTitle: string = 'ПРОФИЛЬ';
   public logOutButtonTitle: string = 'ВЫЙТИ';
 
-  constructor() {}
+  constructor(
+    private router: Router
+  ) {}
+
+  public goProfilePage(): void {
+    this.router.navigate([`/${RoutesNames.PROFILE}`])
+  }
 
   ngOnInit(): void {}
 }
