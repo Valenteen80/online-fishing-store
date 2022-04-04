@@ -3,7 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product/product.service';
 import { switchMap } from 'rxjs/operators'; 
-import { ShoppingCartService } from 'src/app/services/shopping-cart/shopping-cart.service';
+
 @Component({
   selector: 'app-product-details-page',
   templateUrl: './product-details-page.component.html',

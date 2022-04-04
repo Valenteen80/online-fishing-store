@@ -21,6 +21,7 @@ export class ProductService{
     this.products$.subscribe((products:Product[]) => {
       eventProducts = [...products]
     })
+
     return of(eventProducts.find((product) => {
       return product.id === id
     }))
@@ -31,13 +32,16 @@ export class ProductService{
       const index: number = products.findIndex((item: Product) => item.name === product.name);
       products[index] = { ...product };
     })
+    
     this.countProductsShoppingCart()
   }
 
   public countProductsShoppingCart(): void {
     let count: number = 0;
+
     this.products$.subscribe((products:Product[]) => {
       products.forEach((item) => {
+
         if (item.inShoppingCart) {
           count = count + 1
         }
