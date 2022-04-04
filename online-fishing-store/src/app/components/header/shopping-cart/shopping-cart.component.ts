@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/interfaces/product';
-import { ShoppingCartService } from 'src/app/services/shopping-cart/shopping-cart.service';
+import { ProductService } from 'src/app/services/product/product.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -9,13 +8,15 @@ import { ShoppingCartService } from 'src/app/services/shopping-cart/shopping-car
 })
 export class ShoppingCartComponent implements OnInit {
   public shoppingCartButtonTitle: string = 'КОРЗИНА';
-  public productSum: number = -1
+  public amountProductsAddedShoppingCart: number;
 
-  constructor(private shoppingCartService: ShoppingCartService) {}
+  constructor(
+    private productService: ProductService
+    ) {}
 
   ngOnInit(): void {
-    this.shoppingCartService.productAddedShoppingCart$.subscribe((product: Product) => {
-      this.productSum++;
+    this.productService.amountProductsAddedShoppingCart$.subscribe((amount: number) => {
+      this.amountProductsAddedShoppingCart = amount;
     });
   }
 }

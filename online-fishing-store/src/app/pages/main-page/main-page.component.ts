@@ -25,18 +25,19 @@ export class MainPageComponent implements OnInit {
   constructor(
     public filterServise: FilterService,
     public sortServise: SortService,
-    public productServise: ProductService
+    public productService: ProductService
     ) {}
 
-  public getProducts(){
-    this.productServise.getProducts().subscribe((products) => {
-      this.products = products;
-      this.іnitialProducts = products;
-    })
+  public getProducts(): void{
+     this.productService.products$.subscribe((products:Product[]) => {
+        this.products = this.sortServise.sortByFavorites(products);
+        this.іnitialProducts = products;
+        this.sortServise.sortByFavorites(products)
+      })
   }
 
-  public getProductById(id: number){
-    this.productServise.getProductsById(id).subscribe((product) => {
+  public getProductById(id: number): void {
+    this.productService.getProductsById(id).subscribe((product) => {
       this.selectedProduct = product
     })
   }

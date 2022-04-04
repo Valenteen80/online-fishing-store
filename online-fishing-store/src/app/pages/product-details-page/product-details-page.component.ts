@@ -3,9 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product/product.service';
 import { switchMap } from 'rxjs/operators'; 
-import { Observable } from 'rxjs';
 import { ShoppingCartService } from 'src/app/services/shopping-cart/shopping-cart.service';
-import { FavoriteService } from 'src/app/services/favorite/favorite.service';
 @Component({
   selector: 'app-product-details-page',
   templateUrl: './product-details-page.component.html',
@@ -20,24 +18,23 @@ export class ProductDetailsPageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private productServise: ProductService,
-    private shoppingCartService: ShoppingCartService,
-    private favoriteService: FavoriteService
+    private productService: ProductService,
   ) {}
 
   public addShoppingCart(product: Product): void {
-    this.shoppingCartService.addShoppingCart(product)
+    product.inShoppingCart = !product.inShoppingCart
+    this.productService.updateProduct(product) 
   }
 
   public addFavorite(product): void {
-    this.favoriteService.addFavorite(product)
-    this.productServise.addFavorite(product)
+    product.isFavorite = !product.isFavorite
+    this.productService.updateProduct(product)    
   }
   
   ngOnInit(): void {
-        this.route.params.pipe(switchMap((params: Params) => {
-          return this.productServise.getProductsById(+params['id']) 
-          }))
-          .subscribe((product:Product) => this.product = product)
+    this.route.params.pipe(switchMap((params: Params) => {
+    return this.productService.getProductsById(+params['id']) 
+      })).subscribe((product:Product) => this.product = product)
   }
+  
 }
