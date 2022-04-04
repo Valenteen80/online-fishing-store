@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { RoutesNames } from 'src/app/enums/routs-name-enun';
 
 @Component({
   selector: 'app-profile-page',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfilePageComponent implements OnInit {
   public personalDataButtonTitle: string = 'ЛИЧНЫЕ ДАННЫЕ';
-  public favoritesProductsButtonTitle: string = 'ИЗБРАННЫЕ ТОВАРЫ';
+  public favoriteProductsButtonTitle: string = 'ИЗБРАННЫЕ ТОВАРЫ';
   
-  constructor() {}
+  constructor(
+    private router: Router
+  ) {}
+
+  public goToPersonalData():void {
+    // console.log(`/${RoutesNames.PERSONAL_DATA}`)
+    // this.router.navigate([`/personal-data`])
+  }
+
+  public goToFavoriteProducts(): void {
+
+  }
 
   ngOnInit(): void {}
 }

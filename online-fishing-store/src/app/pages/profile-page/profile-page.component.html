@@ -1,10 +1,17 @@
 <nav class="nav">
     <ul class="button__container">
         <li class="button button_active">
-            <div >{{personalDataButtonTitle}}</div>
+            <div 
+            [routerLink]="['/profile/personal-data']"
+            (click)="goToPersonalData()"
+            > {{personalDataButtonTitle}} </div>
         </li>
         <li class="button">
-            <div >{{favoritesProductsButtonTitle}}</div>
+            <div
+            [routerLink]="['/profile/favorites']"
+            (click)="goToFavoriteProducts()" 
+            >{{favoriteProductsButtonTitle}}</div>
         </li>
     </ul>
 </nav>
+<router-outlet></router-outlet>
