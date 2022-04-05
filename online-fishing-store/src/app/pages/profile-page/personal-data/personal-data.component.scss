@@ -1,0 +1,24 @@
+@import "../../../../assets/scss/colors";
+@import "../../../../assets/scss/variables";
+@import "../../../../assets/scss/mixins";
+
+.personalData{
+    margin: 20px;
+    .fixed-avatar {
+        margin-bottom: 5px;
+    }
+    
+    // @include display-flex($spaceBetween, $center);
+    .form {
+        color: $brown;
+        font-size: 1.2rem;
+        .form-control{
+            border: 0.5px solid $yellow;
+            margin-bottom: 10px;
+            @include display-flex($flexStart, $center);
+            .value {
+                margin: 5px;
+            }
+        }
+    }
+}

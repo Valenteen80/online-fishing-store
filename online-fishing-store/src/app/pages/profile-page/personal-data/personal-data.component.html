@@ -1,70 +1,66 @@
 <div class="personalData">
-    <div class="avatar">
+    <div class="fixed-avatar">
         <img
-            class="button__img"
+            class="button__img "
             [src]="profilePicture"
             [alt]="avatarImgAltAttributeValue"
         />
-        <div class="avatar">
-            <label>Изменить фото</label>
+    </div>
+    <form class="form">
+        <div class="avatar form-control">
+            <!-- <label>Изменить фото</label> -->
             <input 
                 type="file" 
                 accept="image/*,image/jpeg"
                 name="avatar">
             <div class="validation"></div>
         </div>
-    </div>
+        
 
-    <div class="firstName">
-        <h2>Алесь</h2>
-        <label>изменить имя</label>
-        <input type="text" placeholder="Имя">
-        <div class="validation"></div>
-    </div>
-
-    <div class="lastName">
-        <h2>Захаренчук</h2>
-        <label>изменить фамилию</label>
-        <input type="text" placeholder="Фамилия">
-        <div class="validation"></div>
-    </div> 
-
-    <div>
-        <h2>Беларусь, Минск, ул. Скорины, 10</h2>
-        <div class="">
-            <label>Страна</label>
-
-            <select>
-                <option value="by">Беларусь</option>
-                <option value="ua">Украина</option>
-            </select>
+        <div class="firstName form-control">
+            <h2 class="value">Алесь</h2>
+            <input type="text" placeholder="изменить имя">
+            <div class="validation"></div>
         </div>
 
-        <div div class="">
-            <input type="text">
+        <div class="lastName form-control">
+            <h2 class="value">Захаренчук</h2>
+            <input type="text" placeholder="изменить фамилию">
+            <div class="validation"></div>
+        </div> 
+
+        <div class="address form-control">
+            <h2 class="value">Беларусь, Минск, ул. Скорины, 10</h2>
+            <div class="">
+                <!-- <label>Страна</label> -->
+
+                <select>
+                    <option value="by">Беларусь</option>
+                    <option value="ua">Украина</option>
+                </select>
+            </div>
+
+            <div div class="">
+                <input type="text">
+            </div>
+            <button class="btn">Выбрать столицу</button>
         </div>
-        <button class="btn">Выбрать столицу</button>
-    </div>
 
-    <div class="phoneNumber">
-        <h2> +375293489573</h2>
-        <label>изменить номер телефона</label>
-        <input type="tel" placeholder="Номер телефона">
-        <div class="validation"></div>
-    </div> 
+        <div class="phoneNumber form-control">
+            <h2 class="value"> +375293489573</h2>
+            <input type="tel" placeholder="изменить номер телефона">
+            <div class="validation"></div>
+        </div> 
 
-    <div class="gender">
-        <h2>Муж</h2>
-        <label>Изменить пол</label>
-        <input type="text" placeholder="Пол">
-        <div class="validation"></div>
-    </div>        
+        <div class="gender form-control">
+            <h2  class="value">Пол мужской</h2>
+            <p><input name="dzen" type="radio" value="nedzen"checked>Муж.</p>
+            <p><input name="dzen" type="radio" value="dzen"> Жен.</p>
+            <div class="validation"></div>
+        </div>        
 
-    <button class="btn">Сохранить</button>
-
-
-
-
+        <button class="btn">Сохранить</button>
+    </form>
 </div>
 
 
