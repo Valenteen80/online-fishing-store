@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product/product.service';
 
 @Component({
@@ -15,8 +16,8 @@ export class ShoppingCartComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
-    this.productService.amountProductsAddedShoppingCart$.subscribe((amount: number) => {
-      this.amountProductsAddedShoppingCart = amount;
+    this.productService.getProductsInShoppingCart().subscribe((products: Product[]) => {
+      this.amountProductsAddedShoppingCart = products.length
     });
   }
 }

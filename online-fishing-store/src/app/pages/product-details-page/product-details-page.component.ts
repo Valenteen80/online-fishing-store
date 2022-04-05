@@ -33,8 +33,8 @@ export class ProductDetailsPageComponent implements OnInit {
   
   ngOnInit(): void {
     this.route.params.pipe(switchMap((params: Params) => {
-    return this.productService.getProductsById(+params['id']) 
-      })).subscribe((product:Product) => this.product = product)
+      return this.productService.getProductsById(+params['id']) 
+    })).subscribe((product:Product) => this.product = product)
   }
   
 }

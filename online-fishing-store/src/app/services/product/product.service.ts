@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import { BehaviorSubject, map, Observable, of, Subject } from 'rxjs';
+import { BehaviorSubject, filter, map, Observable, of, Subject, switchMap, tap } from 'rxjs';
 import { Product } from 'src/app/interfaces/product';
 import { PRODUCTS } from 'src/app/mocks/mock-products';
 import { SortService } from '../sort/sort.service';
@@ -9,45 +9,43 @@ import { SortService } from '../sort/sort.service';
 })
 export class ProductService{
   public products: Product[] = PRODUCTS;
-  public products$: Subject<Product[]> = new BehaviorSubject <Product[]>(this.products);
-  public amountProductsAddedShoppingCart$: Subject<number> = new BehaviorSubject <number>(0);
+  public products$: BehaviorSubject<Product[]> = new BehaviorSubject <Product[]>(this.products);
 
   constructor(
     public sortServise: SortService,
-  ) { }
+  ) {}
+
+  public getProducts() {
+    return this.products$
+  }
 
   public getProductsById(id: number):Observable<Product> {
     let eventProducts
     this.products$.subscribe((products:Product[]) => {
-      eventProducts = [...products]
+      eventProducts = [...products].find((product:Product) => {
+        return product.id === id
+      })
     })
 
-    return of(eventProducts.find((product) => {
-      return product.id === id
-    }))
+    return of(eventProducts)
   }
   
-  public updateProduct(product: Product):void {
+  public updateProduct(product: Product) {
+    let updatedProducts;
     this.products$.subscribe((products:Product[]) => {
       const index: number = products.findIndex((item: Product) => item.name === product.name);
       products[index] = { ...product };
+      updatedProducts = products
     })
-    
-    this.countProductsShoppingCart()
+    this.products$.next(updatedProducts)
   }
 
-  public countProductsShoppingCart(): void {
-    let count: number = 0;
-
-    this.products$.subscribe((products:Product[]) => {
-      products.forEach((item) => {
-
-        if (item.inShoppingCart) {
-          count = count + 1
-        }
-      });
-      this.amountProductsAddedShoppingCart$.next(count)
-    })
-
+  public getProductsInShoppingCart():Observable<Product[]> {
+    return this.products$
+      .pipe(
+        map((products: Product[]) =>  {
+          return products.filter((product: Product) => product.inShoppingCart)
+        })
+      )
   }
 }

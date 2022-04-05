@@ -16,8 +16,8 @@ export class ProductsComponent implements OnInit {
   ) {}
 
   public onSelectProduct(product): void {
-    this.router.navigate([`/${RoutesNames.PRODUCT_DETAILS}/${product.id}`])
-    this.selectedProduct.emit(product.id);
+     this.selectedProduct.emit(product.id);
+     this.router.navigate([`/${RoutesNames.PRODUCT_DETAILS}/${product.id}`])
   }
 
   ngOnInit(): void {}

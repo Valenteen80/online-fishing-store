@@ -37,7 +37,7 @@ export class MainPageComponent implements OnInit {
   }
 
   public getProductById(id: number): void {
-    this.productService.getProductsById(id).subscribe((product) => {
+    this.productService.getProductsById(id).subscribe((product:Product) => {
       this.selectedProduct = product
     })
   }
@@ -53,7 +53,7 @@ export class MainPageComponent implements OnInit {
 
     this.products =
       sortButton.value === SortButtonValue.RATING
-        ? this.sortServise.sortByRaiting(sortButton.sortDirection,this.products)
+        ? this.sortServise.sortByRaiting(sortButton.sortDirection, this.products)
         : this.sortServise.sortByPrice(sortButton.sortDirection, this.products);
   }
 
