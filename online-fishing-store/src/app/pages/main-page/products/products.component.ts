@@ -11,7 +11,7 @@ export class ProductsComponent implements OnInit {
   @Output() public selectedProduct: EventEmitter <Product> = new EventEmitter<Product>();
   constructor() {}
 
-  public onSelectProduct(product): void {
+  public onSelectProduct(product: Product): void {
      this.selectedProduct.emit(product);
   }
 
