@@ -13,7 +13,14 @@ export class PersonalDataComponent implements OnInit {
   public profilePicture: string = '../../../../assets/img/profile_picture.png';
   public form: FormGroup;
   public userData: UserData;
-
+  public isEditAvatar: boolean = true;
+  public isEditFirstName: boolean = true;
+  public isEditLastName: boolean = true;
+  public isEditCountry: boolean = true;
+  public isEditAddress: boolean = true;
+  public isEditPhoneNumber: boolean = true;
+  public isEditGender: boolean = true;
+  public isEditedForm: boolean = true;
 
   constructor(
     public userService: UserService
@@ -25,12 +32,6 @@ export class PersonalDataComponent implements OnInit {
       })
   }
 
-  public submit(): void {
-    console.log(this.form)
-    this.userData = {...this.form.value}
-    console.log(this.userData)
-  }
-
   ngOnInit(): void {
     this.getUser()
 
@@ -38,10 +39,10 @@ export class PersonalDataComponent implements OnInit {
       avatar: new FormControl(''),
       firstName: new FormControl(''),
       lastName: new FormControl(''),
-      country: new FormControl('Беларусь'),
+      country: new FormControl(''),
       address: new FormControl(''),
       phoneNumber: new FormControl(''),
-      gender: new FormControl('male')
+      gender: new FormControl('')
     })
   }
 

@@ -7,32 +7,54 @@
             [alt]="avatarImgAltAttributeValue"
         />
     </div>
-    <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+    <form class="form" [formGroup]="form">
         <div class="avatar form-control">
-            <input 
-                type="file" 
-                accept="image/*,image/jpeg"
-                name="avatar"
-                formControlName="avatar">
-            <div class="validation"></div>
+            <div class="container">
+                <input 
+                    type="file" 
+                    accept="image/*,image/jpeg"
+                    name="avatar"
+                    [attr.disabled]="isEditAvatar ? 'disabled' : null"
+                    formControlName="avatar">
+                <div  class="button-enable" *ngIf="isEditAvatar"(click)="isEditAvatar = !isEditAvatar"></div>
+                <div  class="button-disable" *ngIf="!isEditAvatar"(click)="isEditAvatar = !isEditAvatar"></div>                
+            </div>
         </div>
-        
-
         <div class="firstName form-control">
-            <h2 class="value" >{{userData.firstName}}</h2>
-            <input type="text" placeholder="изменить имя" [(ngModel)]="userData.firstName" formControlName="firstName">
-            <div class="validation"></div>
+            <div class="container" >
+                <h2 class="value" >{{userData.firstName}}</h2>
+                <div class="button-enable" *ngIf="isEditFirstName"(click)="isEditFirstName = !isEditFirstName"></div>
+                <div class="button-disable" *ngIf="!isEditFirstName"(click)="isEditFirstName = !isEditFirstName"></div>
+            </div>
+            <input 
+            type="text" 
+            [(ngModel)]="userData.firstName" 
+            [attr.disabled]="isEditFirstName ? 'disabled' : null"
+            formControlName="firstName">
         </div>
-
         <div class="lastName form-control">
-            <h2 class="value">{{userData.lastName}}</h2>
-            <input type="text" placeholder="изменить фамилию" [(ngModel)]="userData.lastName" formControlName="lastName">
-            <div class="validation"></div>
+            <div class="container">
+                <h2 class="value">{{userData.lastName}}</h2>
+                <div class="button-enable" *ngIf="isEditLastName"(click)="isEditLastName = !isEditLastName"></div>
+                <div class="button-disable" *ngIf="!isEditLastName"(click)="isEditLastName = !isEditLastName"></div>                
+            </div>
+            <input 
+            type="text" 
+            [(ngModel)]="userData.lastName" 
+            [attr.disabled]="isEditLastName ? 'disabled' : null"
+            formControlName="lastName">
         </div> 
-
         <div class="country form-control">
-            <h2 class="value">{{userData.country}}</h2>
-            <select formControlName="country">
+            <div class="container">
+                <h2 class="value">{{userData.country}}</h2>
+                <div class="button-enable" *ngIf="isEditCountry"(click)="isEditCountry = !isEditCountry"></div>
+                <div class="button-disable" *ngIf="!isEditCountry"(click)="isEditCountry = !isEditCountry"></div>                
+            </div>
+            <select 
+            [(ngModel)]="userData.country" 
+            [attr.disabled]="isEditCountry ? 'disabled' : null"
+            formControlName="country"
+            >
                 <option>Беларусь</option>
                 <option>Украина</option>
                 <option>Польша</option>
@@ -43,41 +65,61 @@
                 <option>Эстония</option>
             </select>
         </div>
-
-
         <div class="address form-control">
-            <h2 class="value">{{userData.address}}</h2>
+            <div class="container">
+                <h2 class="value">{{userData.address}}</h2>
+                <div class="button-enable" *ngIf="isEditAddress"(click)="isEditAddress = !isEditAddress"></div>
+                <div class="button-disable" *ngIf="!isEditAddress"(click)="isEditAddress = !isEditAddress"></div>                
+            </div>
+
             <div class="">
-                <input type="text" placeholder="изменить фамилию" [(ngModel)]="userData.address" formControlName="address">
+                <input 
+                type="text" placeholder="изменить фамилию" 
+                [(ngModel)]="userData.address" 
+                [attr.disabled]="isEditAddress ? 'disabled' : null"
+                formControlName="address">
             </div>
         </div>
-
         <div class="phoneNumber form-control">
-            <h2 class="value"> {{userData.phoneNumber}}</h2>
-            <input type="tel" placeholder="изменить номер телефона" [(ngModel)]="userData.phoneNumber" formControlName="phoneNumber">
-            <div class="validation"></div>
-        </div> 
-        <!-- form [ formGroup ] = "userForm" ( ngSubmit ) = "onFormSubmit()" -->
-        
-        <div class="gender form-control">
-            <h2  class="value">Пол: {{userData.gender}}</h2>
-            <p>
-                <input [(ngModel)]="userData.gender" type="radio" value="male" formControlName="gender"> Мужской
-                <input [(ngModel)]="userData.gender" type="radio" value="female" formControlName="gender"> Женский
-            </p>
-            <p>
-                <!-- <input type="checkbox" formControlName="tc"> -->
-            </p>
-            
-        </div>
-        <!-- <div class="gender form-control">
-            <h2  class="value">Пол мужской</h2>
-            <p><input name="dzen" type="radio" value="nedzen"checked formControlName="gender">Муж.</p>
-            <p><input name="dzen" type="radio" value="dzen" formControlName="gender"> Жен.</p>
-            <div class="validation"></div>
-        </div>         -->
+            <div class="container">
+                <h2 class="value"> {{userData.phoneNumber}}</h2>
+                <div class="button-enable" *ngIf="isEditPhoneNumber"(click)="isEditPhoneNumber = !isEditPhoneNumber"></div>
+                <div class="button-disable" *ngIf="!isEditPhoneNumber"(click)="isEditPhoneNumber = !isEditPhoneNumber"></div>                
+            </div>
 
-        <button class="btn" type="submit" [disabled]="form.invalid">Сохранить</button>
+            <input 
+            type="tel" 
+            [(ngModel)]="userData.phoneNumber"
+            [attr.disabled]="isEditPhoneNumber ? 'disabled' : null"
+            formControlName="phoneNumber">
+        </div> 
+        <div class="gender form-control">
+            <div class="container">
+                <h2  class="value">{{userData.gender}}</h2>
+                <div class="button-enable" *ngIf="isEditGender"(click)="isEditGender = !isEditGender"></div>
+                <div class="button-disable" *ngIf="!isEditGender"(click)="isEditGender = !isEditGender"></div>
+            </div>
+            
+            <label>
+                <input
+                    [(ngModel)]="userData.gender" 
+                    type="radio" value="Мужской" 
+                    [attr.disabled]="isEditGender ? 'disabled' : null" 
+                    formControlName="gender" 
+                > 
+            Мужской
+            </label>
+                
+            <label>
+                <input 
+                    [(ngModel)]="userData.gender" 
+                    type="radio" value="Женский" 
+                    [attr.disabled]="isEditGender ? 'disabled' : null" 
+                    formControlName="gender" 
+                > 
+            Женский
+            </label>   
+        </div>
     </form>
 </div>
 

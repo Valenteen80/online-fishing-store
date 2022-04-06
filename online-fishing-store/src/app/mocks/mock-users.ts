@@ -9,5 +9,5 @@ export const USERS: UserData =
     country: "Беларусь",
     address: "Минск, ул. Скорины, 10",
     phoneNumber: 375293734890,
-    gender: "мужской",
+    gender: "Мужской",
   }

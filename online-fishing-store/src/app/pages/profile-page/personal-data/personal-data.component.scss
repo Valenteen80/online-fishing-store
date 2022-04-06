@@ -2,6 +2,7 @@
 @import "../../../../assets/scss/variables";
 @import "../../../../assets/scss/mixins";
 
+
 .personalData{
     margin: 20px;
     .fixed-avatar {
@@ -15,10 +16,45 @@
         .form-control{
             border: 0.5px solid $yellow;
             margin-bottom: 10px;
-            // @include display-flex($flexStart, $center);
+            .container {
+                @include display-flex($flexStart, $center);
+            }
+
             .value {
                 margin: 5px;
             }
         }
     }
+}
+
+.button-enable {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    background-image:url("../../../../assets/img/edit_button.png") ;
+    background-size: contain;
+
+    &:hover {
+        background-color: $dark_beige;
+        color: $orange;
+        transition: 0.3s ease-in-out;
+        box-shadow: 5px -2px 25px $dark_beige;
+        cursor: pointer;
+      }
+}
+
+.button-disable {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    background-image:url("../../../../assets/img/disable.png") ;
+    background-size: contain;
+
+    &:hover {
+        background-color: $dark_beige;
+        color: $orange;
+        transition: 0.3s ease-in-out;
+        box-shadow: 5px -2px 25px $dark_beige;
+        cursor: pointer;
+      }
 }
