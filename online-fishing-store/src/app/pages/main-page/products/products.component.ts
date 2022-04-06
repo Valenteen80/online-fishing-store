@@ -8,11 +8,11 @@ import { Product } from 'src/app/interfaces/product';
 })
 export class ProductsComponent implements OnInit {
   @Input() public products: Product[];
-  @Output() public selectedProduct: EventEmitter <number> = new EventEmitter<number>();
+  @Output() public selectedProduct: EventEmitter <Product> = new EventEmitter<Product>();
   constructor() {}
 
   public onSelectProduct(product): void {
-     this.selectedProduct.emit(product.id);
+     this.selectedProduct.emit(product);
   }
 
   ngOnInit(): void {}

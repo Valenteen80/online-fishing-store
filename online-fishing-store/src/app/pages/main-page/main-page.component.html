@@ -12,7 +12,7 @@
     ></app-side-bar>
     <app-products class="products" 
     [products]="products"
-    (selectedProduct)="getProductById($event)"
+    (selectedProduct)="redirectToSelectedProduct($event)"
     ></app-products>
   </div>
 </div>

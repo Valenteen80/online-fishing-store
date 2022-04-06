@@ -22,7 +22,6 @@ export class MainPageComponent implements OnInit {
   public sortButtons: SortButton[] = SORTBUTTONS;
   public selectedButton: SortButton = {} as SortButton; 
   public іnitialProducts: Product[];
-  public selectedProduct: Product;
 
   constructor(
     public filterServise: FilterService,
@@ -33,16 +32,13 @@ export class MainPageComponent implements OnInit {
 
   public getProducts(): void{
     this.productService.getProducts().subscribe((products:Product[]) => {
-        this.products = this.sortServise.sortByFavorites(products);
+        this.products = products;
         this.іnitialProducts = products;
       })
   }
 
-  public getProductById(id: number): void {
-    this.productService.getProductsById(id).subscribe((product:Product) => {
-      this.selectedProduct = product
+  public redirectToSelectedProduct(product:Product): void {
       this.router.navigate([`/${RoutesNames.PRODUCT_DETAILS}/${product.id}`])
-    })
   }
 
   public onSelectCategory(category: Category): void {
