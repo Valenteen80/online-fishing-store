@@ -1,5 +1,5 @@
-import { Injectable, OnInit } from '@angular/core';
-import { BehaviorSubject, filter, map, Observable, of, Subject, switchMap, tap } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, map, Observable} from 'rxjs';
 import { Product } from 'src/app/interfaces/product';
 import { PRODUCTS } from 'src/app/mocks/mock-products';
 import { SortService } from '../sort/sort.service';
@@ -20,16 +20,14 @@ export class ProductService{
   }
 
   public getProductsById(id: number):Observable<Product> {
-    let eventProducts
-    this.products$.subscribe((products:Product[]) => {
-      eventProducts = [...products].find((product:Product) => {
-        return product.id === id
-      })
-    })
-
-    return of(eventProducts)
+    return this.products$
+      .pipe(
+        map((products: Product[]) => {
+          return products.find((product: Product) => product.id === id )
+        })
+      )
   }
-  
+
   public updateProduct(product: Product) {
     let updatedProducts;
     this.products$.subscribe((products:Product[]) => {

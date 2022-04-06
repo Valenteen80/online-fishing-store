@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { RoutesNames } from 'src/app/enums/routs-name-enun';
 import { SortButtonValue } from 'src/app/enums/sort-button-value-enum';
 import { Category } from 'src/app/interfaces/category';
 import { Product } from 'src/app/interfaces/product';
@@ -25,20 +27,21 @@ export class MainPageComponent implements OnInit {
   constructor(
     public filterServise: FilterService,
     public sortServise: SortService,
-    public productService: ProductService
+    public productService: ProductService,
+    private router: Router
     ) {}
 
   public getProducts(): void{
-     this.productService.products$.subscribe((products:Product[]) => {
+    this.productService.getProducts().subscribe((products:Product[]) => {
         this.products = this.sortServise.sortByFavorites(products);
         this.іnitialProducts = products;
-        this.sortServise.sortByFavorites(products)
       })
   }
 
   public getProductById(id: number): void {
     this.productService.getProductsById(id).subscribe((product:Product) => {
       this.selectedProduct = product
+      this.router.navigate([`/${RoutesNames.PRODUCT_DETAILS}/${product.id}`])
     })
   }
 
