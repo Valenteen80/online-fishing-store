@@ -1,3 +1,4 @@
+
 <div class="personalData">
     <div class="fixed-avatar">
         <img
@@ -6,33 +7,32 @@
             [alt]="avatarImgAltAttributeValue"
         />
     </div>
-    <form class="form">
+    <form class="form" [formGroup]="form" (ngSubmit)="submit()">
         <div class="avatar form-control">
-            <!-- <label>Изменить фото</label> -->
             <input 
                 type="file" 
                 accept="image/*,image/jpeg"
-                name="avatar">
+                name="avatar"
+                formControlName="avatar">
             <div class="validation"></div>
         </div>
         
 
         <div class="firstName form-control">
-            <h2 class="value">Алесь</h2>
-            <input type="text" placeholder="изменить имя">
+            <h2 class="value" >{{formData.firstName}}</h2>
+            <input type="text" placeholder="изменить имя" [(ngModel)]="formData.firstName" formControlName="firstName">
             <div class="validation"></div>
         </div>
 
         <div class="lastName form-control">
-            <h2 class="value">Захаренчук</h2>
-            <input type="text" placeholder="изменить фамилию">
+            <h2 class="value">{{formData.lastName}}</h2>
+            <input type="text" placeholder="изменить фамилию" [(ngModel)]="formData.lastName" formControlName="lastName">
             <div class="validation"></div>
         </div> 
 
         <div class="address form-control">
             <h2 class="value">Беларусь, Минск, ул. Скорины, 10</h2>
             <div class="">
-                <!-- <label>Страна</label> -->
 
                 <select>
                     <option value="by">Беларусь</option>
@@ -43,88 +43,23 @@
             <div div class="">
                 <input type="text">
             </div>
-            <button class="btn">Выбрать столицу</button>
+            <button class="btn" type="button">Выбрать столицу</button>
         </div>
 
         <div class="phoneNumber form-control">
-            <h2 class="value"> +375293489573</h2>
-            <input type="tel" placeholder="изменить номер телефона">
+            <h2 class="value"> {{formData.phoneNumber}}</h2>
+            <input type="tel" placeholder="изменить номер телефона" [(ngModel)]="formData.phoneNumber" formControlName="phoneNumber">
             <div class="validation"></div>
         </div> 
 
         <div class="gender form-control">
             <h2  class="value">Пол мужской</h2>
-            <p><input name="dzen" type="radio" value="nedzen"checked>Муж.</p>
-            <p><input name="dzen" type="radio" value="dzen"> Жен.</p>
+            <p><input name="dzen" type="radio" value="nedzen"checked >Муж.</p>
+            <p><input name="dzen" type="radio" value="dzen" > Жен.</p>
             <div class="validation"></div>
         </div>        
 
-        <button class="btn">Сохранить</button>
+        <button class="btn" type="submit" [disabled]="form.invalid">Сохранить</button>
     </form>
 </div>
 
-
-<!-- <div class="container">
-    <form>
-        <h1>Личные данные</h1>
-        <div>
-            <img
-            class="button__img"
-            [src]="profilePicture"
-            [alt]="avatarImgAltAttributeValue"
-          />
-        </div>
-
-        <div class="avatar">
-            <label>Фото профиля</label>
-            <input type="text" placeholder="Фото профиля">
-            <div class="validation"></div>
-        </div>
-
-
-
-        <div class="firstName">
-            <label>Имя</label>
-            <input type="text" placeholder="Имя">
-            <div class="validation"></div>
-        </div>
-
-        <div class="lastName">
-            <label>Фамилия</label>
-            <input type="text" placeholder="Фамилия">
-            <div class="validation"></div>
-        </div> 
-
-        <div>
-            <h2>Адрес</h2>
-            <div class="">
-                <label>Страна</label>
-  
-                <select>
-                    <option value="by">Беларусь</option>
-                    <option value="ua">Украина</option>
-                </select>
-            </div>
-  
-            <div div class="">
-                <input type="text">
-            </div>
-            <button class="btn">Выбрать столицу</button>
-        </div>
-
-        <div class="phoneNumber">
-            <label>Номер телефона</label>
-            <input type="text" placeholder="Номер телефона">
-            <div class="validation"></div>
-        </div> 
-
-        <div class="gender">
-            <label>Пол</label>
-            <input type="text" placeholder="Пол">
-            <div class="validation"></div>
-        </div>        
-  
-        <button class="btn">Сохранить</button>
-  
-    </form>
-  </div> -->
