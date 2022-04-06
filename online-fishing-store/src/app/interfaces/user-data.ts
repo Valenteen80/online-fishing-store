@@ -1,7 +1,11 @@
 export interface UserData {
+    id: number,
     firstName: string,
     lastName: string,
-    address?: string,
+    country: string,
+    address: string,
     phoneNumber: number,
-    gender?: string,
+    gender: string,
   }
+
+  

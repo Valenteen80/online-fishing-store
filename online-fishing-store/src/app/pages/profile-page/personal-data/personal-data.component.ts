@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserData } from 'src/app/interfaces/user-data';
+import { UserService } from 'src/app/services/users/user.service';
 
 @Component({
   selector: 'app-personal-data',
@@ -11,31 +12,36 @@ export class PersonalDataComponent implements OnInit {
   public avatarImgAltAttributeValue: string = 'photo';
   public profilePicture: string = '../../../../assets/img/profile_picture.png';
   public form: FormGroup;
-  public formData: UserData = {
-    firstName: "Алесь",
-    lastName: "Захаренчук",
-    address: "",
-    phoneNumber: 375293734890,
-    gender: "муж",
+  public userData: UserData;
+
+
+  constructor(
+    public userService: UserService
+  ) { }
+
+  public getUser(): void{
+    this.userService.getUser().subscribe((user: UserData) => {
+        this.userData = user;
+      })
   }
-
-
-  constructor() { }
 
   public submit(): void {
     console.log(this.form)
-    this.formData = {...this.form.value}
-    console.log(this.formData)
+    this.userData = {...this.form.value}
+    console.log(this.userData)
   }
 
   ngOnInit(): void {
+    this.getUser()
+
     this.form = new FormGroup({
       avatar: new FormControl(''),
-      firstName: new FormControl('', Validators.required),
-      lastName: new FormControl('', Validators.required),
+      firstName: new FormControl(''),
+      lastName: new FormControl(''),
+      country: new FormControl('Беларусь'),
       address: new FormControl(''),
-      phoneNumber: new FormControl('', Validators.required),
-      gender: new FormControl('')
+      phoneNumber: new FormControl(''),
+      gender: new FormControl('male')
     })
   }
 
