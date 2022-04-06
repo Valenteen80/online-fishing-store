@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/interfaces/product';
+import { ProductService } from 'src/app/services/product/product.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -7,8 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoppingCartComponent implements OnInit {
   public shoppingCartButtonTitle: string = 'КОРЗИНА';
+  public amountProductsAddedShoppingCart: number;
 
-  constructor() {}
+  constructor(
+    private productService: ProductService
+    ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.productService.getProductsInShoppingCart().subscribe((products: Product[]) => {
+      this.amountProductsAddedShoppingCart = products.length
+    });
+  }
 }

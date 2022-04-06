@@ -15,13 +15,13 @@
                 <div class="product__button">
                     <app-button
                     [title]="shoppingCartButtonText"
-                    (click)="addShoppingCart()"
+                    (click)="addShoppingCart(product)"
                     ></app-button>
                 </div>
                 <div class="product__button">
                     <app-button
                     [title]="favoritesButtonText"
-                    (click)="addShoppingCart()"
+                    (click)="addFavorite(product)"
                     ></app-button>
                 </div>
             </div>
