@@ -28,7 +28,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 3,
     categoryId: 2,
-    name: 'Катушка мультипликаторная Xing Sheg ME-103',
+    name: 'Катушка мультипликаторная Xing Sheg ME-103 fgsdfggfzd  ddfgffdv ddffdf ffdffbfxg sffgfdfg dgfhhghgfh ddg dg   gvd  dfgdgf ghgd hghghfg hbhjhjhgg h ghfg h sdghsgh sgdshg hhsfgh ffghghg fghhfgh fhfh hhjff hjhf',
     img: 'https://karas.by/image/cache/catalog/demo/products/12334/xing-sheg-750x750.jpeg',
     description:
       'Небольшая мультипликаторная катушка. Корпус выполнен из ударопрочного пластика. Может быть использоваться для зимних удочек, бортовых удилищ.',
