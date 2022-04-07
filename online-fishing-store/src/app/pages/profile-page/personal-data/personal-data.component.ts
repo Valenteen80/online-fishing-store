@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { InputGenderLabel } from 'src/app/enums/input-gender-label-enum';
 import { UserData } from 'src/app/interfaces/user-data';
 import { UserService } from 'src/app/services/users/user.service';
+import { COUNTRYES } from './countryes';
 
 @Component({
   selector: 'app-personal-data',
@@ -10,7 +12,10 @@ import { UserService } from 'src/app/services/users/user.service';
 })
 export class PersonalDataComponent implements OnInit {
   public avatarImgAltAttributeValue: string = 'photo';
-  public profilePicture: string = '../../../../assets/img/profile_picture.png';
+  public profilePicture: string = 'assets/img/profile_picture.png';
+  public readonly inputGenderLabelMale: string = InputGenderLabel.MALE;
+  public readonly inputGenderLabelFemale: string = InputGenderLabel.FEMALE;
+  public countryes: string[] = COUNTRYES;
   public form: FormGroup;
   public userData: UserData;
   public isEditAvatar: boolean = true;

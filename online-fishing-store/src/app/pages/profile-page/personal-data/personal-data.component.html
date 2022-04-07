@@ -55,14 +55,7 @@
             [attr.disabled]="isEditCountry ? 'disabled' : null"
             formControlName="country"
             >
-                <option>Беларусь</option>
-                <option>Украина</option>
-                <option>Польша</option>
-                <option>Литва</option>
-                <option>Германия</option>
-                <option>Франция</option>
-                <option>Латвия</option>
-                <option>Эстония</option>
+                <option *ngFor="let country of countryes">{{country}}</option>
             </select>
         </div>
         <div class="address form-control">
@@ -103,21 +96,21 @@
             <label>
                 <input
                     [(ngModel)]="userData.gender" 
-                    type="radio" value="Мужской" 
+                    type="radio" [value]="inputGenderLabelMale" 
                     [attr.disabled]="isEditGender ? 'disabled' : null" 
                     formControlName="gender" 
                 > 
-            Мужской
+            {{inputGenderLabelMale}}
             </label>
                 
             <label>
                 <input 
                     [(ngModel)]="userData.gender" 
-                    type="radio" value="Женский" 
+                    type="radio" [value]="inputGenderLabelFemale" 
                     [attr.disabled]="isEditGender ? 'disabled' : null" 
                     formControlName="gender" 
                 > 
-            Женский
+            {{inputGenderLabelFemale}}
             </label>   
         </div>
     </form>
