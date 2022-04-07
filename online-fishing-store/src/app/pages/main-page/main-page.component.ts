@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { RoutesNames } from 'src/app/enums/routs-name-enun';
 import { SortButtonValue } from 'src/app/enums/sort-button-value-enum';
 import { Category } from 'src/app/interfaces/category';
 import { Product } from 'src/app/interfaces/product';
@@ -20,25 +22,23 @@ export class MainPageComponent implements OnInit {
   public sortButtons: SortButton[] = SORTBUTTONS;
   public selectedButton: SortButton = {} as SortButton; 
   public іnitialProducts: Product[];
-  public selectedProduct: Product;
 
   constructor(
     public filterServise: FilterService,
     public sortServise: SortService,
-    public productServise: ProductService
+    public productService: ProductService,
+    private router: Router
     ) {}
 
-  public getProducts(){
-    this.productServise.getProducts().subscribe((products) => {
-      this.products = products;
-      this.іnitialProducts = products;
-    })
+  public getProducts(): void{
+    this.productService.getProducts().subscribe((products:Product[]) => {
+        this.products = products;
+        this.іnitialProducts = products;
+      })
   }
 
-  public getProductById(id: number){
-    this.productServise.getProductsById(id).subscribe((product) => {
-      this.selectedProduct = product
-    })
+  public redirectToSelectedProduct(product:Product): void {
+      this.router.navigate([`/${RoutesNames.PRODUCT_DETAILS}/${product.id}`])
   }
 
   public onSelectCategory(category: Category): void {
@@ -52,7 +52,7 @@ export class MainPageComponent implements OnInit {
 
     this.products =
       sortButton.value === SortButtonValue.RATING
-        ? this.sortServise.sortByRaiting(sortButton.sortDirection,this.products)
+        ? this.sortServise.sortByRaiting(sortButton.sortDirection, this.products)
         : this.sortServise.sortByPrice(sortButton.sortDirection, this.products);
   }
 

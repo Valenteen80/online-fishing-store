@@ -1,7 +1,6 @@
 <div class="products" *ngFor="let product of products">
   <div [ngClass]="{ isFavorite: product.isFavorite }">
     <app-product-item 
-      [routerLink]="['/product-details', product.id]"
       [product]="product"
       (click)="onSelectProduct(product)"
     ></app-product-item>
