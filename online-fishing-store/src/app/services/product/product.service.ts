@@ -46,4 +46,14 @@ export class ProductService{
         })
       )
   }
+
+  public getProductsIsFavorite():Observable<Product[]> {
+    return this.products$
+      .pipe(
+        map((products: Product[]) =>  {
+          return products.filter((product: Product) => product.isFavorite)
+        })
+      )
+    }
 }
+
