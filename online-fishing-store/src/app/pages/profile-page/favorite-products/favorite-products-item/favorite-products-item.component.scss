@@ -35,7 +35,11 @@
     }
 
     &__button {
-        border: 2px solid $yellow;
+        width: 35px;
+        height: 35px;
+        background-image: url("../../../../../assets/img/delete_button.png");
+        background-size: contain;
+        border: 0.5px solid $yellow;
         margin-right: 10px;
 
         &:hover {

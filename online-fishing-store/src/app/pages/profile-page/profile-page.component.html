@@ -1,16 +1,13 @@
 <nav class="nav">
     <ul class="button__container">
-        <li class="button button_active">
-            <div 
-            [routerLink]="['/profile/personal-data']"
-            (click)="goToPersonalData()"
-            > {{personalDataButtonTitle}} </div>
-        </li>
-        <li class="button">
+        <li class="button" *ngFor="let tab of tabs">
             <div
-            [routerLink]="['/profile/favorites']"
-            (click)="goToFavoriteProducts()" 
-            >{{favoriteProductsButtonTitle}}</div>
+                [routerLink]="tab.link"
+                routerLinkActive="button_active" [routerLinkActiveOptions]="{exact:true}"
+                (click)="navigateToSelectedTab(tab)"
+            >
+                {{tab.label}}
+            </div>  
         </li>
     </ul>
 </nav>

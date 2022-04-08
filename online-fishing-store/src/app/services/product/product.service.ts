@@ -47,7 +47,7 @@ export class ProductService{
       )
   }
 
-  public getProductsIsFavorite():Observable<Product[]> {
+  public getIsFavoriteProducts():Observable<Product[]> {
     return this.products$
       .pipe(
         map((products: Product[]) =>  {
@@ -56,4 +56,3 @@ export class ProductService{
       )
     }
 }
-

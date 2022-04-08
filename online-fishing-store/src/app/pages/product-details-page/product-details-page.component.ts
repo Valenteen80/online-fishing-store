@@ -24,17 +24,22 @@ export class ProductDetailsPageComponent implements OnInit {
   public addShoppingCart(product: Product): void {
     product.inShoppingCart = !product.inShoppingCart
     this.productService.updateProduct(product) 
+    this.getShoppingCartItems()
   }
 
   public addFavorite(product): void {
     product.isFavorite = !product.isFavorite
     this.productService.updateProduct(product)    
   }
-  
-  ngOnInit(): void {
+
+  private getShoppingCartItems(): void {
     this.route.params.pipe(switchMap((params: Params) => {
       return this.productService.getProductsById(+params['id']) 
-    })).subscribe((product:Product) => this.product = product)
+      })).subscribe((product:Product) => this.product = product)
+  }
+  
+  ngOnInit(): void {
+    this.getShoppingCartItems()
   }
   
 }

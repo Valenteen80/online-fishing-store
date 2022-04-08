@@ -10,29 +10,9 @@
       <span class="favorite-product-price">Цена:{{ favoriteProduct.price | currency: "USD":"symbol-narrow":"1.2" }}</span>
     </div>
   </div>
-
   <div 
       class="favorite-product__button"
       (click)="removeFromFavorites(favoriteProduct)"
     >
-      УДАЛИТЬ
   </div>    
 </div>
-
-
-  <!-- <div class="favorite-product__info-wrapper">
-    <h3 class="favorite-product__name">{{ favoriteProduct.name }}</h3>
-    <div class="favorite-product__price-rating-button">
-      <div class="favorite-product-price">
-        <span
-          >Цена:
-          {{ favoriteProduct.price | currency: "USD":"symbol-narrow":"1.2" }}</span
-        >
-      </div>
-      <div class="favorite-product__button"
-        (click)="removeFromFavorites(favoriteProduct)">
-        УДАЛИТЬ
-      </div>
-
-    </div>
-  </div> -->

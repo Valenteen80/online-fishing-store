@@ -17,7 +17,7 @@ export class ShoppingCartComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.getProductsInShoppingCart().subscribe((products: Product[]) => {
-      this.amountProductsAddedShoppingCart = products.length
+      this.amountProductsAddedShoppingCart = products.length;
     });
   }
 }
