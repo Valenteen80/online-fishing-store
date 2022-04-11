@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
     private router: Router
   ) {}
 
-  public goProfilePage(): void {
+  public navigateProfilePage(): void {
     this.router.navigate([`/${RoutesNames.PROFILE}`])
   }
 

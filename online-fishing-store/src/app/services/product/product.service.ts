@@ -46,7 +46,7 @@ export class ProductService{
         })
       )
   }
-
+  
   public getIsFavoriteProducts():Observable<Product[]> {
     return this.products$
       .pipe(
