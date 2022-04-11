@@ -14,6 +14,10 @@ export class FavoriteProductsComponent implements OnInit {
     private productService: ProductService
   ) { }
 
+  ngOnInit(): void {
+    this.getFavoriteItems()
+  }
+
   public removeFromFavorites(favoriteProduct): void {
     favoriteProduct.isFavorite = !favoriteProduct.isFavorite
     this.productService.updateProduct(favoriteProduct)
@@ -24,9 +28,5 @@ export class FavoriteProductsComponent implements OnInit {
     this.productService.getIsFavoriteProducts().subscribe((products: Product[]) => {
       this.favoriteProducts = products;
     });
-  }
-
-  ngOnInit(): void {
-    this.getFavoriteItems()
   }
 }

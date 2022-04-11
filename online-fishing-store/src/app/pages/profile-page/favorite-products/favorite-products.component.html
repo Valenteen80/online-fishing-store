@@ -1,7 +1,7 @@
 <div class="favorite-products" *ngFor="let favoriteProduct of favoriteProducts">
         <app-favorite-products-item
             [favoriteProduct]="favoriteProduct"
-            (click)="removeFromFavorites(favoriteProduct)" 
+            (removedFavoriteProduct)="removeFromFavorites($event)" 
         >
         </app-favorite-products-item>  
   </div>

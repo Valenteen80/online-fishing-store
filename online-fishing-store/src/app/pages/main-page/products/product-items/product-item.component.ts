@@ -13,6 +13,8 @@ export class ProductItemComponent implements OnInit {
   constructor(
     private productService: ProductService,
     ) {}
+    
+  ngOnInit(): void {}
 
   public productAltImgAttribute: string = 'photo';
   public shoppingCartButtonText: string = 'В КОРЗИНУ';
@@ -22,6 +24,4 @@ export class ProductItemComponent implements OnInit {
     this.productService.updateProduct(product)
     event.stopPropagation();
   }  
-
-  ngOnInit(): void {}
 }

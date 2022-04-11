@@ -14,13 +14,11 @@ export class ProfileComponent implements OnInit {
   public profileButtonTitle: string = 'ПРОФИЛЬ';
   public logOutButtonTitle: string = 'ВЫЙТИ';
 
-  constructor(
-    private router: Router
-  ) {}
+  constructor(private router: Router) {} 
+  
+  ngOnInit(): void {}
 
   public navigateProfilePage(): void {
     this.router.navigate([`/${RoutesNames.PROFILE}`])
   }
-
-  ngOnInit(): void {}
 }

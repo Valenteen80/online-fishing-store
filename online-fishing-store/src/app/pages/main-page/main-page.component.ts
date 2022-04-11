@@ -30,6 +30,10 @@ export class MainPageComponent implements OnInit {
     private router: Router
     ) {}
 
+    ngOnInit(): void {
+      this.getProducts()
+    }
+
   public getProducts(): void{
     this.productService.getProducts().subscribe((products:Product[]) => {
         this.products = products;
@@ -54,9 +58,5 @@ export class MainPageComponent implements OnInit {
       sortButton.value === SortButtonValue.RATING
         ? this.sortServise.sortByRaiting(sortButton.sortDirection, this.products)
         : this.sortServise.sortByPrice(sortButton.sortDirection, this.products);
-  }
-
-  ngOnInit(): void {
-    this.getProducts()
   }
 }
