@@ -1,4 +1,3 @@
-
 <div class="personalData">
     <div class="fixed-avatar">
         <img
@@ -7,15 +6,15 @@
             [alt]="avatarImgAltAttributeValue"
         />
     </div>
-    <form class="form" [formGroup]="form">
+    <form class="form"> 
         <div class="avatar form-control">
             <div class="container">
                 <input 
+                    name="avatar"
                     type="file" 
                     accept="image/*,image/jpeg"
-                    name="avatar"
                     [attr.disabled]="isEditAvatar ? 'disabled' : null"
-                    formControlName="avatar">
+                    >
                 <div  class="button-enable" *ngIf="isEditAvatar"(click)="isEditAvatar = !isEditAvatar"></div>
                 <div  class="button-disable" *ngIf="!isEditAvatar"(click)="isEditAvatar = !isEditAvatar"></div>                
             </div>
@@ -26,11 +25,11 @@
                 <div class="button-enable" *ngIf="isEditFirstName"(click)="isEditFirstName = !isEditFirstName"></div>
                 <div class="button-disable" *ngIf="!isEditFirstName"(click)="isEditFirstName = !isEditFirstName"></div>
             </div>
-            <input 
+            <input
+            name="firstName"
             type="text" 
             [(ngModel)]="userData.firstName" 
-            [attr.disabled]="isEditFirstName ? 'disabled' : null"
-            formControlName="firstName">
+            [attr.disabled]="isEditFirstName ? 'disabled' : null">
         </div>
         <div class="lastName form-control">
             <div class="container">
@@ -39,11 +38,12 @@
                 <div class="button-disable" *ngIf="!isEditLastName"(click)="isEditLastName = !isEditLastName"></div>                
             </div>
             <input 
+            name="lastName"
             type="text" 
             [(ngModel)]="userData.lastName" 
             [attr.disabled]="isEditLastName ? 'disabled' : null"
-            formControlName="lastName">
-        </div> 
+            >
+        </div>
         <div class="country form-control">
             <div class="container">
                 <h2 class="value">{{userData.country}}</h2>
@@ -51,9 +51,9 @@
                 <div class="button-disable" *ngIf="!isEditCountry"(click)="isEditCountry = !isEditCountry"></div>                
             </div>
             <select 
+            name="country"
             [(ngModel)]="userData.country" 
             [attr.disabled]="isEditCountry ? 'disabled' : null"
-            formControlName="country"
             >
                 <option *ngFor="let country of countryes">{{country}}</option>
             </select>
@@ -64,13 +64,13 @@
                 <div class="button-enable" *ngIf="isEditAddress"(click)="isEditAddress = !isEditAddress"></div>
                 <div class="button-disable" *ngIf="!isEditAddress"(click)="isEditAddress = !isEditAddress"></div>                
             </div>
-
             <div class="">
                 <input 
+                name="address"
                 type="text" placeholder="изменить фамилию" 
                 [(ngModel)]="userData.address" 
                 [attr.disabled]="isEditAddress ? 'disabled' : null"
-                formControlName="address">
+                >
             </div>
         </div>
         <div class="phoneNumber form-control">
@@ -81,10 +81,10 @@
             </div>
 
             <input 
+            name="phoneNumber"
             type="tel" 
             [(ngModel)]="userData.phoneNumber"
-            [attr.disabled]="isEditPhoneNumber ? 'disabled' : null"
-            formControlName="phoneNumber">
+            [attr.disabled]="isEditPhoneNumber ? 'disabled' : null">
         </div> 
         <div class="gender form-control">
             <div class="container">
@@ -92,27 +92,24 @@
                 <div class="button-enable" *ngIf="isEditGender"(click)="isEditGender = !isEditGender"></div>
                 <div class="button-disable" *ngIf="!isEditGender"(click)="isEditGender = !isEditGender"></div>
             </div>
-            
             <label>
                 <input
+                    name="gender"
                     [(ngModel)]="userData.gender" 
                     type="radio" [value]="inputGenderLabelMale" 
-                    [attr.disabled]="isEditGender ? 'disabled' : null" 
-                    formControlName="gender" 
+                    [attr.disabled]="isEditGender ? 'disabled' : null"  
                 > 
-            {{inputGenderLabelMale}}
-            </label>
-                
+            {{userData.gender}}
+            </label> 
             <label>
                 <input 
+                    name="gender"
                     [(ngModel)]="userData.gender" 
                     type="radio" [value]="inputGenderLabelFemale" 
                     [attr.disabled]="isEditGender ? 'disabled' : null" 
-                    formControlName="gender" 
                 > 
-            {{inputGenderLabelFemale}}
+            {{userData.gender}}
             </label>   
         </div>
     </form>
 </div>
-

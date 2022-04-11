@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { InputGenderLabel } from 'src/app/enums/input-gender-label-enum';
 import { UserData } from 'src/app/interfaces/user-data';
 import { UserService } from 'src/app/services/users/user.service';
@@ -11,13 +10,12 @@ import { COUNTRYES } from './countryes';
   styleUrls: ['./personal-data.component.scss']
 })
 export class PersonalDataComponent implements OnInit {
+  public userData: UserData = {} as UserData;
+  public countryes: string[] = COUNTRYES;
   public avatarImgAltAttributeValue: string = 'photo';
   public profilePicture: string = 'assets/img/profile_picture.png';
   public readonly inputGenderLabelMale: string = InputGenderLabel.MALE;
   public readonly inputGenderLabelFemale: string = InputGenderLabel.FEMALE;
-  public countryes: string[] = COUNTRYES;
-  public form: FormGroup;
-  public userData: UserData;
   public isEditAvatar: boolean = true;
   public isEditFirstName: boolean = true;
   public isEditLastName: boolean = true;
@@ -31,24 +29,13 @@ export class PersonalDataComponent implements OnInit {
     public userService: UserService
   ) { }
 
+  ngOnInit(): void {
+    this.getUser()
+  }
+
   public getUser(): void{
     this.userService.getUser().subscribe((user: UserData) => {
         this.userData = user;
       })
   }
-
-  ngOnInit(): void {
-    this.getUser()
-
-    this.form = new FormGroup({
-      avatar: new FormControl(''),
-      firstName: new FormControl(''),
-      lastName: new FormControl(''),
-      country: new FormControl(''),
-      address: new FormControl(''),
-      phoneNumber: new FormControl(''),
-      gender: new FormControl('')
-    })
-  }
-
 }
