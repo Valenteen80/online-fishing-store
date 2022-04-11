@@ -13,7 +13,7 @@
                     name="avatar"
                     type="file" 
                     accept="image/*,image/jpeg"
-                    [attr.disabled]="isEditAvatar ? 'disabled' : null"
+                    [disabled]="isEditAvatar"
                     >
                 <div  class="button-enable" *ngIf="isEditAvatar"(click)="isEditAvatar = !isEditAvatar"></div>
                 <div  class="button-disable" *ngIf="!isEditAvatar"(click)="isEditAvatar = !isEditAvatar"></div>                
@@ -29,7 +29,8 @@
             name="firstName"
             type="text" 
             [(ngModel)]="userData.firstName" 
-            [attr.disabled]="isEditFirstName ? 'disabled' : null">
+            [disabled]="isEditFirstName"
+            >
         </div>
         <div class="lastName form-control">
             <div class="container">
@@ -41,7 +42,7 @@
             name="lastName"
             type="text" 
             [(ngModel)]="userData.lastName" 
-            [attr.disabled]="isEditLastName ? 'disabled' : null"
+            [disabled]="isEditLastName"
             >
         </div>
         <div class="country form-control">
@@ -53,7 +54,7 @@
             <select 
             name="country"
             [(ngModel)]="userData.country" 
-            [attr.disabled]="isEditCountry ? 'disabled' : null"
+            [disabled]="isEditCountry"
             >
                 <option *ngFor="let country of countryes">{{country}}</option>
             </select>
@@ -69,7 +70,7 @@
                 name="address"
                 type="text" placeholder="изменить фамилию" 
                 [(ngModel)]="userData.address" 
-                [attr.disabled]="isEditAddress ? 'disabled' : null"
+                [disabled]="isEditAddress"
                 >
             </div>
         </div>
@@ -79,12 +80,12 @@
                 <div class="button-enable" *ngIf="isEditPhoneNumber"(click)="isEditPhoneNumber = !isEditPhoneNumber"></div>
                 <div class="button-disable" *ngIf="!isEditPhoneNumber"(click)="isEditPhoneNumber = !isEditPhoneNumber"></div>                
             </div>
-
             <input 
             name="phoneNumber"
             type="tel" 
             [(ngModel)]="userData.phoneNumber"
-            [attr.disabled]="isEditPhoneNumber ? 'disabled' : null">
+            [disabled]="isEditPhoneNumber"
+            >
         </div> 
         <div class="gender form-control">
             <div class="container">
@@ -97,7 +98,7 @@
                     name="gender"
                     [(ngModel)]="userData.gender" 
                     type="radio" [value]="inputGenderLabelMale" 
-                    [attr.disabled]="isEditGender ? 'disabled' : null"  
+                    [disabled]="isEditGender"  
                 > 
             {{userData.gender}}
             </label> 
@@ -106,7 +107,7 @@
                     name="gender"
                     [(ngModel)]="userData.gender" 
                     type="radio" [value]="inputGenderLabelFemale" 
-                    [attr.disabled]="isEditGender ? 'disabled' : null" 
+                    [disabled]="isEditGender"
                 > 
             {{userData.gender}}
             </label>   
