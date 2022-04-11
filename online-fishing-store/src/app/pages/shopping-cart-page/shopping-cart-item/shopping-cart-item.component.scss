@@ -1,61 +1,55 @@
-// @import "../../../../../assets/scss/colors";
-// @import "../../../../../assets/scss/variables";
-// @import "../../../../../assets/scss/mixins";
+@import "../../../../assets/scss/colors";
+@import "../../../../assets/scss/variables";
+@import "../../../../assets/scss/mixins";
 
-.line {
-    width: 100%;
-    height: 3px;
-    background-color: brown;
+.shopping-cart-product {
+    @include display-flex($spaceBetween, $center);
+    flex-wrap: nowrap;
+    font-size: 1.6rem;
+    font-weight: bold;
+
+    .shopping-cart-product__wrapper {
+        @include display-flex($flexStart, $center);
+        @include break-point($small-desktops) {
+            max-width: 80%;
+          }
+        max-width: 90%;
+        flex-wrap: nowrap;
+
+        .shopping-cart-product__img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .shopping-cart-product__name {
+            @include break-point($small-desktops) {
+                max-width: 600px;
+              }
+            margin-left: 5px;
+            margin-right: 5px;
+            max-width: 1000px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
+    &__button {
+        width: 35px;
+        height: 35px;
+        background-image: url("../../../../assets/img/delete_button.png");
+        background-size: contain;
+        border: 0.5px solid $yellow;
+        margin-right: 10px;
+
+        &:hover {
+            color: $brown;
+            transition: 0.2s ease-in-out;
+            box-shadow: 2px -2px 25px $dark_beige;
+            cursor: pointer;
+            background-color: $yellow;
+            opacity: 0.8;
+          }
+    }
+
 }
-
-// .favorite-product {
-//     @include display-flex($spaceBetween, $center);
-//     flex-wrap: nowrap;
-//     font-size: 1.6rem;
-//     font-weight: bold;
-
-//     .favorite-product__wrapper {
-//         @include display-flex($flexStart, $center);
-//         @include break-point($small-desktops) {
-//             max-width: 80%;
-//           }
-//         max-width: 90%;
-//         flex-wrap: nowrap;
-
-//         .favorite-product__img {
-//             width: 40px;
-//             height: 40px;
-//         }
-
-//         .favorite-product__name {
-//             @include break-point($small-desktops) {
-//                 max-width: 600px;
-//               }
-//             margin-left: 5px;
-//             margin-right: 5px;
-//             max-width: 1000px;
-//             white-space: nowrap;
-//             overflow: hidden;
-//             text-overflow: ellipsis;
-//         }
-//     }
-
-//     &__button {
-//         width: 35px;
-//         height: 35px;
-//         background-image: url("../../../../../assets/img/delete_button.png");
-//         background-size: contain;
-//         border: 0.5px solid $yellow;
-//         margin-right: 10px;
-
-//         &:hover {
-//             color: $brown;
-//             transition: 0.2s ease-in-out;
-//             box-shadow: 2px -2px 25px $dark_beige;
-//             cursor: pointer;
-//             background-color: $yellow;
-//             opacity: 0.8;
-//           }
-//     }
-
-// }

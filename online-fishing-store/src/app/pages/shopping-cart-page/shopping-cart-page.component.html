@@ -1,2 +1,14 @@
-<p>shopping-cart-page works!</p>
-<app-shopping-cart-item></app-shopping-cart-item>
+<div class="total-wrapper">
+    <div class="total">
+        <span class="total-label">ОБЩАЯ СУММА:</span>
+        <span>236.43</span>
+</div>
+</div>
+
+<div class="shopping-cart-products" *ngFor="let shoppingCartProduct of shoppingCartProducts">
+    <app-shopping-cart-item
+    [shoppingCartProduct]="shoppingCartProduct"
+    >
+    </app-shopping-cart-item>
+</div>
+<!-- (click)="removeFromFavorites(favoriteProduct)" -->
