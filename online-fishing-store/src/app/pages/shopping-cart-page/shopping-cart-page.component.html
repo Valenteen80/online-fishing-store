@@ -1,9 +1,6 @@
 <div class="total-wrapper">
-    <div class="total">
-        <span class="total-label">ОБЩАЯ СУММА: {{totalAmount}}</span>
-    </div>
+    <div class="total">ОБЩАЯ СУММА: {{totalAmount | currency: "USD":"symbol-narrow":"1.2"}}</div>
 </div>
-
 <div class="shopping-cart-products" *ngFor="let shoppingCartProduct of shoppingCartProducts">
     <app-shopping-cart-item
     [shoppingCartProduct]="shoppingCartProduct"
