@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from 'src/app/interfaces/product';
 
 @Component({
@@ -8,24 +8,16 @@ import { Product } from 'src/app/interfaces/product';
 })
 export class ShoppingCartItemComponent implements OnInit {
   @Input() public shoppingCartProduct: Product;
-
+  @Output() public removedShoppingCartProduct: EventEmitter <Product> = new EventEmitter<Product>()
   public productAltImgAttribute: string = 'photo';
-
-  // @Input() public favoriteProduct: Product;
-  // @Output() public selectedFavoriteProduct: EventEmitter <Product> = new EventEmitter<Product>();
-
-  // public productAltImgAttribute: string = 'photo';
 
   constructor() { }
 
-  // public removeFromFavorites(favoriteProduct): void {
-  //   this.selectedFavoriteProduct.emit(favoriteProduct);
-  // }
+  ngOnInit(): void {}
 
-
-  ngOnInit(): void {
+  public removeFromShoppingCart(): void {
+    this.removedShoppingCartProduct.emit(this.shoppingCartProduct);
   }
-
 }
 
 

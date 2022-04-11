@@ -1,14 +1,13 @@
 <div class="total-wrapper">
     <div class="total">
-        <span class="total-label">ОБЩАЯ СУММА:</span>
-        <span>236.43</span>
-</div>
+        <span class="total-label">ОБЩАЯ СУММА: {{totalAmount}}</span>
+    </div>
 </div>
 
 <div class="shopping-cart-products" *ngFor="let shoppingCartProduct of shoppingCartProducts">
     <app-shopping-cart-item
     [shoppingCartProduct]="shoppingCartProduct"
+    (removedShoppingCartProduct)="removeFromShoppingCart($event)"
     >
     </app-shopping-cart-item>
 </div>
-<!-- (click)="removeFromFavorites(favoriteProduct)" -->
