@@ -34,6 +34,13 @@ const routes: Routes = [
             (m) => m.ShoppingCartModule
           ), 
       },
+      {
+        path: RoutesNames.ORDER,
+        loadChildren: () =>
+          import('../pages/shopping-cart-page/order-page/order-page.module').then(
+            (m) => m.OrderPageModule
+          ), 
+      },
     ],
   },
 ];
