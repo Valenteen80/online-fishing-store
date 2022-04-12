@@ -1,18 +1,20 @@
-<div class="shopping-cart-product">
-  <img
-  class="shopping-cart-product__img"
-  [src]="shoppingCartProduct.img"
-  [alt]="productAltImgAttribute"
-  />
-  <div class="shopping-cart-product__info">
-    <div class="name-price__wrapper">
-      <span class="shopping-cart-product__name">{{ shoppingCartProduct.name }}</span>
-      <span class="shopping-cart-product__price">
-        Цена: {{ shoppingCartProduct.price | currency: "USD":"symbol-narrow":"1.2" }}
-      </span>
-    </div>
+<div class="shopping-cart">
+  <div class="shopping-cart-product">
+    <img
+    class="shopping-cart-product__img"
+    [src]="shoppingCartProduct.img"
+    [alt]="productAltImgAttribute"
+    />
+    <div class="shopping-cart-product__info">
+      <div class="name-price__wrapper">
+        <span class="shopping-cart-product__name">{{ shoppingCartProduct.name }}</span>
+        <span class="shopping-cart-product__price">
+          Цена: {{ shoppingCartProduct.price | currency: "USD":"symbol-narrow":"1.2" }}
+        </span>
+      </div>
 
-    <p class="shopping-cart-product__description">{{ shoppingCartProduct.description }}</p>
+      <p class="shopping-cart-product__description">{{ shoppingCartProduct.description }}</p>
+    </div>
   </div>
   <div 
     class="shopping-cart-product__button"
