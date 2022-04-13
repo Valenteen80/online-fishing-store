@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ButtonLabel } from 'src/app/enums/button-label-enum';
 import { RoutesNames } from 'src/app/enums/routs-name-enun';
 
 @Component({
@@ -11,14 +12,14 @@ export class ProfileComponent implements OnInit {
   public isMouseenterProfile: boolean = false;
   public avatarImgAltAttributeValue: string = 'photo';
   public profilePicture: string = 'assets/img/profile_picture.png';
-  public profileButtonTitle: string = 'ПРОФИЛЬ';
-  public logOutButtonTitle: string = 'ВЫЙТИ';
+  public profileButtonTitle: string = ButtonLabel.PROFILE;
+  public logOutButtonTitle: string = ButtonLabel.LOG_OFF;
 
   constructor(private router: Router) {} 
   
   ngOnInit(): void {}
 
-  public navigateProfilePage(): void {
+  public navigateToProfilePage(): void {
     this.router.navigate([`/${RoutesNames.PROFILE}`])
   }
 }

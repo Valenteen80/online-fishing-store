@@ -8,7 +8,7 @@ import { Product } from 'src/app/interfaces/product';
 })
 export class FavoriteProductsItemComponent implements OnInit {
   @Input() public favoriteProduct: Product;
-  @Output() public removedFavoriteProduct: EventEmitter <Product> = new EventEmitter<Product>();
+  @Output() public removeFavoriteProduct: EventEmitter <Product> = new EventEmitter<Product>();
 
   public productAltImgAttribute: string = 'photo';
 
@@ -18,6 +18,6 @@ export class FavoriteProductsItemComponent implements OnInit {
   }
 
   public removeFromFavorites(): void {
-    this.removedFavoriteProduct.emit(this.favoriteProduct);
+    this.removeFavoriteProduct.emit(this.favoriteProduct);
   }
 }

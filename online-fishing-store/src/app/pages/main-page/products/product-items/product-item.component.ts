@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ButtonLabel } from 'src/app/enums/button-label-enum';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product/product.service';
 
@@ -17,7 +18,7 @@ export class ProductItemComponent implements OnInit {
   ngOnInit(): void {}
 
   public productAltImgAttribute: string = 'photo';
-  public shoppingCartButtonText: string = 'В КОРЗИНУ';
+  public shoppingCartButtonText: string = ButtonLabel.TO_SHOPPING_CART;;
 
   public addShoppingCart(event: Event, product: Product): void {
     product.inShoppingCart = !product.inShoppingCart

@@ -1,7 +1,6 @@
-import { NameCategory } from '../enums/name-category-enum';
-import { UserData } from '../interfaces/user-data';
+import { User } from '../interfaces/user';
 
-export const USERS: UserData = 
+export const USERS: User = 
   {
     id: 1,
     firstName: "Алесь",

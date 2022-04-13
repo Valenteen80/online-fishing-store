@@ -1,4 +1,4 @@
 export enum InputGenderLabel {
-    MALE = 'Мужской',
-    FEMALE = 'Женский',
-  }
+  MALE = 'Мужской',
+  FEMALE = 'Женский',
+}

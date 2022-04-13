@@ -18,14 +18,14 @@ export class FavoriteProductsComponent implements OnInit {
     this.getFavoriteItems()
   }
 
-  public removeFromFavorites(favoriteProduct): void {
-    favoriteProduct.isFavorite = !favoriteProduct.isFavorite
-    this.productService.updateProduct(favoriteProduct)
-    this.getFavoriteItems()
+  public removeFromFavorites(favoriteProduct: Product): void {
+    favoriteProduct.isFavorite = false;
+    this.productService.updateProduct(favoriteProduct);
+    this.getFavoriteItems();
   }
 
   private getFavoriteItems(): void {
-    this.productService.getIsFavoriteProducts().subscribe((products: Product[]) => {
+    this.productService.getFavoriteProducts().subscribe((products: Product[]) => {
       this.favoriteProducts = products;
     });
   }

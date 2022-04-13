@@ -1,4 +1,4 @@
-export const COUNTRYES: Array<string> = [
+export const COUNTRIES: Array<string> = [
     "Беларусь",
     "Украина",
     "Польша",

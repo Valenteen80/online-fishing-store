@@ -3,7 +3,7 @@
         <li class="button" *ngFor="let tab of tabs">
             <div
                 [routerLink]="tab.link"
-                routerLinkActive="button_active" [routerLinkActiveOptions]="{exact:true}"
+                routerLinkActive="button_active" 
                 (click)="navigateToSelectedTab(tab)"
             >
                 {{tab.label}}

@@ -3,7 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product/product.service';
 import { switchMap } from 'rxjs/operators'; 
-import { ButtonLabelToShoppingCartAndFavorites } from 'src/app/enums/button-label-to-shopping-cart-and-favorites';
+import { ButtonLabel } from 'src/app/enums/button-label-enum';
 
 @Component({
   selector: 'app-product-details-page',
@@ -14,8 +14,8 @@ export class ProductDetailsPageComponent implements OnInit {
 
   public product: Product;
   public productAltImgAttribute: string = 'photo';
-  public shoppingCartButtonText: string = ButtonLabelToShoppingCartAndFavorites.SHOPPING_CART;
-  public favoritesButtonText: string = ButtonLabelToShoppingCartAndFavorites.FAVORITES;
+  public shoppingCartButtonText: string = ButtonLabel.TO_SHOPPING_CART;
+  public favoritesButtonText: string = ButtonLabel.FAVORITES;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,13 +23,13 @@ export class ProductDetailsPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getProductsById()
+    this.getProductById()
   }
 
   public addShoppingCart(product: Product): void {
     product.inShoppingCart = !product.inShoppingCart
     this.productService.updateProduct(product) 
-    this.getProductsById()
+    this.getProductById()
   }
 
   public addFavorite(product): void {
@@ -37,9 +37,11 @@ export class ProductDetailsPageComponent implements OnInit {
     this.productService.updateProduct(product)    
   }
 
-  private getProductsById(): void {
-    this.route.params.pipe(switchMap((params: Params) => {
-      return this.productService.getProductsById(+params['id']) 
-      })).subscribe((product:Product) => this.product = product)
+  private getProductById(): void {
+    this.route.params
+      .pipe(
+        switchMap((params: Params) => this.productService.getProductsById(+params['id']) 
+      ))
+      .subscribe((product:Product) => this.product = product)
   }
 }
