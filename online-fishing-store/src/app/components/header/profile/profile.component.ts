@@ -13,7 +13,7 @@ export class ProfileComponent implements OnInit {
   public avatarImgAltAttributeValue: string = 'photo';
   public profilePicture: string = 'assets/img/profile_picture.png';
   public profileButtonTitle: string = ButtonLabel.PROFILE;
-  public logOutButtonTitle: string = ButtonLabel.LOG_OFF;
+  public logOutButtonTitle: string = ButtonLabel.LOG_OUT;
 
   constructor(private router: Router) {} 
   

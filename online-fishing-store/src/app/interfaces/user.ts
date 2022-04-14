@@ -7,5 +7,3 @@ export interface User {
     phoneNumber: number,
     gender: string,
   }
-
-  

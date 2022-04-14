@@ -7,7 +7,7 @@ export enum ButtonLabel {
   PERSONAL_DATA = 'личные данные',
   FAVORITE_PRODUCTS = 'избранные товары',
   PROFILE = 'профиль',
-  LOG_OFF = 'выйти',
+  LOG_OUT = 'выйти',
   SING_UP = 'регистрация',
   LOG_IN = 'вход'
 }

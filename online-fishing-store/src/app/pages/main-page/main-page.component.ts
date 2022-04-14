@@ -59,4 +59,5 @@ export class MainPageComponent implements OnInit {
         ? this.sortServise.sortByRaiting(sortButton.sortDirection, this.products)
         : this.sortServise.sortByPrice(sortButton.sortDirection, this.products);
   }
+  
 }

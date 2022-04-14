@@ -95,7 +95,8 @@
                 <input
                     name="gender"
                     [(ngModel)]="user.gender" 
-                    type="radio" [value]="inputGenderLabelMale" 
+                    type="radio" 
+                    [value]="inputGenderLabelMale" 
                     [disabled]="isEditGender"  
                 > 
                 {{user.gender}}
@@ -104,7 +105,8 @@
                 <input 
                     name="gender"
                     [(ngModel)]="user.gender" 
-                    type="radio" [value]="inputGenderLabelFemale" 
+                    type="radio" 
+                    [value]="inputGenderLabelFemale" 
                     [disabled]="isEditGender"
                 > 
                 {{user.gender}}

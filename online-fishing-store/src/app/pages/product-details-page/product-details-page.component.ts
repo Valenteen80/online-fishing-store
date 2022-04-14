@@ -44,4 +44,5 @@ export class ProductDetailsPageComponent implements OnInit {
       ))
       .subscribe((product:Product) => this.product = product)
   }
+  
 }

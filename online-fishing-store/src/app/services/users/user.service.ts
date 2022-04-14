@@ -8,9 +8,7 @@ import { USERS } from 'src/app/mocks/mock-users';
 })
 export class UserService {
   public userData: User = USERS;
-
-  constructor() { }
-
+  
   public getUser():Observable<User> {
     return of(this.userData)
   }
