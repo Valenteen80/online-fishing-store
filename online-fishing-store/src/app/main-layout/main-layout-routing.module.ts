@@ -20,6 +20,13 @@ const routes: Routes = [
             (m) => m.ProductDetailsModule
           ),
       },
+      {
+        path: RoutesNames.PROFILE,
+        loadChildren: () =>
+          import('../pages/profile-page/profile-page.module').then(
+            (m) => m.ProfilePageModule
+          ), 
+      },
     ],
   },
 ];

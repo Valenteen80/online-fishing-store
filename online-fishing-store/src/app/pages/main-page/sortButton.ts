@@ -1,17 +1,17 @@
 import { SortButtonDirection } from '../../enums/sort-button-direction-enum';
-import { SortButtonLabel } from '../../enums/sort-button-label-enum';
-import { SortButtonValue } from '../../enums/sort-button-value-enum';
+import { ButtonLabel } from '../../enums/button-label-enum';
+import { ButtonValue } from '../../enums/button-value-enum';
 import { SortButton } from '../../interfaces/sort-button';
 
 export const SORTBUTTONS: SortButton[] = [
   {
-    label: SortButtonLabel.BY_RATING,
-    value: SortButtonValue.RATING,
+    label: ButtonLabel.BY_RATING,
+    value: ButtonValue.RATING,
     sortDirection: SortButtonDirection.DESC,
   },
   {
-    label: SortButtonLabel.BY_PRICE,
-    value: SortButtonValue.PRICE,
+    label: ButtonLabel.BY_PRICE,
+    value: ButtonValue.PRICE,
     sortDirection: SortButtonDirection.ASC,
   },
 ];

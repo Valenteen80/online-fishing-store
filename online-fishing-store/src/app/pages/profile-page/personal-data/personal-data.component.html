@@ -1,0 +1,116 @@
+<div class="personalData">
+    <div class="fixed-avatar">
+        <img
+            class="button__img "
+            [src]="profilePicture"
+            [alt]="avatarImgAltAttributeValue"
+        />
+    </div>
+    <form class="form"> 
+        <div class="avatar form-control">
+            <div class="container">
+                <input 
+                    name="avatar"
+                    type="file" 
+                    accept="image/*,image/jpeg"
+                    [disabled]="isEditAvatar"
+                >
+                <div class="button-enable" *ngIf="isEditAvatar" (click)="toggleEditingAvatar()"></div>
+                <div  class="button-disable" *ngIf="!isEditAvatar" (click)="toggleEditingAvatar()"></div>                
+            </div>
+        </div>
+        <div class="firstName form-control">
+            <div class="container" >
+                <h2 class="value" >{{user.firstName}}</h2>
+                <div class="button-enable" *ngIf="isEditFirstName"(click)="toggleEditingFirstName()"></div>
+                <div class="button-disable" *ngIf="!isEditFirstName"(click)="toggleEditingFirstName()"></div>
+            </div>
+            <input
+                name="firstName"
+                type="text" 
+                [(ngModel)]="user.firstName" 
+                [disabled]="isEditFirstName"
+            >
+        </div>
+        <div class="lastName form-control">
+            <div class="container">
+                <h2 class="value">{{user.lastName}}</h2>
+                <div class="button-enable" *ngIf="isEditLastName"(click)="toggleEditingLastName()"></div>
+                <div class="button-disable" *ngIf="!isEditLastName"(click)="toggleEditingLastName()"></div>                
+            </div>
+            <input 
+                name="lastName"
+                type="text" 
+                [(ngModel)]="user.lastName" 
+                [disabled]="isEditLastName"
+            >
+        </div>
+        <div class="country form-control">
+            <div class="container">
+                <h2 class="value">{{user.country}}</h2>
+                <div class="button-enable" *ngIf="isEditCountry"(click)="toggleEditingCountry()"></div>
+                <div class="button-disable" *ngIf="!isEditCountry"(click)="toggleEditingCountry()"></div>                
+            </div>
+            <select 
+                name="country"
+                [(ngModel)]="user.country" 
+                [disabled]="isEditCountry"
+            >
+                <option *ngFor="let country of countries">{{country}}</option>
+            </select>
+        </div>
+        <div class="address form-control">
+            <div class="container">
+                <h2 class="value">{{user.address}}</h2>
+                <div class="button-enable" *ngIf="isEditAddress"(click)="toggleEditingAddress()"></div>
+                <div class="button-disable" *ngIf="!isEditAddress"(click)="toggleEditingAddress()"></div>                
+            </div>
+            <input 
+                name="address"
+                type="text" placeholder="изменить фамилию" 
+                [(ngModel)]="user.address" 
+                [disabled]="isEditAddress"
+            >
+        </div>
+        <div class="phoneNumber form-control">
+            <div class="container">
+                <h2 class="value"> {{user.phoneNumber}}</h2>
+                <div class="button-enable" *ngIf="isEditPhoneNumber"(click)="toggleEditingPhoneNumber()"></div>
+                <div class="button-disable" *ngIf="!isEditPhoneNumber"(click)="toggleEditingPhoneNumber()"></div>                
+            </div>
+            <input 
+                name="phoneNumber"
+                type="tel" 
+                [(ngModel)]="user.phoneNumber"
+                [disabled]="isEditPhoneNumber"
+            >
+        </div> 
+        <div class="gender form-control">
+            <div class="container">
+                <h2  class="value">{{user.gender}}</h2>
+                <div class="button-enable" *ngIf="isEditGender"(click)="toggleEditingGender()"></div>
+                <div class="button-disable" *ngIf="!isEditGender"(click)="toggleEditingGender()"></div>
+            </div>
+            <label>
+                <input
+                    name="gender"
+                    [(ngModel)]="user.gender" 
+                    type="radio" 
+                    [value]="inputGenderLabelMale" 
+                    [disabled]="isEditGender"  
+                > 
+                {{user.gender}}
+            </label> 
+            <label>
+                <input 
+                    name="gender"
+                    [(ngModel)]="user.gender" 
+                    type="radio" 
+                    [value]="inputGenderLabelFemale" 
+                    [disabled]="isEditGender"
+                > 
+                {{user.gender}}
+            </label>   
+        </div>
+    </form>
+</div>

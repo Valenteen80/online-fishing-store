@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ButtonLabel } from 'src/app/enums/button-label-enum';
 
 @Component({
   selector: 'app-header',
@@ -6,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  public logInButtonTitle: string = 'ВХОД';
-  public signUpButtonTitle: string = 'РЕГИСТРАЦИЯ';
+  public logInButtonTitle: string = ButtonLabel.LOG_IN;
+  public signUpButtonTitle: string = ButtonLabel.SING_UP;
   public isActiveButtonMenu = false;
 
   constructor() {}

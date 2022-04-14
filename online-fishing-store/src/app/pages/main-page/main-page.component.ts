@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RoutesNames } from 'src/app/enums/routs-name-enun';
-import { SortButtonValue } from 'src/app/enums/sort-button-value-enum';
+import { ButtonValue } from 'src/app/enums/button-value-enum';
 import { Category } from 'src/app/interfaces/category';
 import { Product } from 'src/app/interfaces/product';
 import { SortButton } from 'src/app/interfaces/sort-button';
@@ -30,6 +30,10 @@ export class MainPageComponent implements OnInit {
     private router: Router
     ) {}
 
+    ngOnInit(): void {
+      this.getProducts()
+    }
+
   public getProducts(): void{
     this.productService.getProducts().subscribe((products:Product[]) => {
         this.products = products;
@@ -51,12 +55,9 @@ export class MainPageComponent implements OnInit {
     this.sortButtons[index] = { ...sortButton };
 
     this.products =
-      sortButton.value === SortButtonValue.RATING
+      sortButton.value === ButtonValue.RATING
         ? this.sortServise.sortByRaiting(sortButton.sortDirection, this.products)
         : this.sortServise.sortByPrice(sortButton.sortDirection, this.products);
   }
-
-  ngOnInit(): void {
-    this.getProducts()
-  }
+  
 }
