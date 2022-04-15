@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RoutesNames } from 'src/app/enums/routs-name-enun';
+import { ButtonLabel } from 'src/app/enums/button-label-enum';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product/product.service';
 
@@ -10,7 +11,7 @@ import { ProductService } from 'src/app/services/product/product.service';
   styleUrls: ['./shopping-cart.component.scss'],
 })
 export class ShoppingCartComponent implements OnInit {
-  public shoppingCartButtonTitle: string = 'КОРЗИНА';
+  public shoppingCartButtonTitle: string = ButtonLabel.SHOPPING_CART;
   public amountProductsAddedShoppingCart: number;
 
   constructor(
@@ -20,7 +21,7 @@ export class ShoppingCartComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.getProductsInShoppingCart().subscribe((products: Product[]) => {
-      this.amountProductsAddedShoppingCart = products.length
+      this.amountProductsAddedShoppingCart = products.length;
     });
   }
 

@@ -20,13 +20,13 @@ const routes: Routes = [
             (m) => m.ProductDetailsModule
           ),
       },
-      // {
-      //   path: RoutesNames.PROFILE,
-      //   loadChildren: () =>
-      //     import('../pages/profile-page/profile-page.module').then(
-      //       (m) => m.ProfilePageModule
-      //     ), 
-      // },
+      {
+        path: RoutesNames.PROFILE,
+        loadChildren: () =>
+          import('../pages/profile-page/profile-page.module').then(
+            (m) => m.ProfilePageModule
+          ), 
+      },
       {
         path: RoutesNames.SHOPPING_CART,
         loadChildren: () =>
@@ -39,7 +39,7 @@ const routes: Routes = [
         loadChildren: () =>
           import('../pages/shopping-cart-page/order-page/order-page.module').then(
             (m) => m.OrderPageModule
-          ), 
+          ),
       },
     ],
   },
