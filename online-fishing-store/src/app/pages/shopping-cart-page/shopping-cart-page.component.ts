@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ButtonLabel } from 'src/app/enums/button-label-enum';
 import { RoutesNames } from 'src/app/enums/routs-name-enun';
-import { Product } from 'src/app/interfaces/product';
 import { ShoppingCartProduct } from 'src/app/interfaces/shopping-cart-product';
-import { ProductService } from 'src/app/services/product/product.service';
 import { ShoppingCartService } from 'src/app/services/shopping-cart/shopping-cart.service';
 
 @Component({
@@ -11,11 +10,10 @@ import { ShoppingCartService } from 'src/app/services/shopping-cart/shopping-car
   templateUrl: './shopping-cart-page.component.html',
   styleUrls: ['./shopping-cart-page.component.scss']
 })
+
 export class ShoppingCartPageComponent implements OnInit {
-  // public shoppingCartProducts: Product[];
   public totalAmount: number;
-  public totalLabel: string = 'ОБЩАЯ СУММА';// сделать енам
-  public orderButtonTitle: string = 'ОФОРМИТЬ ЗАКАЗ';// сделать енам
+  public orderButtonTitle: string = ButtonLabel.CHECKOUT;
 
   public shoppingCartProducts: ShoppingCartProduct[];
 
@@ -26,12 +24,11 @@ export class ShoppingCartPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.shoppingCartProducts =  [...this.shoppingCartService.getShoppingCartProducts()]
-    this.getTotalAmount()
-    console.log(this.shoppingCartProducts)
+    this.getTotalAmount();
   }
 
   public removeFromShoppingCart(shoppingCartProduct: ShoppingCartProduct): void {
-    this.shoppingCartService.removeFromShoppingCart(shoppingCartProduct)
+    this.shoppingCartService.removeFromShoppingCart(shoppingCartProduct);
     const index: number = this.shoppingCartProducts.findIndex((item) => item.id === shoppingCartProduct.id);
     this.shoppingCartProducts.splice(index, 1);
     this.getTotalAmount(); 
@@ -47,7 +44,7 @@ export class ShoppingCartPageComponent implements OnInit {
 
   public updateShoppingCartProducts(shoppingCartProduct: ShoppingCartProduct): void {
     this.shoppingCartService.updateShoppingCartProducts(shoppingCartProduct)
-    this.getTotalAmount()
+    this.getTotalAmount();
   }
 
   public navigateOrderPage(): void {

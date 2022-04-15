@@ -1,14 +1,13 @@
 <div class="shopping-cart">
   <div class="shopping-cart-product">
     <img
-    class="shopping-cart-product__img"
-    [src]="shoppingCartProduct.img"
-    [alt]="productAltImgAttribute"
+      class="shopping-cart-product__img"
+      [src]="shoppingCartProduct.img"
+      [alt]="productAltImgAttribute"
     />
     <div class="shopping-cart-product__info">
       <span class="shopping-cart-product__name">{{ shoppingCartProduct.name }}</span>
       <p class="shopping-cart-product__description">{{ shoppingCartProduct.description }}</p>
-
       <div class="product__amount-price">
         <label> Колличество:
           <input 
@@ -26,7 +25,6 @@
           Цена: {{ shoppingCartProduct.price | currency: "USD":"symbol-narrow":"1.2" }}
         </span>
       </div>
-
     </div>
   </div>
   <div 
@@ -35,4 +33,3 @@
   >
   </div>  
 </div>
-

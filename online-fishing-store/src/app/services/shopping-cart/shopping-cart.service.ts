@@ -9,7 +9,7 @@ import { ProductService } from '../product/product.service';
 export class ShoppingCartService {
 
   public products: Product[] = [] as Product[];
-  public shoppingCartProducts: ShoppingCartProduct[]
+  public shoppingCartProducts: ShoppingCartProduct[];
 
   constructor(
     private productService: ProductService
@@ -19,7 +19,7 @@ export class ShoppingCartService {
     this.productService.getProductsInShoppingCart().subscribe((products: Product[]) => {
       this.products = products
     });
-    let shoppingCartProducts = []
+    let shoppingCartProducts = [];
     this.products.map((item) => {
       shoppingCartProducts.push({
         id: item.id,
@@ -28,36 +28,31 @@ export class ShoppingCartService {
         description: item.description,
         price: item.price,
         quantity: 1,
-      })
-    })
-    this.shoppingCartProducts = shoppingCartProducts
-    return this.shoppingCartProducts
+      });
+    });
+    this.shoppingCartProducts = shoppingCartProducts;
+    return this.shoppingCartProducts;
   }
 
   public removeFromShoppingCart(shoppingCartProduct: ShoppingCartProduct): void {
     let product = this.products.find(item => item.id === shoppingCartProduct.id);
-    product.inShoppingCart = false
+    product.inShoppingCart = false;
     this.productService.updateProduct(product);
   }
 
-  public updateShoppingCartProducts(quantity: ShoppingCartProduct): void {
-    let shoppingCartProducts = []
+  public updateShoppingCartProducts(shoppingCartProduct: ShoppingCartProduct): void {
+    let shoppingCartProducts = [];
     this.shoppingCartProducts.map((item) => {
 
-      if (item.id === quantity.id) {
-        item.quantity = quantity.quantity
+      if (item.id === shoppingCartProduct.id) {
+        item.quantity = shoppingCartProduct.quantity
         shoppingCartProducts.push(item)
       } else {
         shoppingCartProducts.push(item)
       }
-    })
+    });
 
-    this.shoppingCartProducts = shoppingCartProducts
+    this.shoppingCartProducts = shoppingCartProducts;
   }
 
-
-  
-
 }
-
-

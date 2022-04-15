@@ -7,6 +7,7 @@
     @include break-point($laptop) {
         font-size: 1.3rem;
     }
+
     flex-wrap: nowrap;
     font-size: 1.6rem;
     font-weight: bold;
@@ -66,10 +67,10 @@
             }                
             
             .product__price {
-                    margin-left: 10px;
-                    color: $orange;
-                    white-space: nowrap;
-                }
+                margin-left: 10px;
+                color: $orange;
+                white-space: nowrap;
+            }
         }
     }
 
@@ -88,6 +89,6 @@
             cursor: pointer;
             background-color: $yellow;
             opacity: 0.8;
-          }
+        }
     }  
 }
