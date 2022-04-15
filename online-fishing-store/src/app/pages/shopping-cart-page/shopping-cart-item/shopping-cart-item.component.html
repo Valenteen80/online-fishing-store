@@ -6,14 +6,27 @@
     [alt]="productAltImgAttribute"
     />
     <div class="shopping-cart-product__info">
-      <div class="name-price__wrapper">
-        <span class="shopping-cart-product__name">{{ shoppingCartProduct.name }}</span>
-        <span class="shopping-cart-product__price">
+      <span class="shopping-cart-product__name">{{ shoppingCartProduct.name }}</span>
+      <p class="shopping-cart-product__description">{{ shoppingCartProduct.description }}</p>
+
+      <div class="product__amount-price">
+        <label> Колличество:
+          <input 
+            class="input__amount" 
+            type="number"
+            min="1"
+            (keydown)="$event.preventDefault();"
+            [(ngModel)]="quantity"
+            name="amount"
+            (input)="addItemProduct()"
+          >
+        </label>
+        <div>{{shoppingCartProduct.quantity}}</div>
+        <span class="product__price">
           Цена: {{ shoppingCartProduct.price | currency: "USD":"symbol-narrow":"1.2" }}
         </span>
       </div>
 
-      <p class="shopping-cart-product__description">{{ shoppingCartProduct.description }}</p>
     </div>
   </div>
   <div 

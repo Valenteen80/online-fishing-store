@@ -6,10 +6,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./order-page.component.scss']
 })
 export class OrderPageComponent implements OnInit {
+  // public userData: UserData = {} as UserData;
+  // public countryes: string[] = COUNTRYES;
 
-  constructor() { }
+  // public isEditFirstName: boolean = true;
+  // public isEditLastName: boolean = true;
+  // public isEditCountry: boolean = true;
+  // public isEditAddress: boolean = true;
+  // public isEditPhoneNumber: boolean = true;
+
+  // constructor(
+  //   public userService: UserService
+  // ) { }
 
   ngOnInit(): void {
+    // this.getUser()
   }
 
+  // public getUser(): void{
+  //   this.userService.getUser().subscribe((user: UserData) => {
+  //       this.userData = user;
+  //     })
+  // }
+
 }
+
+

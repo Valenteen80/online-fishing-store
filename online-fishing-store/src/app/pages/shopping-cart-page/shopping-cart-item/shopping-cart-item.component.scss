@@ -2,7 +2,6 @@
 @import "../../../../assets/scss/variables";
 @import "../../../../assets/scss/mixins";
 
-
 .shopping-cart {
     @include display-flex($spaceBetween, $center);
     @include break-point($laptop) {
@@ -30,12 +29,11 @@
             width: 100%;
             margin-top: 10px;
 
-            .name-price__wrapper {
-                @include display-flex($spaceBetween, $flexStart);
-                flex-wrap: nowrap;
-                width: 100%;
-
                 .shopping-cart-product__name{
+                    @include display-flex($spaceBetween, $flexStart);
+                    flex-wrap: nowrap;
+                    width: 95%;
+
                     @include break-point($small-desktops) {
                         max-width: 500px;
                     }
@@ -52,18 +50,26 @@
                     text-overflow: ellipsis;    
                 }
 
-                .shopping-cart-product__price {
-                    margin-left: 10px;
-                    color: $orange;
-                    white-space: nowrap;
-                }
-            }
-
             .shopping-cart-product__description {
                 max-width: 100%;
                 overflow: hidden;
                 text-overflow: ellipsis;
             }
+
+            .product__amount-price{
+                @include display-flex($flexEnd, $center);
+                width: 100%;
+                .input__amount {
+                    width: 15px;
+                    margin: 5px;
+                }
+            }                
+            
+            .product__price {
+                    margin-left: 10px;
+                    color: $orange;
+                    white-space: nowrap;
+                }
         }
     }
 
