@@ -6,3 +6,4 @@ export interface ShoppingCartProduct {
     price: number;
     quantity: number;
   }
+  

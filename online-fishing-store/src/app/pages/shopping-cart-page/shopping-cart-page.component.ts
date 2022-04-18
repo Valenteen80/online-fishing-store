@@ -23,14 +23,22 @@ export class ShoppingCartPageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.shoppingCartProducts =  [...this.shoppingCartService.getShoppingCartProducts()]
+    this.getShoppingCartProducts()
     this.getTotalAmount();
   }
 
+  public getShoppingCartProducts(): void {
+    this.shoppingCartService.getShoppingCartProducts().subscribe((shoppingCartProducts: ShoppingCartProduct[]) => {
+      this.shoppingCartProducts = shoppingCartProducts;
+    })
+  }
+
   public removeFromShoppingCart(shoppingCartProduct: ShoppingCartProduct): void {
-    this.shoppingCartService.removeFromShoppingCart(shoppingCartProduct);
-    const index: number = this.shoppingCartProducts.findIndex((item) => item.id === shoppingCartProduct.id);
-    this.shoppingCartProducts.splice(index, 1);
+    this.shoppingCartService.removeFromShoppingCart(shoppingCartProduct).subscribe();
+    this.getShoppingCartProducts() //после вызова этого метода тут продукты корзины обновятся и поле quantity станет = 1 !!!
+
+    // const index: number = this.shoppingCartProducts.findIndex((item) => item.id === shoppingCartProduct.id);
+    // this.shoppingCartProducts.splice(index, 1);
     this.getTotalAmount(); 
   }
 

@@ -14,10 +14,9 @@
             class="input__amount" 
             type="number"
             min="1"
-            (keydown)="$event.preventDefault();"
             [(ngModel)]="quantity"
             name="amount"
-            (input)="addItemProduct()"
+            (ngModelChange)="addItemProduct()"
           >
         </label>
         <div>{{shoppingCartProduct.quantity}}</div>

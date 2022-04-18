@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, } from '@angular/core';
+import { map, Observable } from 'rxjs';
 import { Product } from 'src/app/interfaces/product';
 import { ShoppingCartProduct } from 'src/app/interfaces/shopping-cart-product';
 import { ProductService } from '../product/product.service';
@@ -15,29 +16,39 @@ export class ShoppingCartService {
     private productService: ProductService
   ) { }
 
-  public getShoppingCartProducts(): ShoppingCartProduct[] {   
-    this.productService.getProductsInShoppingCart().subscribe((products: Product[]) => {
-      this.products = products
-    });
-    let shoppingCartProducts = [];
-    this.products.map((item) => {
-      shoppingCartProducts.push({
-        id: item.id,
-        name: item.name,
-        img: item.img,
-        description: item.description,
-        price: item.price,
-        quantity: 1,
-      });
-    });
-    this.shoppingCartProducts = shoppingCartProducts;
-    return this.shoppingCartProducts;
+  public getShoppingCartProducts(): Observable<ShoppingCartProduct[]> {  
+    return this.productService.getProductsInShoppingCart()
+      .pipe(
+        map((data: Product[]) => {
+          return data.map((item: Product) => {
+            return {
+              id: item.id,
+              name: item.name,
+              img: item.img,
+              description: item.description,
+              price: item.price,
+              quantity: 1,
+            }
+          });
+        })
+      )
   }
 
-  public removeFromShoppingCart(shoppingCartProduct: ShoppingCartProduct): void {
-    let product = this.products.find(item => item.id === shoppingCartProduct.id);
-    product.inShoppingCart = false;
-    this.productService.updateProduct(product);
+//Код зацикливается:
+  public removeFromShoppingCart(shoppingCartProduct: ShoppingCartProduct): Observable<Product[]> {
+    return this.productService.getProductsInShoppingCart()
+    .pipe(
+      map((data: Product[]) => {
+        return data.map((item: Product ) => {
+          if (item.id === shoppingCartProduct.id) {
+            item.inShoppingCart = false;
+            console.log(item);
+            this.productService.updateProduct(item);
+          }
+          return item;
+        })
+      })
+    )
   }
 
   public updateShoppingCartProducts(shoppingCartProduct: ShoppingCartProduct): void {
@@ -54,5 +65,6 @@ export class ShoppingCartService {
 
     this.shoppingCartProducts = shoppingCartProducts;
   }
+
 
 }
