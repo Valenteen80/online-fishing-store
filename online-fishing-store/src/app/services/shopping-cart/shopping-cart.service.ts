@@ -1,5 +1,5 @@
 import { Injectable, } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, take, tap } from 'rxjs';
 import { Product } from 'src/app/interfaces/product';
 import { ShoppingCartProduct } from 'src/app/interfaces/shopping-cart-product';
 import { ProductService } from '../product/product.service';
@@ -11,6 +11,7 @@ export class ShoppingCartService {
 
   public products: Product[] = [] as Product[];
   public shoppingCartProducts: ShoppingCartProduct[];
+
 
   constructor(
     private productService: ProductService
@@ -34,19 +35,17 @@ export class ShoppingCartService {
       )
   }
 
-//Код зацикливается:
-  public removeFromShoppingCart(shoppingCartProduct: ShoppingCartProduct): Observable<Product[]> {
+  public removeFromShoppingCart(shoppingCartProduct: ShoppingCartProduct): Observable<Product> {
     return this.productService.getProductsInShoppingCart()
     .pipe(
       map((data: Product[]) => {
-        return data.map((item: Product ) => {
-          if (item.id === shoppingCartProduct.id) {
-            item.inShoppingCart = false;
-            console.log(item);
-            this.productService.updateProduct(item);
-          }
-          return item;
-        })
+        console.log(data)
+        console.log(shoppingCartProduct)
+        const product: Product = data.find((item) => item.id === shoppingCartProduct.id);
+        product.inShoppingCart = false;
+        this.productService.updateProduct(product);
+
+        return product;
       })
     )
   }

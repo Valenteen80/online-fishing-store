@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { take } from 'rxjs';
 import { ButtonLabel } from 'src/app/enums/button-label-enum';
 import { RoutesNames } from 'src/app/enums/routs-name-enun';
 import { ShoppingCartProduct } from 'src/app/interfaces/shopping-cart-product';
@@ -29,16 +30,18 @@ export class ShoppingCartPageComponent implements OnInit {
 
   public getShoppingCartProducts(): void {
     this.shoppingCartService.getShoppingCartProducts().subscribe((shoppingCartProducts: ShoppingCartProduct[]) => {
+      console.log(shoppingCartProducts)
       this.shoppingCartProducts = shoppingCartProducts;
     })
+    
   }
 
   public removeFromShoppingCart(shoppingCartProduct: ShoppingCartProduct): void {
-    this.shoppingCartService.removeFromShoppingCart(shoppingCartProduct).subscribe();
-    this.getShoppingCartProducts() //после вызова этого метода тут продукты корзины обновятся и поле quantity станет = 1 !!!
-
-    // const index: number = this.shoppingCartProducts.findIndex((item) => item.id === shoppingCartProduct.id);
-    // this.shoppingCartProducts.splice(index, 1);
+    this.shoppingCartService.removeFromShoppingCart(shoppingCartProduct)
+      .pipe(take(1)).subscribe((resp) => {
+      console.log(resp)
+    });
+    // this.getShoppingCartProducts() //после вызова этого метода тут продукты корзины обновятся и поле quantity станет = 1 !!!
     this.getTotalAmount(); 
   }
 

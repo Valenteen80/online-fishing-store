@@ -29,13 +29,10 @@ export class ProductService{
   }
 
   public updateProduct(product: Product): void {
-    let updatedProducts;
-    this.products$.subscribe((products:Product[]) => {
-      const index: number = products.findIndex((item: Product) => item.name === product.name);
-      products[index] = { ...product };
-      updatedProducts = products
-    })
-    this.products$.next(updatedProducts)
+    const index: number = this.products.findIndex((item: Product) => item.name === product.name);
+    this.products[index] = { ...product };
+
+    this.products$.next(this.products);
   }
 
   public getProductsInShoppingCart():Observable<Product[]> {
