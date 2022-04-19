@@ -3,6 +3,7 @@ export enum RoutesNames {
   PROFILE = 'profile',
   SHOPPING_CART = 'shopping-cart',
   AUTH = 'auth',
+  ORDER = 'order',
   FAVORITE_PRODUCTS = 'favorites',
   PERSONAL_DATA = 'personal-data'
 }

@@ -9,5 +9,6 @@ export enum ButtonLabel {
   PROFILE = 'профиль',
   LOG_OUT = 'выйти',
   SING_UP = 'регистрация',
-  LOG_IN = 'вход'
+  LOG_IN = 'вход',
+  BUY = 'купить'
 }

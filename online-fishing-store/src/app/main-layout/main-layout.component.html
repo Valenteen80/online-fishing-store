@@ -5,3 +5,11 @@
   </div>
   <app-footer class="wrapper_footer"></app-footer>
 </div>
+<div class="notification"   
+  *ngIf="isNotification"
+>
+  <span class="notification__text">Ваш заказ успешно оформлен, спасибо за покупку.</span>
+  <button class="notification__button"
+  (click)="isNotification = false"
+  >X</button>
+</div>

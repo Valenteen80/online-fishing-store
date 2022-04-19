@@ -6,7 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-layout.component.scss'],
 })
 export class MainLayoutComponent implements OnInit {
+  public isNotification: Boolean = true;
   constructor() {}
 
   ngOnInit(): void {}
+
+  public showNotification(notification): void {
+  }
+
 }
