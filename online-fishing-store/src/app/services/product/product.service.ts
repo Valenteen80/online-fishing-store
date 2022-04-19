@@ -9,7 +9,7 @@ import { SortService } from '../sort/sort.service';
 })
 export class ProductService{
   public products: Product[] = PRODUCTS;
-  public products$: BehaviorSubject<Product[]> = new BehaviorSubject <Product[]>(this.products);
+  public products$: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>(this.products);
 
   constructor(
     public sortServise: SortService,
@@ -19,7 +19,7 @@ export class ProductService{
     return of(this.products).pipe(map(products => this.sortServise.sortByFavorites(products)))
   }
 
-  public getProductsById(id: number):Observable<Product> {
+  public getProductsById(id: number): Observable<Product> {
     return this.products$
       .pipe(
         map((products: Product[]) => {
@@ -35,7 +35,7 @@ export class ProductService{
     this.products$.next(this.products);
   }
 
-  public getProductsInShoppingCart():Observable<Product[]> {
+  public getProductsInShoppingCart(): Observable<Product[]> {
     return this.products$
       .pipe(
         map((products: Product[]) =>  {

@@ -2,26 +2,26 @@
   <div class="shopping-cart-product">
     <img
       class="shopping-cart-product__img"
-      [src]="shoppingCartProduct.img"
+      [src]="product.img"
       [alt]="productAltImgAttribute"
     />
     <div class="shopping-cart-product__info">
-      <span class="shopping-cart-product__name">{{ shoppingCartProduct.name }}</span>
-      <p class="shopping-cart-product__description">{{ shoppingCartProduct.description }}</p>
+      <span class="shopping-cart-product__name">{{ product.name }}</span>
+      <p class="shopping-cart-product__description">{{ product.description }}</p>
       <div class="product__amount-price">
         <label> Колличество:
           <input 
             class="input__amount" 
             type="number"
             min="1"
-            [(ngModel)]="quantity"
+            [ngModel]="product.quantity"
             name="amount"
-            (ngModelChange)="addItemProduct()"
+            (ngModelChange)="addItemProduct($event)"
           >
         </label>
-        <div>{{shoppingCartProduct.quantity}}</div>
+        <div>{{product.quantity}}</div>
         <span class="product__price">
-          Цена: {{ shoppingCartProduct.price | currency: "USD":"symbol-narrow":"1.2" }}
+          Цена: {{ product.price | currency: "USD":"symbol-narrow":"1.2" }}
         </span>
       </div>
     </div>

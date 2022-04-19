@@ -8,4 +8,5 @@ export interface Product {
   rating: number;
   isFavorite: boolean;
   inShoppingCart: boolean;
+  quantity?: number;
 }
