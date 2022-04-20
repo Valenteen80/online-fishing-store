@@ -15,14 +15,20 @@ export class ProductItemComponent implements OnInit {
     private productService: ProductService,
     ) {}
     
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if(this.product.inShoppingCart) {
+      this.shoppingCartButtonText = ButtonLabel.IN_SHOPPING_CART;
+    }
+  }
 
   public productAltImgAttribute: string = 'photo';
-  public shoppingCartButtonText: string = ButtonLabel.TO_SHOPPING_CART;;
+  public shoppingCartButtonText: string = ButtonLabel.TO_SHOPPING_CART;
 
   public addShoppingCart(event: Event, product: Product): void {
-    product.inShoppingCart = !product.inShoppingCart
-    this.productService.updateProduct(product)
+    product.inShoppingCart = true;
+    this.productService.updateProduct(product);
+    this.shoppingCartButtonText = ButtonLabel.IN_SHOPPING_CART;
     event.stopPropagation();
   }  
+  
 }

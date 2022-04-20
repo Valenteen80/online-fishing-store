@@ -60,9 +60,12 @@
             .product__amount-price{
                 @include display-flex($flexEnd, $center);
                 width: 100%;
+
                 .input__amount {
-                    width: 15px;
+                    height:25px;
+                    width: 27px;
                     margin: 5px;
+                    line-height: 30px;
                 }
             }                
             

@@ -42,7 +42,7 @@ export class ShoppingCartPageComponent implements OnInit {
   private getTotalAmount(): void {
     let totalAmount = 0;
     this.shoppingCartProducts.forEach((shoppingCartProduct: Product) => {
-      totalAmount = totalAmount + shoppingCartProduct.price * shoppingCartProduct.quantity;
+      totalAmount = totalAmount + shoppingCartProduct.price * (shoppingCartProduct.quantity || 1);
     });
     this.totalAmount = totalAmount;
   }
@@ -52,7 +52,8 @@ export class ShoppingCartPageComponent implements OnInit {
     this.getTotalAmount();
   }
 
-  public navigateOrderPage(): void {
+  public redirectToOrderPage(): void {
     this.router.navigate([`/${RoutesNames.ORDER}`])
   }
+  
 }

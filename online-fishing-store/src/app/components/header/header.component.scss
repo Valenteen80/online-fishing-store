@@ -13,20 +13,40 @@
   height: 50px;
   border-bottom: solid 2px $orange;
 
-  &__title {
-    @include break-point($laptop) {
-      font-size: 1.6rem;
-      margin: 3px;
+  .header-title-wrapper {
+    @include display-flex($spaceBetween, $center);
+
+    .title {
+      @include break-point($laptop) {
+        font-size: 1.6rem;
+        margin: 3px;
+      }
+      margin-left: 15px;
+      color: $brown;
+      font-size: 2rem;
     }
-    margin-left: 15px;
-    color: $brown;
-    font-size: 2rem;
+
+    .logo {
+      height: 40px;
+      width: 40px;
+      border-radius: 25px;
+      background-image: url('../../../assets/img/logo.png');
+      margin-left: 5px;
+
+      &:hover {
+        transition: 0.2s ease-in-out;
+        box-shadow: 2px -2px 25px $dark_beige;
+        cursor: pointer;
+        opacity: 0.8;
+      }
+    }
   }
 
   &-content-wrapper {
     @include display-flex($spaceBetween, $center);
     min-width: 40%;
     margin-right: 15px;
+    
     .burger_menu {
       @include break-point($laptop) {
         display: block;

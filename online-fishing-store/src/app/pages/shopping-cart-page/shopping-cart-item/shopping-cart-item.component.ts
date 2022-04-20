@@ -14,7 +14,7 @@ export class ShoppingCartItemComponent  {
 
     this.product = {
       ...item,
-      quantity: item.quantity && item.quantity >= 1 ? item.quantity : 1,
+      quantity: item.quantity >= 1 ? item.quantity : 1,
     };
   }
 

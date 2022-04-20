@@ -19,7 +19,6 @@
             (ngModelChange)="addItemProduct($event)"
           >
         </label>
-        <div>{{product.quantity}}</div>
         <span class="product__price">
           Цена: {{ product.price | currency: "USD":"symbol-narrow":"1.2" }}
         </span>
