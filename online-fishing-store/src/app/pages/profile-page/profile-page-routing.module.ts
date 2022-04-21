@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProfilePageComponent } from './profile-page.component';
-import { RoutesNames } from 'src/app/enums/routs-name-enun';
+import { RouteName } from 'src/app/enums/route-name-enun';
 
 const routes: Routes = [
   {
@@ -9,18 +9,18 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: RoutesNames.PERSONAL_DATA,
+        redirectTo: RouteName.PERSONAL_DATA,
         pathMatch: 'full',
       },
       {
-        path: RoutesNames.PERSONAL_DATA,
+        path: RouteName.PERSONAL_DATA,
         loadChildren: () =>
           import('../../pages/profile-page/personal-data/personal-data.module').then(
             (m) => m.PersonalDataModule
           ),
       },
       {
-        path: RoutesNames.FAVORITE_PRODUCTS,
+        path: RouteName.FAVORITE_PRODUCTS,
         loadChildren: () =>
           import('../../pages/profile-page/favorite-products/favorite-products.module').then(
             (m) => m.FavoriteProductsModule

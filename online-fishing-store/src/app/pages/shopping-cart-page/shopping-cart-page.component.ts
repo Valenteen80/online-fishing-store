@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription, take } from 'rxjs';
 import { ButtonLabel } from 'src/app/enums/button-label-enum';
-import { RoutesNames } from 'src/app/enums/routs-name-enun';
+import { RouteName } from 'src/app/enums/route-name-enun';
 import { Product } from 'src/app/interfaces/product';
 import { ShoppingCartService } from 'src/app/services/shopping-cart/shopping-cart.service';
 
@@ -14,7 +13,7 @@ import { ShoppingCartService } from 'src/app/services/shopping-cart/shopping-car
 
 export class ShoppingCartPageComponent implements OnInit {
   public totalAmount: number;
-  public orderButtonTitle: string = ButtonLabel.CHECKOUT;
+  public orderButtonTitle: string = ButtonLabel.ORDER;
 
   public shoppingCartProducts: Product[];
 
@@ -42,18 +41,19 @@ export class ShoppingCartPageComponent implements OnInit {
   private getTotalAmount(): void {
     let totalAmount = 0;
     this.shoppingCartProducts.forEach((shoppingCartProduct: Product) => {
-      totalAmount = totalAmount + shoppingCartProduct.price * (shoppingCartProduct.quantity || 1);
+      if (!shoppingCartProduct.quantity) shoppingCartProduct.quantity = 1;
+      totalAmount = totalAmount + shoppingCartProduct.price * shoppingCartProduct.quantity;
     });
     this.totalAmount = totalAmount;
   }
 
   public updateShoppingCartProducts(shoppingCartProduct: Product): void {
-    this.shoppingCartService.updateShoppingCartProducts(shoppingCartProduct)
+    this.shoppingCartService.updateShoppingCartProducts(shoppingCartProduct);
     this.getTotalAmount();
   }
 
   public redirectToOrderPage(): void {
-    this.router.navigate([`/${RoutesNames.ORDER}`])
+    this.router.navigate([`/${RouteName.ORDER}`]);
   }
   
 }

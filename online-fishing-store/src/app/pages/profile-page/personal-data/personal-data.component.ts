@@ -29,8 +29,7 @@ export class PersonalDataComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getUser()
-    console.log(this.isEditGender)
+    this.getUser();
   }
 
   public toggleEditingAvatar():void {

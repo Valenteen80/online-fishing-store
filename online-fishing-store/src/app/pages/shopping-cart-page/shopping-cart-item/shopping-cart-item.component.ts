@@ -8,6 +8,7 @@ import { Product } from 'src/app/interfaces/product';
 })
 export class ShoppingCartItemComponent  {
   public product: Product;
+  public productAltImgAttribute: string = 'photo';
 
   @Input() public set shoppingCartProduct(item: Product) {
     if (!item) return;
@@ -16,12 +17,12 @@ export class ShoppingCartItemComponent  {
       ...item,
       quantity: item.quantity >= 1 ? item.quantity : 1,
     };
-  }
+  };
 
-  @Output() public removeShoppingCartProduct: EventEmitter <Product> = new EventEmitter<Product>()
-  @Output() public increaseAmountItem: EventEmitter <Product> = new EventEmitter<Product>()
+  @Output() public removeShoppingCartProduct: EventEmitter <Product> = new EventEmitter<Product>();
+  @Output() public increaseAmountItem: EventEmitter <Product> = new EventEmitter<Product>();
 
-  public productAltImgAttribute: string = 'photo';
+ 
 
   public addItemProduct(quantity: number): void {
     this.product.quantity = quantity;

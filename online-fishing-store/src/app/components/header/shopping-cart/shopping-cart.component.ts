@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RoutesNames } from 'src/app/enums/routs-name-enun';
+import { RouteName } from 'src/app/enums/route-name-enun';
 import { ButtonLabel } from 'src/app/enums/button-label-enum';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product/product.service';
@@ -25,8 +25,8 @@ export class ShoppingCartComponent implements OnInit {
     });
   }
 
-  public navigateShoppingCartPage(): void {
-    this.router.navigate([`/${RoutesNames.SHOPPING_CART}`])
+  public redirectToShoppingCartPage(): void {
+    this.router.navigate([`/${RouteName.SHOPPING_CART}`]);
   }
 
 }

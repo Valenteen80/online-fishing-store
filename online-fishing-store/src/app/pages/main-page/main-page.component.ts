@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RoutesNames } from 'src/app/enums/routs-name-enun';
+import { RouteName } from 'src/app/enums/route-name-enun';
 import { ButtonValue } from 'src/app/enums/button-value-enum';
 import { Category } from 'src/app/interfaces/category';
 import { Product } from 'src/app/interfaces/product';
@@ -42,7 +42,7 @@ export class MainPageComponent implements OnInit {
   }
 
   public redirectToSelectedProduct(product:Product): void {
-      this.router.navigate([`/${RoutesNames.PRODUCT_DETAILS}/${product.id}`])
+      this.router.navigate([`/${RouteName.PRODUCT_DETAILS}/${product.id}`])
   }
 
   public onSelectCategory(category: Category): void {

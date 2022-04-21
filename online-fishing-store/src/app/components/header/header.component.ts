@@ -7,7 +7,9 @@ import { ButtonLabel } from 'src/app/enums/button-label-enum';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
+  public logoAltImgAttribute: string = 'photo';
+  public logoPicture: string = "assets/img/logo.png";
   public logInButtonTitle: string = ButtonLabel.LOG_IN;
   public signUpButtonTitle: string = ButtonLabel.SING_UP;
   public isActiveButtonMenu = false;
@@ -24,5 +26,4 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  ngOnInit(): void {}
 }

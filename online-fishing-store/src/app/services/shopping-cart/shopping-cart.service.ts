@@ -22,7 +22,7 @@ export class ShoppingCartService {
         map((items: Product[]) => {
           return items.map((item: Product) => ({ ...item, quantity: item.quantity }));
         })
-      )
+      );
   }
 
   public removeFromShoppingCart(shoppingCartProduct: Product): void {

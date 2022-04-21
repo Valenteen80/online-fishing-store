@@ -24,6 +24,7 @@ export class ProductDetailsPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProductById()
+    
     if(this.product.inShoppingCart) {
       this.shoppingCartButtonText = ButtonLabel.IN_SHOPPING_CART;
     }
@@ -34,16 +35,22 @@ export class ProductDetailsPageComponent implements OnInit {
   }
 
   public addShoppingCart(product: Product): void {
-    product.inShoppingCart = true;
+    product.inShoppingCart = !product.inShoppingCart;
     this.productService.updateProduct(product); 
-    this.getProductById();
-    this.shoppingCartButtonText = ButtonLabel.IN_SHOPPING_CART;
+    this.product = {...product};
+
+    this.shoppingCartButtonText = product.inShoppingCart
+      ? ButtonLabel.IN_SHOPPING_CART
+      : ButtonLabel.TO_SHOPPING_CART;
   }
 
   public addFavorite(product): void {
     product.isFavorite = !product.isFavorite;
-    this.productService.updateProduct(product); 
-    this.favoritesButtonText = ButtonLabel.ADDED_TO_FAVORITES ;
+    this.productService.updateProduct(product);
+
+    this.favoritesButtonText = product.isFavorite
+      ? ButtonLabel.ADDED_TO_FAVORITES
+      : ButtonLabel.FAVORITES;
   }
 
   private getProductById(): void {

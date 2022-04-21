@@ -1,6 +1,6 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RoutesNames } from 'src/app/enums/routs-name-enun';
+import { RouteName } from 'src/app/enums/route-name-enun';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product/product.service';
 
@@ -34,7 +34,7 @@ export class FavoriteProductsComponent implements OnInit {
   }
 
   public redirectToDetailsPage(product:Product): void {
-    this.router.navigate([`/${RoutesNames.PRODUCT_DETAILS}/${product.id}`])
+    this.router.navigate([`/${RouteName.PRODUCT_DETAILS}/${product.id}`])
   }
 
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ButtonLabel } from 'src/app/enums/button-label-enum';
-import { RoutesNames } from 'src/app/enums/routs-name-enun';
+import { RouteName } from 'src/app/enums/route-name-enun';
 
 @Component({
   selector: 'app-profile',
@@ -20,6 +20,6 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {}
 
   public navigateToProfilePage(): void {
-    this.router.navigate([`/${RoutesNames.PROFILE}`])
+    this.router.navigate([`/${RouteName.PROFILE}`])
   }
 }

@@ -11,6 +11,9 @@ import { ProductService } from 'src/app/services/product/product.service';
 export class ProductItemComponent implements OnInit {
   @Input() public product: Product;
 
+  public productAltImgAttribute: string = 'photo';
+  public shoppingCartButtonText: string = ButtonLabel.TO_SHOPPING_CART;
+
   constructor(
     private productService: ProductService,
     ) {}
@@ -21,13 +24,9 @@ export class ProductItemComponent implements OnInit {
     }
   }
 
-  public productAltImgAttribute: string = 'photo';
-  public shoppingCartButtonText: string = ButtonLabel.TO_SHOPPING_CART;
-
   public addShoppingCart(event: Event, product: Product): void {
-    product.inShoppingCart = true;
+    product.inShoppingCart = !product.inShoppingCart;
     this.productService.updateProduct(product);
-    this.shoppingCartButtonText = ButtonLabel.IN_SHOPPING_CART;
     event.stopPropagation();
   }  
   
