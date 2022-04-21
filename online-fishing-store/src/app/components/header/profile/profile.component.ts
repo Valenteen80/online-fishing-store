@@ -17,7 +17,7 @@ export class ProfileComponent  {
 
   constructor(private router: Router) {} 
 
-  public navigateToProfilePage(): void {
+  public redirectToProfilePage(): void {
     this.router.navigate([`/${RouteName.PROFILE}`]);
   }
 }

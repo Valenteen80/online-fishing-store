@@ -29,7 +29,7 @@ export class ProfilePageComponent implements OnInit {
     private router: Router
   ) {}
 
-  public navigateToSelectedTab(tab: Tab):void {
+  public redirectToSelectedTab(tab: Tab):void {
     this.router.navigate([tab.link])
   }
 
