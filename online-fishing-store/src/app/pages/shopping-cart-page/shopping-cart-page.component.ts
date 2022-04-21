@@ -41,7 +41,9 @@ export class ShoppingCartPageComponent implements OnInit {
   private getTotalAmount(): void {
     let totalAmount = 0;
     this.shoppingCartProducts.forEach((shoppingCartProduct: Product) => {
-      if (!shoppingCartProduct.quantity) shoppingCartProduct.quantity = 1;
+      if (!shoppingCartProduct.quantity) {
+        shoppingCartProduct.quantity = 1
+      };
       totalAmount = totalAmount + shoppingCartProduct.price * shoppingCartProduct.quantity;
     });
     this.totalAmount = totalAmount;

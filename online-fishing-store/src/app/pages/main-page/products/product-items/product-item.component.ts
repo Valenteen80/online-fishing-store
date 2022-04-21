@@ -9,10 +9,10 @@ import { ProductService } from 'src/app/services/product/product.service';
   styleUrls: ['./product-item.component.scss'],
 })
 export class ProductItemComponent implements OnInit {
-  @Input() public product: Product;
-
   public productAltImgAttribute: string = 'photo';
   public shoppingCartButtonText: string = ButtonLabel.TO_SHOPPING_CART;
+
+  @Input() public product: Product;
 
   constructor(
     private productService: ProductService,
