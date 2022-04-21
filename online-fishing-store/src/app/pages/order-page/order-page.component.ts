@@ -37,7 +37,7 @@ export class OrderPageComponent implements OnInit {
       })
   }
 
-  public navigateToMainPage(): void {
+  public redirectToMainPage(): void {
     this.router.navigate(['']);
   }
 
