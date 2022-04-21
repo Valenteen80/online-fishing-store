@@ -23,7 +23,7 @@ export class ProductDetailsPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getProductById()
+    this.getProductById();
     
     if(this.product.inShoppingCart) {
       this.shoppingCartButtonText = ButtonLabel.IN_SHOPPING_CART;

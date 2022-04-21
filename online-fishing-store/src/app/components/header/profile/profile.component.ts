@@ -8,7 +8,7 @@ import { RouteName } from 'src/app/enums/route-name-enun';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent  {
   public isMouseenterProfile: boolean = false;
   public avatarImgAltAttributeValue: string = 'photo';
   public profilePicture: string = 'assets/img/profile_picture.png';
@@ -16,10 +16,8 @@ export class ProfileComponent implements OnInit {
   public logOutButtonTitle: string = ButtonLabel.LOG_OUT;
 
   constructor(private router: Router) {} 
-  
-  ngOnInit(): void {}
 
   public navigateToProfilePage(): void {
-    this.router.navigate([`/${RouteName.PROFILE}`])
+    this.router.navigate([`/${RouteName.PROFILE}`]);
   }
 }

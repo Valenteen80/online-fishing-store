@@ -18,7 +18,7 @@ export class FavoriteProductsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getFavoriteItems()
+    this.getFavoriteItems();
   }
 
   public removeFromFavorites(favoriteProduct: Product): void {
@@ -34,7 +34,7 @@ export class FavoriteProductsComponent implements OnInit {
   }
 
   public redirectToDetailsPage(product:Product): void {
-    this.router.navigate([`/${RouteName.PRODUCT_DETAILS}/${product.id}`])
+    this.router.navigate([`/${RouteName.PRODUCT_DETAILS}/${product.id}`]);
   }
 
 }

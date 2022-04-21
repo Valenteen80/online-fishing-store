@@ -24,14 +24,14 @@ export class MainPageComponent implements OnInit {
   public іnitialProducts: Product[];
 
   constructor(
-    public filterServise: FilterService,
-    public sortServise: SortService,
+    public filterService: FilterService,
+    public sortService: SortService,
     public productService: ProductService,
     private router: Router
     ) {}
 
     ngOnInit(): void {
-      this.getProducts()
+      this.getProducts();
     }
 
   public getProducts(): void{
@@ -42,11 +42,11 @@ export class MainPageComponent implements OnInit {
   }
 
   public redirectToSelectedProduct(product:Product): void {
-      this.router.navigate([`/${RouteName.PRODUCT_DETAILS}/${product.id}`])
+      this.router.navigate([`/${RouteName.PRODUCT_DETAILS}/${product.id}`]);
   }
 
   public onSelectCategory(category: Category): void {
-    this.products = this.filterServise.filterBySelectedCategory(category, this.іnitialProducts);
+    this.products = this.filterService.filterBySelectedCategory(category, this.іnitialProducts);
     this.selectedButton = {} as SortButton;
   }
 
@@ -56,8 +56,8 @@ export class MainPageComponent implements OnInit {
 
     this.products =
       sortButton.value === ButtonValue.RATING
-        ? this.sortServise.sortByRaiting(sortButton.sortDirection, this.products)
-        : this.sortServise.sortByPrice(sortButton.sortDirection, this.products);
+        ? this.sortService.sortByRating(sortButton.sortDirection, this.products)
+        : this.sortService.sortByPrice(sortButton.sortDirection, this.products);
   }
   
 }
