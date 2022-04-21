@@ -37,26 +37,6 @@ export class OrderPageComponent implements OnInit {
       })
   }
 
-  public toggleEditingFirstName():void {
-    this.isEditFirstName = !this.isEditFirstName;
-  }
-
-  public toggleEditingLastName():void {
-    this.isEditLastName = !this.isEditLastName;
-  }
-
-  public toggleEditingCountry():void {
-    this.isEditCountry = !this.isEditCountry;
-  }
-
-  public toggleEditingAddress():void {
-    this.isEditAddress = !this.isEditAddress;
-  }
-
-  public toggleEditingPhoneNumber():void {
-    this.isEditPhoneNumber = !this.isEditPhoneNumber;
-  }
-
   public navigateToMainPage(): void {
     this.router.navigate(['']);
   }

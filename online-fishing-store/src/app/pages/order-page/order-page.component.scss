@@ -38,35 +38,3 @@
         }
     }
 }
-
-.button-enable {
-    width: 20px;
-    height: 20px;
-    border-radius: 5px;
-    background-image:url("../../../assets/img/edit_button.png") ;
-    background-size: contain;
-
-    &:hover {
-        background-color: $dark_beige;
-        color: $orange;
-        transition: 0.3s ease-in-out;
-        box-shadow: 5px -2px 25px $dark_beige;
-        cursor: pointer;
-      }
-}
-
-.button-disable {
-    width: 20px;
-    height: 20px;
-    border-radius: 5px;
-    background-image:url("../../../assets/img/disable.png") ;
-    background-size: contain;
-
-    &:hover {
-        background-color: $dark_beige;
-        color: $orange;
-        transition: 0.3s ease-in-out;
-        box-shadow: 5px -2px 25px $dark_beige;
-        cursor: pointer;
-      }
-}
