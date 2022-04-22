@@ -1,9 +1,10 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ButtonLabel } from 'src/app/enums/button-label-enum';
 import { User } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/users/user.service';
 import { COUNTRIES } from '../profile-page/personal-data/countries';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-order-page',
@@ -24,11 +25,12 @@ export class OrderPageComponent implements OnInit {
 
   constructor(
     public userService: UserService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
-    this.getUser()
+    this.getUser();
   }
 
   public getUser(): void{
@@ -38,6 +40,7 @@ export class OrderPageComponent implements OnInit {
   }
 
   public redirectToMainPage(): void {
+    this.toastr.success("Ваш заказ успешно оформлен, спасибо за покупку")
     this.router.navigate(['']);
   }
 

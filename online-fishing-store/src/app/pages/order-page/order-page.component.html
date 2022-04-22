@@ -53,11 +53,13 @@
                 [(ngModel)]="user.phoneNumber"
             >
         </div> 
+        <div toastContainer></div>
         <div class="buy">
             <app-button 
                 [title]="buyButtonTitle" 
                 (click)="redirectToMainPage()"
         ></app-button>    
         </div>
+        
     </form>
 </div>

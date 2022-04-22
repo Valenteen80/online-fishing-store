@@ -5,7 +5,16 @@ import { ButtonComponent } from './components/button/button.component';
 
 @NgModule({
   declarations: [ButtonComponent],
-  imports: [CommonModule, ReactiveFormsModule, FormsModule],
-  exports: [CommonModule, ButtonComponent, ReactiveFormsModule, FormsModule],
+  imports: [
+    CommonModule, 
+    ReactiveFormsModule, 
+    FormsModule,
+  ],
+  exports: [
+    CommonModule, 
+    ButtonComponent, 
+    ReactiveFormsModule, 
+    FormsModule,
+  ],
 })
 export class SharedModule {}
