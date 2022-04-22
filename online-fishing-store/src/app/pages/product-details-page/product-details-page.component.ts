@@ -23,18 +23,34 @@ export class ProductDetailsPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getProductById()
+    this.getProductById();
+    
+    if(this.product.inShoppingCart) {
+      this.shoppingCartButtonText = ButtonLabel.IN_SHOPPING_CART;
+    }
+
+    if(this.product.isFavorite) {
+      this.favoritesButtonText = ButtonLabel.ADDED_TO_FAVORITES;
+    }
   }
 
   public addShoppingCart(product: Product): void {
-    product.inShoppingCart = !product.inShoppingCart
-    this.productService.updateProduct(product) 
-    this.getProductById()
+    product.inShoppingCart = !product.inShoppingCart;
+    this.productService.updateProduct(product); 
+    this.product = {...product};
+
+    this.shoppingCartButtonText = product.inShoppingCart
+      ? ButtonLabel.IN_SHOPPING_CART
+      : ButtonLabel.TO_SHOPPING_CART;
   }
 
   public addFavorite(product): void {
-    product.isFavorite = !product.isFavorite
-    this.productService.updateProduct(product)    
+    product.isFavorite = !product.isFavorite;
+    this.productService.updateProduct(product);
+
+    this.favoritesButtonText = product.isFavorite
+      ? ButtonLabel.ADDED_TO_FAVORITES
+      : ButtonLabel.FAVORITES;
   }
 
   private getProductById(): void {
@@ -42,7 +58,7 @@ export class ProductDetailsPageComponent implements OnInit {
       .pipe(
         switchMap((params: Params) => this.productService.getProductsById(+params['id']) 
       ))
-      .subscribe((product:Product) => this.product = product)
+      .subscribe((product:Product) => this.product = product);
   }
   
 }

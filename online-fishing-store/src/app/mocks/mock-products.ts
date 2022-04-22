@@ -47,7 +47,7 @@ export const PRODUCTS: Product[] = [
     price: 72,
     rating: 2,
     isFavorite: false,
-    inShoppingCart: false,
+    inShoppingCart: true,
   },
   {
     id: 5,
@@ -59,7 +59,7 @@ export const PRODUCTS: Product[] = [
     price: 290,
     rating: 12,
     isFavorite: false,
-    inShoppingCart: false,
+    inShoppingCart: true,
   },
   {
     id: 6,

@@ -1,5 +1,15 @@
 <header class="header">
-  <h1 class="header__title">РЫБАЧИМ ВМЕСТЕ</h1>
+  <div class="header-title-wrapper">
+    <h1 class="title">РЫБАЧИМ ВМЕСТЕ</h1>
+    <div class="logo"
+      (click)="redirectToMainPage()"
+    >
+      <img 
+        [src]="logoPicture"
+        [alt]="logoAltImgAttribute"
+      >
+  </div>
+  </div>
   <div class="header-content-wrapper">
     <div
       class="burger_menu"

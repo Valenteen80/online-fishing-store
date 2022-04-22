@@ -29,7 +29,7 @@ export class PersonalDataComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getUser()
+    this.getUser();
   }
 
   public toggleEditingAvatar():void {
