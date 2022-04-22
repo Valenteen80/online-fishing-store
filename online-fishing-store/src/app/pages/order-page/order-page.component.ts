@@ -4,7 +4,8 @@ import { ButtonLabel } from 'src/app/enums/button-label-enum';
 import { User } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/users/user.service';
 import { COUNTRIES } from '../profile-page/personal-data/countries';
-import { ToastrService } from 'ngx-toastr';
+import { NotificationService } from 'src/app/services/notification/notification.service';
+import { ReportMessage } from 'src/app/enums/report-message-enum';
 
 @Component({
   selector: 'app-order-page',
@@ -21,12 +22,12 @@ export class OrderPageComponent implements OnInit {
   public isEditCountry: boolean = true;
   public isEditAddress: boolean = true;
   public isEditPhoneNumber: boolean = true;
-  public buyButtonTitle: string = ButtonLabel.BUY;
+  public checkoutButtonTitle: string = ButtonLabel.CHECKOUT;
 
   constructor(
     public userService: UserService,
     private router: Router,
-    private toastr: ToastrService
+    private notificationService: NotificationService
   ) { }
 
   ngOnInit(): void {
@@ -40,8 +41,12 @@ export class OrderPageComponent implements OnInit {
   }
 
   public redirectToMainPage(): void {
-    this.toastr.success("Ваш заказ успешно оформлен, спасибо за покупку")
     this.router.navigate(['']);
+    this.showNotification();
+  }
+
+  public showNotification(): void {
+    this.notificationService.showSuccess(ReportMessage.SUCCESS_CHECKOUT,'', 3000);
   }
 
 }
