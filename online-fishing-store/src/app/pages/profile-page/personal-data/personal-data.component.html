@@ -93,23 +93,23 @@
             </div>
             <label>
                 <input
-                    name="gender"
+                    [name]="inputGenderLabelMale"
                     [(ngModel)]="user.gender" 
                     type="radio" 
                     [value]="inputGenderLabelMale" 
-                    [disabled]="isEditGender"  
+                    [disabled]="isEditGender"
                 > 
-                {{user.gender}}
+                {{inputGenderLabelMale}}
             </label> 
             <label>
                 <input 
-                    name="gender"
+                    [name]="inputGenderLabelFemale"
                     [(ngModel)]="user.gender" 
                     type="radio" 
                     [value]="inputGenderLabelFemale" 
                     [disabled]="isEditGender"
                 > 
-                {{user.gender}}
+                {{inputGenderLabelFemale}}
             </label>   
         </div>
     </form>

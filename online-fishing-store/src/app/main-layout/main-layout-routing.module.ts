@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RoutesNames } from '../enums/routs-name-enun';
+import { RouteName } from '../enums/route-name-enun';
 import { MainLayoutComponent } from './main-layout.component';
 
 const routes: Routes = [
@@ -14,28 +14,28 @@ const routes: Routes = [
           import('../pages/main-page/main.module').then((m) => m.MainModule),
       },
       {
-        path: RoutesNames.PRODUCT_DETAILS,
+        path: RouteName.PRODUCT_DETAILS,
         loadChildren: () =>
           import('../pages/product-details-page/product-details.module').then(
             (m) => m.ProductDetailsModule
           ),
       },
       {
-        path: RoutesNames.PROFILE,
+        path: RouteName.PROFILE,
         loadChildren: () =>
           import('../pages/profile-page/profile-page.module').then(
             (m) => m.ProfilePageModule
           ), 
       },
       {
-        path: RoutesNames.SHOPPING_CART,
+        path: RouteName.SHOPPING_CART,
         loadChildren: () =>
           import('../pages/shopping-cart-page/shopping-cart.module').then(
             (m) => m.ShoppingCartModule
           ), 
       },
       {
-        path: RoutesNames.ORDER,
+        path: RouteName.ORDER,
         loadChildren: () =>
           import('../pages/order-page/order-page.module').then(
             (m) => m.OrderPageModule

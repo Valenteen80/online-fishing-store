@@ -1,0 +1,23 @@
+@import "../../../assets/scss/colors";
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/mixins";
+
+.total {
+    @include display-flex($flexEnd, $center);
+    height: 20px;
+    margin: 5px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: $orange;
+}
+
+.shopping-cart-products {  
+  max-width: 100%;
+  margin: 5px;
+  border: 2px solid $yellow;
+}
+
+.order {
+  @include display-flex($flexEnd, $center);
+    margin: 5px;
+}

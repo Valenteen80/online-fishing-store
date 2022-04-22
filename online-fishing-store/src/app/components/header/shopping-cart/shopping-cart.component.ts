@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { RouteName } from 'src/app/enums/route-name-enun';
 import { ButtonLabel } from 'src/app/enums/button-label-enum';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product/product.service';
@@ -13,7 +15,8 @@ export class ShoppingCartComponent implements OnInit {
   public amountProductsAddedShoppingCart: number;
 
   constructor(
-    private productService: ProductService
+    private productService: ProductService,
+    private router: Router
     ) {}
 
   ngOnInit(): void {
@@ -21,4 +24,9 @@ export class ShoppingCartComponent implements OnInit {
       this.amountProductsAddedShoppingCart = products.length;
     });
   }
+
+  public redirectToShoppingCartPage(): void {
+    this.router.navigate([`/${RouteName.SHOPPING_CART}`]);
+  }
+
 }

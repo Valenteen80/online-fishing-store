@@ -8,7 +8,7 @@ import { Product } from 'src/app/interfaces/product';
 export class SortService {
   constructor() {}
 
-  public sortByRaiting(sortDirection: string, products: Product[]): Product[] {
+  public sortByRating(sortDirection: string, products: Product[]): Product[] {
     return sortDirection === SortButtonDirection.ASC
       ? products.sort((a, b) => {
           return a.rating - b.rating;
