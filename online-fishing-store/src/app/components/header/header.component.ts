@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ButtonLabel } from 'src/app/enums/button-label-enum';
+import { RouteName } from 'src/app/enums/route-name-enun';
 
 @Component({
   selector: 'app-header',
@@ -24,6 +25,10 @@ export class HeaderComponent {
 
   public redirectToMainPage(): void {
     this.router.navigate(['']);
+  }
+
+  public redirectToAuthPage(): void {
+    this.router.navigate([RouteName.AUTH])
   }
 
 }

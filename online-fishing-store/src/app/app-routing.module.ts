@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { RouteName } from './enums/route-name-enun';
 
 const routes: Routes = [
   {
@@ -9,6 +10,13 @@ const routes: Routes = [
         (m) => m.MainLayoutModule
       ),
   },
+  {
+    path: RouteName.AUTH,
+    loadChildren: () =>
+      import('./pages/auth-page/auth-page.module').then(
+        (m) => m.AuthPageModule
+      ),
+  }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

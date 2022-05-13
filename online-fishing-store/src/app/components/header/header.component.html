@@ -17,7 +17,7 @@
       (click)="showSidebar()"
     ></div>
     <app-search class="header-item"></app-search>
-    <app-button class="header-item" [title]="logInButtonTitle"></app-button>
+    <app-button class="header-item" [title]="logInButtonTitle" (click)="redirectToAuthPage()"></app-button>
     <app-button class="header-item" [title]="signUpButtonTitle"></app-button>
     <app-profile class="header-profile header-item"></app-profile>
     <app-shopping-cart class="shopping-cart"></app-shopping-cart>

@@ -1,0 +1,17 @@
+@import "../../../assets/scss/colors";
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/mixins";
+
+.auth {
+    @include display-flex($spaceBetween, $center);
+    flex-direction: column;
+    font-size: 1.8rem;
+    color: $brown;
+
+    .email, .password {
+        margin-bottom: 10px;
+        .label {
+            margin-right: 5px;
+        }
+    }
+}

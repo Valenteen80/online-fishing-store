@@ -1,1 +1,26 @@
-<p>auth-page works!</p>
+<div class="auth">
+    <h2 class="header">Авторизация</h2>
+    <div class="email">
+        <label class="label" for="Email">Email</label>
+        <input type="text" 
+            placeholder="Email" 
+            [(ngModel)]="email"
+        >
+    </div>
+    <div class="password">
+        <label class="label" for="password">Password</label>
+        <input class="form-control" 
+            type="password" 
+            placeholder="password" 
+            [(ngModel)]="password" 
+        />
+    </div>
+    <div class="">
+        <app-button class="header-item" 
+            type="submit" 
+            (click)="Login()" 
+            [title]="logInButtonTitle"
+        ></app-button>
+    </div>
+</div>
+
