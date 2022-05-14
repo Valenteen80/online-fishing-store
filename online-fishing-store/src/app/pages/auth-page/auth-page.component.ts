@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ButtonLabel } from 'src/app/enums/button-label-enum';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-auth-page',
@@ -11,13 +12,13 @@ export class AuthPageComponent implements OnInit {
   public email: string = '';
   public password: string = '';
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
-  public Login(): void {
-    console.log('Login')
+  public login(): void {
+    this.authService.login(this.email, this.password)
   }
 
 }

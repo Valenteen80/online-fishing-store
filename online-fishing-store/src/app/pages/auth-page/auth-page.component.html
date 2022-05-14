@@ -1,8 +1,9 @@
-<div class="auth">
+<form class="auth">
     <h2 class="header">Авторизация</h2>
     <div class="email">
         <label class="label" for="Email">Email</label>
         <input type="text" 
+            name="email"
             placeholder="Email" 
             [(ngModel)]="email"
         >
@@ -11,16 +12,16 @@
         <label class="label" for="password">Password</label>
         <input class="form-control" 
             type="password" 
-            placeholder="password" 
+            name="password"
+            placeholder="Password" 
             [(ngModel)]="password" 
         />
     </div>
     <div class="">
         <app-button class="header-item" 
             type="submit" 
-            (click)="Login()" 
+            (click)="login()" 
             [title]="logInButtonTitle"
         ></app-button>
     </div>
-</div>
-
+</form>
