@@ -18,15 +18,12 @@ app.post('/api/authenticate', (reg,res) => {
         console.log(user);
 
         if (testUser.email === user.email && testUser.password === user.password) {
-            let token = jwt.sign(user, JWT_Secret);
-            res.status(200).send({
-                signed_user: user,
-                token: token
-            })
+            let token = jwt.sign(user, JWT_Secret, {expiresIn: 60 * 60});
+            res.status(200).send({token: token})
 
         } else {
             res.status(403).send({
-                errorMessage: 'Требуется авторизация!'
+                errorMessage: 'Пользователь с таким адресом электронной почты либо паролем не существует'
             });
         }
 

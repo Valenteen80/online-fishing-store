@@ -17,14 +17,14 @@ const routes: Routes = [
         loadChildren: () =>
           import('../../pages/profile-page/personal-data/personal-data.module').then(
             (m) => m.PersonalDataModule
-          ),
+          ), 
       },
       {
         path: RouteName.FAVORITE_PRODUCTS,
         loadChildren: () =>
           import('../../pages/profile-page/favorite-products/favorite-products.module').then(
             (m) => m.FavoriteProductsModule
-          ),
+          ), 
       },
       
     ]
