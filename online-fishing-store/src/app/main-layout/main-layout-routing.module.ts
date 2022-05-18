@@ -6,19 +6,19 @@ import { MainLayoutComponent } from './main-layout.component';
 const routes: Routes = [
   {
     path: '',
-    component: MainLayoutComponent, 
+    component: MainLayoutComponent,
     children: [
       {
         path: '',
         loadChildren: () =>
-          import('../pages/main-page/main.module').then((m) => m.MainModule), 
-      }, 
+          import('../pages/main-page/main.module').then((m) => m.MainModule),
+      },
       {
         path: RouteName.PRODUCT_DETAILS,
         loadChildren: () =>
           import('../pages/product-details-page/product-details.module').then(
             (m) => m.ProductDetailsModule
-          ), 
+          ),
       },
       {
         path: RouteName.PROFILE,

@@ -27,15 +27,18 @@
                 formControlName="password"
                 placeholder="Password" 
                 [ngClass]="{'error-text': form.get('password').invalid && form.get('password').touched}"
-                />
+                >
         </label>
         <span class="error-text"
             *ngIf="form.get('password').invalid && form.get('password').touched"
             >
-            <span *ngIf="form.get('password').errors['required']">Пароль не должен быть пустым</span>
-            <span *ngIf="form.get('password').errors['minlength'] "
-                >Пароль должен быть  больше {{form.get('password').errors['minlength']['requiredLength']}} символов
-                сейчас {{form.get('password').errors['minlength']['actualLength']}}</span>
+            <span *ngIf="form.get('password').errors['required']">
+                Пароль не должен быть пустым
+            </span>
+            <span *ngIf="form.get('password').errors['minlength']">
+                Пароль должен быть  больше {{form.get('password').errors['minlength']['requiredLength']}} символов
+                сейчас {{form.get('password').errors['minlength']['actualLength']}}
+            </span>
         </span>
     </div>
     <div>
@@ -43,8 +46,8 @@
             type="submit" 
             [title]="logInButtonTitle"
             [disabled]="form.invalid || form.disabled"
-            ></app-button>
+            >
+        </app-button>
     </div>
     <span *ngIf="notification">{{notification}}</span>
 </form>
-

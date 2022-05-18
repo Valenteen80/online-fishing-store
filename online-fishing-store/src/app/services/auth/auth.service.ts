@@ -1,19 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable, tap } from 'rxjs';
+import { DecodedToken } from 'src/app/interfaces/decoded-token';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  public api: string = 'http://localhost:5000/api';
+  public api: string = environment.apiUrl;
   private token: string = null;
+  private jwtHelper = new JwtHelperService();
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(
+    private http: HttpClient, 
+    ) { }
 
   public login(email: string, password: string): Observable <{token: string}> {
-    return this.http.post<{token: string}>(this.api + '/authenticate', {email: email,password: password})
+    return this.http.post<{token: string}>(`${this.api}/authenticate`, {email: email, password: password})
       .pipe(
         tap(
           ({token}) => {
@@ -21,18 +26,29 @@ export class AuthService {
             this.setToken(token)
           }
         )
-      )
+      );
   }
 
-  public setToken(token: string): void{
+  public setToken(token: string): void {
     this.token = token;
   }
 
-  public getToken(): string {
-    return this.token;
+  public checkToken(): void {
+    if(this.jwtHelper.isTokenExpired(this.token)) {
+      this.logout();
+    }
+  }
+
+  public decodeToken(): DecodedToken {
+    return this.jwtHelper.decodeToken(this.token);
+  }
+
+  public getUserEmail(): string {
+    return this.decodeToken().email;
   }
 
   public isAuthenticated(): boolean {
+    this.checkToken();
     return !!this.token;
   }
 

@@ -1,4 +1,4 @@
-<button class="button_profile" (click)="isMouseenterProfile = true">
+<button class="button_profile" (click)="togglePanelProfile()">
   <img
     class="button__img"
     [src]="profilePicture"
@@ -7,8 +7,8 @@
 </button>
 <div
   class="profile-menu"
-  (click)="isMouseenterProfile = false"
-  *ngIf="isMouseenterProfile"
+  (click)="isPanelProfile = false"
+  *ngIf="isPanelProfile"
 >
   <app-button 
     [title]="profileButtonTitle" 
@@ -17,5 +17,4 @@
   <app-button [title]="logOutButtonTitle"
     (click)="logout()"
     ></app-button>
-  <button>X</button>
 </div>

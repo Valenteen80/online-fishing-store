@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent  {
-  public isMouseenterProfile: boolean = false;
+  public isPanelProfile: boolean = false;
   public avatarImgAltAttributeValue: string = 'photo';
   public profilePicture: string = 'assets/img/profile_picture.png';
   public profileButtonTitle: string = ButtonLabel.PROFILE;
@@ -20,6 +20,10 @@ export class ProfileComponent  {
     private router: Router,
     private authService: AuthService
     ) {} 
+
+  public togglePanelProfile(): void {
+    this.isPanelProfile = !this.isPanelProfile;
+  }
 
   public redirectToProfilePage(): void {
     this.router.navigate([`/${RouteName.PROFILE}`]);

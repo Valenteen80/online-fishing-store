@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ButtonLabel } from 'src/app/enums/button-label-enum';
-import { RouteName } from 'src/app/enums/route-name-enun';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -14,10 +13,13 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 export class AuthPageComponent implements OnInit, OnDestroy {
   public notification: string = '';
   public form: FormGroup;
-  private aSub: Subscription
+  private aSub: Subscription;
   public logInButtonTitle: string = ButtonLabel.LOG_IN;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(
+    private authService: AuthService, 
+    private router: Router,
+    ) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -27,28 +29,29 @@ export class AuthPageComponent implements OnInit, OnDestroy {
 
     if(this.authService.isAuthenticated()) {
       this.form.disable();
-      this.notification = `Вы авторизованы как ${this.form.value.email} `
+      this.notification = `Вы авторизованы как ${this.authService.getUserEmail()} `;
+    } else {
+      this.notification = 'Вы не авторизованы, либо срок вашей сессии истёк, авторизуйтесь';
     }
   }
 
   ngOnDestroy(): void {
     if(this.aSub) {
-      this.aSub.unsubscribe()
+      this.aSub.unsubscribe();
     }
   }
 
-  public onSubmit():void {
+  public onSubmit(): void {
     this.form.disable();
     this.aSub = this.authService.login(this.form.value.email, this.form.value.password).subscribe(
-      (resp) => {
-        this.router.navigate([''])
+      () => {
+        this.router.navigate(['']);
       },
       error => {
-        this.notification = error.error.errorMessage
+        this.notification = error.error.errorMessage;
         this.form.enable();
       }
-        
-    )
+    );
   }
 
 }
