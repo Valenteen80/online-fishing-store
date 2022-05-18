@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { Observable, tap } from 'rxjs';
+import { catchError, Observable, tap, throwError } from 'rxjs';
 import { DecodedToken } from 'src/app/interfaces/decoded-token';
 import { environment } from 'src/environments/environment';
 
@@ -25,7 +25,8 @@ export class AuthService {
             localStorage.setItem('auth_token', token);
             this.setToken(token)
           }
-        )
+        ),
+        catchError((error: HttpErrorResponse) => {return throwError(error.error.errorMessage)})
       );
   }
 

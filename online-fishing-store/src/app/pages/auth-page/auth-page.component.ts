@@ -47,8 +47,8 @@ export class AuthPageComponent implements OnInit, OnDestroy {
       () => {
         this.router.navigate(['']);
       },
-      error => {
-        this.notification = error.error.errorMessage;
+      (error) => {
+        this.notification = error;
         this.form.enable();
       }
     );
