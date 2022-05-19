@@ -7,13 +7,13 @@ const routes: Routes = [
     path: '',
     loadChildren: () =>
       import('./main-layout/main-layout.module').then(
-        (m) => m.MainLayoutModule
+        (m) => m.MainLayoutModule, 
       ),
   },
   {
     path: RouteName.AUTH,
     loadChildren: () =>
-      import('./pages/auth-page/auth-page.module').then(
+      import('./auth/auth-page.module').then(
         (m) => m.AuthPageModule
       ),
   }
