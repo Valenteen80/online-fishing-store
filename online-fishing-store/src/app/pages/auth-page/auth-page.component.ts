@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ButtonLabel } from 'src/app/enums/button-label-enum';
@@ -17,14 +17,15 @@ export class AuthPageComponent implements OnInit, OnDestroy {
   public logInButtonTitle: string = ButtonLabel.LOG_IN;
 
   constructor(
+    private formBuilder: FormBuilder,
     private authService: AuthService, 
     private router: Router,
     ) { }
 
   ngOnInit(): void {
-    this.form = new FormGroup({
-      email: new FormControl(null, [Validators.required, Validators.email]),
-      password: new FormControl(null, [Validators.required, Validators.minLength(4)])
+    this.form = this.formBuilder.group({
+      'email': ['', [Validators.required, Validators.email]],
+      'password': ['', [Validators.required, Validators.minLength(4)]]
     })
 
     if(this.authService.isAuthenticated()) {

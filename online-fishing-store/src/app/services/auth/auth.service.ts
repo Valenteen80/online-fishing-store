@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { catchError, Observable, tap, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, tap, throwError } from 'rxjs';
 import { DecodedToken } from 'src/app/interfaces/decoded-token';
 import { environment } from 'src/environments/environment';
 
@@ -12,6 +12,7 @@ export class AuthService {
   public api: string = environment.apiUrl;
   private token: string = null;
   private jwtHelper = new JwtHelperService();
+  public isUserLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(
     private http: HttpClient, 
@@ -23,10 +24,11 @@ export class AuthService {
         tap(
           ({token}) => {
             localStorage.setItem('auth_token', token);
-            this.setToken(token)
+            this.setToken(token);
+            this.isUserLoggedIn.next(true);
           }
         ),
-        catchError((error: HttpErrorResponse) => {return throwError(error.error.errorMessage)})
+        catchError((error: HttpErrorResponse) =>  throwError(error.error.errorMessage))
       );
   }
 
@@ -56,6 +58,7 @@ export class AuthService {
   public logout(): void {
     this.setToken(null);
     localStorage.clear();
+    this.isUserLoggedIn.next(false);
   }
 
 }

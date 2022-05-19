@@ -12,15 +12,16 @@
         @include display-flex($spaceBetween, $center);
         flex-direction: column;
         margin-bottom: 10px;
-        
-        .label {
-            margin-right: 5px;
+
+        .label-input__wrapper {
+            @include display-flex($spaceBetween, $center);
+            width: 260px;
+        }
+
+        .error-text {
+            font-size: 1.2rem;
+            color: $red;
+            border-color: $red;
         }
     }
-}
-
-.error-text {
-    font-size: 1.2rem;
-    color: $red;
-    border-color: $red;
 }

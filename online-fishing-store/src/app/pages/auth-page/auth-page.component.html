@@ -3,43 +3,51 @@
     (ngSubmit)="onSubmit()"
     >
     <h2 class="header">Авторизация</h2>
-    <div class="email">
-        <label class="label" for="email">Email
-            <input type="email" 
-                id="email"
-                formControlName="email"
-                placeholder="Email" 
-                [ngClass]="{'error-text': form.get('email').invalid && form.get('email').touched}"
+    <div class="controls">
+        <div class="email">
+            <div class="label-input__wrapper">
+                <label class="label" for="email">Email</label>
+                <input type="email" 
+                    id="email"
+                    formControlName="email"
+                    placeholder="Email" 
+                    [ngClass]="{'error-text': form.get('email').invalid && form.get('email').touched}"
+                    >    
+            </div>
+            <span class="error-text"
+                *ngIf="form.get('email').invalid && form.get('email').touched"
                 >
-        </label>
-        <span class="error-text"
-            *ngIf="form.get('email').invalid && form.get('email').touched"
-            >
-            <span *ngIf="form.get('email').errors['required']">Email не должен быть пустым</span>
-            <span *ngIf="form.get('email').errors['email']">Введите корректный email адрес</span>
-        </span>
-    </div>
-    <div class="password">
-        <label class="label" for="password">Password
-            <input class="form-control" 
-                type="password" 
-                id="password"
-                formControlName="password"
-                placeholder="Password" 
-                [ngClass]="{'error-text': form.get('password').invalid && form.get('password').touched}"
+                <span *ngIf="form.get('email').errors['required']">
+                    Email не должен быть пустым
+                </span>
+                <span *ngIf="form.get('email').errors['email']">
+                    Введите корректный email адрес
+                </span>
+            </span>
+        </div>
+        <div class="password">
+            <div class="label-input__wrapper">
+                <label class="label" for="password">Password</label>
+                <input class="form-control" 
+                    type="password" 
+                    id="password"
+                    formControlName="password"
+                    placeholder="Password" 
+                    [ngClass]="{'error-text': form.get('password').invalid && form.get('password').touched}"
+                    >
+            </div>
+            <span class="error-text"
+                *ngIf="form.get('password').invalid && form.get('password').touched"
                 >
-        </label>
-        <span class="error-text"
-            *ngIf="form.get('password').invalid && form.get('password').touched"
-            >
-            <span *ngIf="form.get('password').errors['required']">
-                Пароль не должен быть пустым
+                <span *ngIf="form.get('password').errors['required']">
+                    Пароль не должен быть пустым
+                </span>
+                <span *ngIf="form.get('password').errors['minlength']">
+                    Пароль должен быть  больше {{form.get('password').errors['minlength']['requiredLength']}} символов
+                    сейчас {{form.get('password').errors['minlength']['actualLength']}}
+                </span>
             </span>
-            <span *ngIf="form.get('password').errors['minlength']">
-                Пароль должен быть  больше {{form.get('password').errors['minlength']['requiredLength']}} символов
-                сейчас {{form.get('password').errors['minlength']['actualLength']}}
-            </span>
-        </span>
+        </div>
     </div>
     <div>
         <app-button 
