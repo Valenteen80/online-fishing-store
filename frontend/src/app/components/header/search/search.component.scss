@@ -1,0 +1,19 @@
+@import "../../../../assets/scss/colors";
+@import "../../../../assets/scss/mixins";
+
+.search {
+  @include break-point($laptop) {
+    max-width: 110px;
+  }
+  max-width: 130px;
+  height: 20px;
+  margin-right: 5px;
+  font-family: Lato, sans-serif;
+  font-size: 13px;
+  color: $red;
+  font-style: italic;
+  border-radius: 10px;
+  height: 26px;
+  border: 1px solid $orange;
+  background-color: $light_beige;
+}

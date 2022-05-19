@@ -1,0 +1,32 @@
+<div class="product">
+    <img
+      class="product__img"
+      [src]="product.img"
+      [alt]="productAltImgAttribute"
+    />
+    <div class="product__info-wrapper">
+        <h3 class="product__name">{{ product.name }}</h3>
+        <div class="product__price-rating-button">
+            <div class="price-rating__wrapper">
+                <span>Цена:{{ product.price | currency: "USD":"symbol-narrow":"1.2" }}</span>
+                <span>Рейтинг: {{ product.rating }}</span>
+            </div>
+            <div class="product__buttons-wrapper">
+                <div class="product__button">
+                    <app-button
+                    [title]="shoppingCartButtonText"
+                    (click)="addShoppingCart(product)"
+                    ></app-button>
+                </div>
+                <div class="product__button">
+                    <app-button
+                    [title]="favoritesButtonText"
+                    (click)="addFavorite(product)"
+                    ></app-button>
+                </div>
+            </div>
+        </div>
+        <p class="product__description">{{product.description}}</p>
+    </div>
+    
+</div>

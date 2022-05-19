@@ -1,0 +1,14 @@
+<nav class="nav">
+    <ul class="button__container">
+        <li class="button" *ngFor="let tab of tabs">
+            <div
+                [routerLink]="tab.link"
+                routerLinkActive="button_active" 
+                (click)="redirectToSelectedTab(tab)"
+            >
+                {{tab.label}}
+            </div>  
+        </li>
+    </ul>
+</nav>
+<router-outlet></router-outlet>

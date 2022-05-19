@@ -1,0 +1,14 @@
+@import "../../../../../../assets/scss/colors";
+
+.said-bar__list {
+  border: 2px solid $yellow;
+  padding: 10px;
+
+  &:hover {
+    border-color: $orange;
+    background-color: $yellow;
+    transition: 0.2s ease-in-out;
+    box-shadow: 2px -2px 25px $dark_beige;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,18 @@
+<div class="main">
+  <app-sortPanel
+    (sortEvent)="sortProducts($event)"
+    [sortButtons]="sortButtons"
+    [selectedButton] = "selectedButton"
+  ></app-sortPanel>
+  <div class="main-product-container">
+    <app-side-bar
+      class="side-bar"
+      [categories]="categories"
+      (selectCategoryEvent)="onSelectCategory($event)"
+    ></app-side-bar>
+    <app-products class="products" 
+    [products]="products"
+    (selectedProduct)="redirectToSelectedProduct($event)"
+    ></app-products>
+  </div>
+</div>

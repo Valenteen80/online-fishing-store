@@ -1,0 +1,9 @@
+<div class="favorite-products" *ngFor="let favoriteProduct of favoriteProducts"
+    (click)="redirectToDetailsPage(favoriteProduct)"
+>
+    <app-favorite-products-item
+        [favoriteProduct]="favoriteProduct"
+        (removeFavoriteProduct)="removeFromFavorites($event)" 
+    >
+    </app-favorite-products-item>  
+</div>

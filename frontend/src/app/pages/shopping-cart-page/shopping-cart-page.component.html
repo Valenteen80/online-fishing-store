@@ -1,0 +1,18 @@
+<div class="total-wrapper">
+    <div class="total">ОБЩАЯ СУММА: {{totalAmount | currency: "USD":"symbol-narrow":"1.2"}}</div>
+</div>
+<div class="shopping-cart-products" 
+    *ngFor="let shoppingCartProduct of shoppingCartProducts">
+    <app-shopping-cart-item
+        [shoppingCartProduct]="shoppingCartProduct"
+        (removeShoppingCartProduct)="removeFromShoppingCart($event)"
+        (increaseAmountItem)="updateShoppingCartProducts($event)"
+    >
+    </app-shopping-cart-item>
+</div>
+<div class="order">
+    <app-button 
+        [title]="orderButtonTitle"
+        (click)="redirectToOrderPage()"
+    ></app-button>
+</div>

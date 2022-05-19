@@ -1,0 +1,63 @@
+@import "../../../assets/scss/colors";
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/mixins";
+
+.product {
+    @include display-flex($spaceBetween, $flexStart);
+    @include break-point($tablet) {
+        @include display-flex($spaceBetween, $center);
+        flex-direction: column
+    }
+    padding: 5px;
+    .product__img {
+        @include break-point($tablet) {
+            max-width: 90%;
+        }
+
+        border: 2px solid $yellow;
+        min-width: 10%;
+        margin: 5px;
+        max-width: 47%;
+    }
+
+    &__info-wrapper {
+        @include display-flex($spaceBetween, $center);
+            @include break-point($tablet) {
+            max-width: 90%;
+        }
+
+        min-width: 10%;
+        margin: 5px;
+        max-width: 47%;
+        font-size: 1.8rem;
+        .product__name {
+            max-width: 600px;
+            height: 50px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
+    &__price-rating-button {
+        @include display-flex($spaceBetween, $center);
+        width: 100%;
+        .price-rating__wrapper {
+            @include display-flex($spaceBetween);
+            flex-direction: column;
+            margin-right: 10px;
+        }  
+    }
+
+    &__buttons-wrapper {
+        @include display-flex($spaceBetween, $center);
+        .product__button {
+            max-width: 100px;
+            margin-right: 5px;
+        }
+    }     
+
+    &__description {
+        font-size: 1.8rem;
+    }
+}
+
