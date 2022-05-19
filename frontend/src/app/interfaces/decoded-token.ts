@@ -1,7 +1,6 @@
 export interface DecodedToken {
-    email: string;
-    exp: number;
-    iat: number;
-    password: string;
-  }
-  
+  email: string;
+  exp: number;
+  iat: number;
+  password: string;
+}
