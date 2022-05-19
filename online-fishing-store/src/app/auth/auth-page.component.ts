@@ -30,7 +30,7 @@ export class AuthPageComponent implements OnInit, OnDestroy {
 
     if(this.authService.isAuthenticated()) {
       this.form.disable();
-      this.notification = `Вы авторизованы как ${this.authService.getUserEmail()} `;
+      this.notification = `Вы авторизованы как ${this.authService.getUserEmail()}`;
     } else {
       this.notification = 'Вы не авторизованы, либо срок вашей сессии истёк, авторизуйтесь';
     }

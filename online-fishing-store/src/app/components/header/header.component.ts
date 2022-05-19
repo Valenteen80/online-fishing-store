@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit{
     });
   }
 
-  public showSidebar(): void {
+  public showSidebarProfile(): void {
     this.isActiveButtonMenu = !this.isActiveButtonMenu;
   }
 
