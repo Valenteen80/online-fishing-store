@@ -1,8 +1,0 @@
-<div class="products" *ngFor="let product of products">
-  <div [ngClass]="{ isFavorite: product.isFavorite }">
-    <app-product-item 
-      [product]="product"
-      (click)="onSelectProduct(product)"
-    ></app-product-item>
-  </div>
-</div>
