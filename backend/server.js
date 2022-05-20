@@ -2,7 +2,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const express = require('express');
-const { request } = require('https');
+const request = require('https');
 
 const app = express();
 app.use(cors());

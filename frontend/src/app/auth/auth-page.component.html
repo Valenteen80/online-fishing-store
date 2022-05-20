@@ -11,7 +11,7 @@
                     id="email"
                     formControlName="email"
                     placeholder="Email" 
-                    [ngClass]="{'error-text': form.get('email').invalid && form.get('email').touched}"
+                    [ngClass]="{'label-input__error': form.get('email').invalid && form.get('email').touched}"
                     >    
             </div>
             <span class="error-text"
@@ -33,7 +33,7 @@
                     id="password"
                     formControlName="password"
                     placeholder="Password" 
-                    [ngClass]="{'error-text': form.get('password').invalid && form.get('password').touched}"
+                    [ngClass]="{'label-input__error': form.get('password').invalid && form.get('password').touched}"
                     >
             </div>
             <span class="error-text"

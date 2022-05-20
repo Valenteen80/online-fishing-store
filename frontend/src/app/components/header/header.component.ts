@@ -9,13 +9,12 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent implements OnInit {
   public logoAltImgAttribute: string = 'photo';
   public logoPicture: string = "assets/img/logo.png";
   public logInButtonTitle: string = ButtonLabel.LOG_IN;
-  public signUpButtonTitle: string = ButtonLabel.SING_UP;
-  public isActiveButtonMenu = false;
-  public isActiveButtonsAuth = true;
+  public isActiveButtonMenu: boolean = false;
+  public isActiveButtonsAuth: boolean = true;
 
   constructor(
     public router: Router,
@@ -23,7 +22,7 @@ export class HeaderComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-      this.authService.isUserLoggedIn.subscribe(value => {
+      this.authService.isUserLoggedIn.subscribe((value: boolean) => {
         this.isActiveButtonsAuth = !value;
     });
   }

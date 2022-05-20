@@ -1,6 +1,6 @@
 <header class="header">
   <div class="header-title-wrapper">
-    <h1 class="title">РЫБАЧИМ ВМЕСТЕ</h1>
+    <h1 class="title">рыбачим вместе</h1>
     <div class="logo"
       (click)="redirectToMainPage()"
       >
@@ -11,7 +11,6 @@
   </div>
   </div>
   <div class="header-content-wrapper"
-    [ngClass]="{authenticated: !isActiveButtonsAuth}"
     >
     <div
       class="burger_menu"
@@ -19,8 +18,11 @@
       (click)="showSidebarProfile()"
       ></div>
     <app-search class="header-item"></app-search>
-    <app-button class="header-item" *ngIf="isActiveButtonsAuth" [title]="logInButtonTitle" (click)="redirectToAuthPage()"></app-button>
-    <app-button class="header-item" *ngIf="isActiveButtonsAuth" [title]="signUpButtonTitle"></app-button>
+    <app-button class="header-item" 
+      *ngIf="isActiveButtonsAuth" 
+      [title]="logInButtonTitle" 
+      (click)="redirectToAuthPage()"
+      ></app-button>
     <app-profile class="header-profile header-item"></app-profile>
     <app-shopping-cart class="shopping-cart"></app-shopping-cart>
   </div>

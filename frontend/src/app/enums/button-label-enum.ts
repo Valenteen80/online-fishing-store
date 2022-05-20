@@ -10,7 +10,6 @@ export enum ButtonLabel {
   FAVORITE_PRODUCTS = 'избранные товары',
   PROFILE = 'профиль',
   LOG_OUT = 'выйти',
-  SING_UP = 'регистрация',
   LOG_IN = 'вход',
   ORDER = 'оформить заказ'
 }

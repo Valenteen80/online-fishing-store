@@ -14,7 +14,8 @@
     [title]="profileButtonTitle" 
     (click)="redirectToProfilePage()"
   ></app-button>
-  <app-button [title]="logOutButtonTitle"
+  <app-button *ngIf="isActiveButtonsLogout"
+    [title]="logOutButtonTitle"
     (click)="logout()"
     ></app-button>
 </div>

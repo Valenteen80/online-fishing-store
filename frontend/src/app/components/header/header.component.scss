@@ -21,6 +21,7 @@
         font-size: 1.6rem;
         margin: 3px;
       }
+      text-transform: uppercase;
       margin-left: 15px;
       color: $brown;
       font-size: 2rem;
@@ -41,7 +42,7 @@
   }
 
   &-content-wrapper {
-    @include display-flex($spaceBetween, $center);
+    @include display-flex($flexEnd, $center);
     min-width: 400px;
     margin-right: 15px;
     
@@ -70,9 +71,5 @@
     .header-item {
       margin-right: 1px;
     }
-  }
-
-  .authenticated {
-    min-width: 200px;
   }
 }
