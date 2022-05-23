@@ -12,11 +12,11 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
   public api: string = environment.apiUrl;
   private token: string = null;
-  private jwtHelper = new JwtHelperService();
   public isUserLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(
-    private http: HttpClient, 
+    private http: HttpClient,
+    private jwtHelper: JwtHelperService 
     ) { }
 
   public login(email: string, password: string): Observable <Token> {
