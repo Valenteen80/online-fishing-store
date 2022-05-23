@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { DecodedToken } from 'src/app/interfaces/decoded-token';
+import { Token } from 'src/app/interfaces/token';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -18,13 +19,13 @@ export class AuthService {
     private http: HttpClient, 
     ) { }
 
-  public login(email: string, password: string): Observable <{token: string}> {
+  public login(email: string, password: string): Observable <Token> {
     return this.http.post<{token: string}>(`${this.api}/authenticate`, {email: email, password: password})
       .pipe(
         tap(
-          ({token}) => {
-            localStorage.setItem('auth_token', token);
-            this.setToken(token);
+          (token: Token) => {
+            localStorage.setItem('auth_token', token.token);
+            this.setToken(token.token);
           }
         ),
       );
@@ -53,6 +54,7 @@ export class AuthService {
 
   public isAuthenticated(): boolean {
     this.checkToken();
+
     return !!this.token;
   }
 

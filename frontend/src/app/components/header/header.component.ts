@@ -27,12 +27,12 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  public showSidebarProfile(): void {
+  public showMenuProfile(): void {
     this.isActiveButtonMenu = !this.isActiveButtonMenu;
   }
 
   public redirectToMainPage(): void {
-    this.router.navigate(['']);
+    this.router.navigate([RouteName.ROOT]);
   }
 
   public redirectToAuthPage(): void {

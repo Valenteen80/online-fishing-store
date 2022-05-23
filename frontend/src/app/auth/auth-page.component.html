@@ -15,12 +15,12 @@
                     >    
             </div>
             <span class="error-text"
-                *ngIf="form.get('email').invalid && form.get('email').touched"
+                *ngIf="_email.invalid && _email.touched"
                 >
-                <span *ngIf="form.get('email').errors['required']">
+                <span *ngIf="_email.errors['required']">
                     Email не должен быть пустым
                 </span>
-                <span *ngIf="form.get('email').errors['email']">
+                <span *ngIf="_email.errors['email']">
                     Введите корректный email адрес
                 </span>
             </span>
@@ -37,14 +37,14 @@
                     >
             </div>
             <span class="error-text"
-                *ngIf="form.get('password').invalid && form.get('password').touched"
+                *ngIf="_password.invalid && _password.touched"
                 >
-                <span *ngIf="form.get('password').errors['required']">
+                <span *ngIf="_password.errors['required']">
                     Пароль не должен быть пустым
                 </span>
-                <span *ngIf="form.get('password').errors['minlength']">
-                    Пароль должен быть  больше {{form.get('password').errors['minlength']['requiredLength']}} символов
-                    сейчас {{form.get('password').errors['minlength']['actualLength']}}
+                <span *ngIf="_password.errors['minlength']">
+                    Пароль должен быть  больше {{_password.errors['minlength']['requiredLength']}} символов
+                    сейчас {{_password.errors['minlength']['actualLength']}}
                 </span>
             </span>
         </div>

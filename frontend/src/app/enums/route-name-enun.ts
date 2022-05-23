@@ -1,4 +1,5 @@
 export enum RouteName {
+  ROOT = "",
   PRODUCT_DETAILS = 'product-details',
   PROFILE = 'profile',
   SHOPPING_CART = 'shopping-cart',

@@ -8,7 +8,7 @@ import { AuthService } from './services/auth/auth.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'online-fishing-store';
+  public title: string = 'online-fishing-store';
 
   constructor(private authService: AuthService){}
 
