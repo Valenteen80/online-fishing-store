@@ -15,7 +15,7 @@ import { ShoppingCartService } from 'src/app/services/shopping-cart/shopping-car
 export class ShoppingCartPageComponent implements OnInit, OnDestroy {
   public totalAmount: number;
   public orderButtonTitle: string = ButtonLabel.ORDER;
-  private subscribe: Subscription;
+  private subscription: Subscription;
 
   public shoppingCartProducts: Product[];
 
@@ -30,11 +30,11 @@ export class ShoppingCartPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscribe.unsubscribe();
+    this.subscription.unsubscribe();
   }
 
   public getShoppingCartProducts(): void {
-    this.subscribe = this.shoppingCartService.getShoppingCartProducts().subscribe((shoppingCartProducts: Product[]) => {
+    this.subscription = this.shoppingCartService.getShoppingCartProducts().subscribe((shoppingCartProducts: Product[]) => {
       this.shoppingCartProducts = shoppingCartProducts;
     });
   }

@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   public profileButtonTitle: string = ButtonLabel.PROFILE;
   public logOutButtonTitle: string = ButtonLabel.LOG_OUT;
   public isActiveButtonsLogout: boolean = true;
-  private subscribe: Subscription;
+  private subscription: Subscription;
 
   constructor(
     private router: Router,
@@ -25,13 +25,13 @@ export class ProfileComponent implements OnInit, OnDestroy {
     ) {} 
 
   ngOnInit(): void {
-    this.subscribe = this.authService.isUserLoggedIn.subscribe((value: boolean) => {
+    this.subscription = this.authService.isUserLoggedIn.subscribe((value: boolean) => {
       this.isActiveButtonsLogout = value;
     });
   }
 
   ngOnDestroy(): void {
-    this.subscribe.unsubscribe();
+    this.subscription.unsubscribe();
   }
 
   public togglePanelProfile(): void {

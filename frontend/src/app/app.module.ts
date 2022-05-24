@@ -4,8 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule }   from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
-import { LocalStorageKey } from './enums/local-storage-key-enum';
-// import { environmentCredentials as env } from 'src/environments/environment';
 
 
 @NgModule({

@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public logInButtonTitle: string = ButtonLabel.LOG_IN;
   public isActiveButtonMenu: boolean = false;
   public isActiveButtonsAuth: boolean = true;
-  private subscribe: Subscription;
+  private subscription: Subscription;
 
   constructor(
     public router: Router,
@@ -24,13 +24,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.subscribe = this.authService.isUserLoggedIn.subscribe((value: boolean) => {
+    this.subscription = this.authService.isUserLoggedIn.subscribe((value: boolean) => {
       this.isActiveButtonsAuth = !value;
     });
   }
 
   ngOnDestroy(): void {
-    this.subscribe.unsubscribe();
+    this.subscription.unsubscribe();
   }
 
   public showMenuProfile(): void {

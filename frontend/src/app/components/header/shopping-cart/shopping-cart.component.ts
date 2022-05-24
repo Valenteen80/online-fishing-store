@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs';
 export class ShoppingCartComponent implements OnInit, OnDestroy {
   public shoppingCartButtonTitle: string = ButtonLabel.SHOPPING_CART;
   public amountProductsAddedShoppingCart: number;
-  private subscribe: Subscription;
+  private subscription: Subscription;
 
   constructor(
     private productService: ProductService,
@@ -22,13 +22,13 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     ) {}
 
   ngOnInit(): void {
-    this.subscribe = this.productService.getProductsInShoppingCart().subscribe((products: Product[]) => {
+    this.subscription = this.productService.getProductsInShoppingCart().subscribe((products: Product[]) => {
       this.amountProductsAddedShoppingCart = products.length;
     });
   }
 
   ngOnDestroy(): void {
-    this.subscribe.unsubscribe();
+    this.subscription.unsubscribe();
   }
 
   public redirectToShoppingCartPage(): void {

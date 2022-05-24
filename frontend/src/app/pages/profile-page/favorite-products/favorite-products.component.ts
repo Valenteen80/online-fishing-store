@@ -12,7 +12,7 @@ import { ProductService } from 'src/app/services/product/product.service';
 })
 export class FavoriteProductsComponent implements OnInit, OnDestroy {
   public favoriteProducts: Product[];
-  private subscribe: Subscription;
+  private subscription: Subscription;
 
   constructor(
     private productService: ProductService,
@@ -24,7 +24,7 @@ export class FavoriteProductsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscribe.unsubscribe();
+    this.subscription.unsubscribe();
   }
 
   public removeFromFavorites(favoriteProduct: Product): void {
@@ -34,7 +34,7 @@ export class FavoriteProductsComponent implements OnInit, OnDestroy {
   }
 
   private getFavoriteItems(): void {
-    this.subscribe = this.productService.getFavoriteProducts().subscribe((products: Product[]) => {
+    this.subscription = this.productService.getFavoriteProducts().subscribe((products: Product[]) => {
       this.favoriteProducts = products;
     });
   }

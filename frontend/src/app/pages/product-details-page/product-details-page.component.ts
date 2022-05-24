@@ -17,7 +17,7 @@ export class ProductDetailsPageComponent implements OnInit, OnDestroy {
   public productAltImgAttribute: string = 'photo';
   public shoppingCartButtonText: string = ButtonLabel.TO_SHOPPING_CART;
   public favoritesButtonText: string = ButtonLabel.FAVORITES;
-  private subscribe: Subscription;
+  private subscription: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -37,7 +37,7 @@ export class ProductDetailsPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscribe.unsubscribe();
+    this.subscription.unsubscribe();
   }
 
   public addShoppingCart(product: Product): void {
@@ -60,7 +60,7 @@ export class ProductDetailsPageComponent implements OnInit, OnDestroy {
   }
 
   private getProductById(): void {
-    this.subscribe = this.route.params
+    this.subscription = this.route.params
       .pipe(
         switchMap((params: Params) => this.productService.getProductsById(+params['id']) 
       ))
