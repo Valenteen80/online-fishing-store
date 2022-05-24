@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { ButtonLabel } from 'src/app/enums/button-label-enum';
 import { RouteName } from 'src/app/enums/route-name-enun';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -9,13 +10,14 @@ import { AuthService } from 'src/app/services/auth/auth.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
   public isPanelProfile: boolean = false;
   public avatarImgAltAttributeValue: string = 'photo';
   public profilePicture: string = 'assets/img/profile_picture.png';
   public profileButtonTitle: string = ButtonLabel.PROFILE;
   public logOutButtonTitle: string = ButtonLabel.LOG_OUT;
   public isActiveButtonsLogout: boolean = true;
+  private subscribe: Subscription;
 
   constructor(
     private router: Router,
@@ -23,9 +25,13 @@ export class ProfileComponent implements OnInit {
     ) {} 
 
   ngOnInit(): void {
-      this.authService.isUserLoggedIn.subscribe((value: boolean) => {
-        this.isActiveButtonsLogout = value;
+    this.subscribe = this.authService.isUserLoggedIn.subscribe((value: boolean) => {
+      this.isActiveButtonsLogout = value;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscribe.unsubscribe();
   }
 
   public togglePanelProfile(): void {

@@ -1,18 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RouteName } from 'src/app/enums/route-name-enun';
 import { ButtonLabel } from 'src/app/enums/button-label-enum';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product/product.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
   styleUrls: ['./shopping-cart.component.scss'],
 })
-export class ShoppingCartComponent implements OnInit {
+export class ShoppingCartComponent implements OnInit, OnDestroy {
   public shoppingCartButtonTitle: string = ButtonLabel.SHOPPING_CART;
   public amountProductsAddedShoppingCart: number;
+  private subscribe: Subscription;
 
   constructor(
     private productService: ProductService,
@@ -20,9 +22,13 @@ export class ShoppingCartComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
-    this.productService.getProductsInShoppingCart().subscribe((products: Product[]) => {
+    this.subscribe = this.productService.getProductsInShoppingCart().subscribe((products: Product[]) => {
       this.amountProductsAddedShoppingCart = products.length;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscribe.unsubscribe();
   }
 
   public redirectToShoppingCartPage(): void {

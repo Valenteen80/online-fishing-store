@@ -1,5 +1,6 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { RouteName } from 'src/app/enums/route-name-enun';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product/product.service';
@@ -9,8 +10,9 @@ import { ProductService } from 'src/app/services/product/product.service';
   templateUrl: './favorite-products.component.html',
   styleUrls: ['./favorite-products.component.scss']
 })
-export class FavoriteProductsComponent implements OnInit {
+export class FavoriteProductsComponent implements OnInit, OnDestroy {
   public favoriteProducts: Product[];
+  private subscribe: Subscription;
 
   constructor(
     private productService: ProductService,
@@ -21,6 +23,10 @@ export class FavoriteProductsComponent implements OnInit {
     this.getFavoriteItems();
   }
 
+  ngOnDestroy(): void {
+    this.subscribe.unsubscribe();
+  }
+
   public removeFromFavorites(favoriteProduct: Product): void {
     favoriteProduct.isFavorite = false;
     this.productService.updateProduct(favoriteProduct);
@@ -28,7 +34,7 @@ export class FavoriteProductsComponent implements OnInit {
   }
 
   private getFavoriteItems(): void {
-    this.productService.getFavoriteProducts().subscribe((products: Product[]) => {
+    this.subscribe = this.productService.getFavoriteProducts().subscribe((products: Product[]) => {
       this.favoriteProducts = products;
     });
   }

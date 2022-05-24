@@ -1,21 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product/product.service';
 import { switchMap } from 'rxjs/operators'; 
 import { ButtonLabel } from 'src/app/enums/button-label-enum';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-product-details-page',
   templateUrl: './product-details-page.component.html',
   styleUrls: ['./product-details-page.component.scss']
 })
-export class ProductDetailsPageComponent implements OnInit {
+export class ProductDetailsPageComponent implements OnInit, OnDestroy {
 
   public product: Product;
   public productAltImgAttribute: string = 'photo';
   public shoppingCartButtonText: string = ButtonLabel.TO_SHOPPING_CART;
   public favoritesButtonText: string = ButtonLabel.FAVORITES;
+  private subscribe: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,6 +34,10 @@ export class ProductDetailsPageComponent implements OnInit {
     if(this.product.isFavorite) {
       this.favoritesButtonText = ButtonLabel.ADDED_TO_FAVORITES;
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subscribe.unsubscribe();
   }
 
   public addShoppingCart(product: Product): void {
@@ -54,7 +60,7 @@ export class ProductDetailsPageComponent implements OnInit {
   }
 
   private getProductById(): void {
-    this.route.params
+    this.subscribe = this.route.params
       .pipe(
         switchMap((params: Params) => this.productService.getProductsById(+params['id']) 
       ))

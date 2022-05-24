@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-  public api: string = environment.apiUrl;
+  private api: string = environment.apiUrl;
   private token: string = null;
   public isUserLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
@@ -19,7 +19,7 @@ export class AuthService {
     private jwtHelper: JwtHelperService 
     ) { }
 
-  public login(email: string, password: string): Observable <Token> {
+  public login(email: string, password: string): Observable<Token> {
     return this.http.post<{token: string}>(`${this.api}/authenticate`, {email: email, password: password})
       .pipe(
         tap(

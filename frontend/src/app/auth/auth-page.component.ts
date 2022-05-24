@@ -38,12 +38,12 @@ export class AuthPageComponent implements OnInit {
     }
   }
 
-  get _email() {
-    return this.form.get('email')
+  public get email() {
+    return this.form.get('email');
   }
 
-  get _password() {
-    return this.form.get('password')
+  public get password() {
+    return this.form.get('password');
   }
 
   public onSubmit(): void {

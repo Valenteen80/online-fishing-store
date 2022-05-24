@@ -13,11 +13,10 @@ export class AppComponent implements OnInit {
   constructor(private authService: AuthService){}
 
   ngOnInit(): void {
-    const token = localStorage.getItem(LocalStorageKey.AUTH_TOKEN);
+    const token: string = localStorage.getItem(LocalStorageKey.AUTH_TOKEN);
 
     if(token) {
       this.authService.setToken(token);
     }
   }
-  
 }
