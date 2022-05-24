@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RouteName } from './enums/route-name-enun';
+import { AuthPageGuardService } from './services/auth-page-guard/auth-page-guard.service';
 
 const routes: Routes = [
   {
@@ -15,7 +16,8 @@ const routes: Routes = [
     loadChildren: () =>
       import('./auth/auth-page.module').then(
         (m) => m.AuthPageModule
-      ),
+      ), 
+      canActivate: [AuthPageGuardService]
   }
 ];
 @NgModule({
