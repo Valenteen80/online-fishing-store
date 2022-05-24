@@ -1,0 +1,21 @@
+<button class="button_profile" (click)="togglePanelProfile()">
+  <img
+    class="button__img"
+    [src]="profilePicture"
+    [alt]="avatarImgAltAttributeValue"
+  />
+</button>
+<div
+  class="profile-menu"
+  (click)="togglePanelProfile()"
+  *ngIf="isPanelProfile"
+>
+  <app-button 
+    [title]="profileButtonTitle" 
+    (click)="redirectToProfilePage()"
+  ></app-button>
+  <app-button *ngIf="isActiveButtonsLogout"
+    [title]="logOutButtonTitle"
+    (click)="logout()"
+    ></app-button>
+</div>

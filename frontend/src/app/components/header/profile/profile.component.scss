@@ -1,0 +1,27 @@
+@import "../../../../assets/scss/colors";
+@import "../../../../assets/scss/mixins";
+
+.button_profile {
+  padding: 0;
+  height: 30px;
+  width: 30px;
+  position: relative;
+
+  &:hover {
+    @include button-hover;
+  }
+
+  .button__img {
+    height: 100%;
+  }
+}
+
+.profile-menu {
+  @include display-flex($center, $center);
+  position: absolute;
+  width: 205px;
+  height: 30px;
+  left: 80%;
+  top: 45px;
+  left: calc(100% - 240px);
+}
