@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute, ActivatedRouteSnapshot, Params, Resolve, Router, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { RouteName } from 'src/app/enums/route-name-enun';
 import { Product } from 'src/app/interfaces/product';
@@ -14,7 +14,7 @@ export class ResolverService implements Resolve<Product> {
     private router: Router,
   ) { }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Product> {      
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Product> {    
     let product    
     this.productService.getProductsById(+route.params['id'])
       .subscribe((data: Product) => product = data);
@@ -23,6 +23,6 @@ export class ResolverService implements Resolve<Product> {
       this.router.navigate([RouteName.ROOT])
     }
 
-    return of(product)
+    return of(product);
   }
 }
