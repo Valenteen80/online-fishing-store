@@ -8,13 +8,13 @@ import { ProductService } from '../product/product.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ResolverService implements Resolve<any> {
+export class ResolverService implements Resolve<Product> {
   constructor(
     private productService: ProductService,
     private router: Router,
   ) { }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {      
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Product> {      
     let product    
     this.productService.getProductsById(+route.params['id'])
       .subscribe((data: Product) => product = data);

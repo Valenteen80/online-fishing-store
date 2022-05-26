@@ -38,6 +38,10 @@ export class AuthService {
     }
   }
 
+  public getToken(): string {
+    return this.token;
+  }
+
   public checkToken(): void {
     if(this.jwtHelper.isTokenExpired(this.token)) {
       this.logout();
