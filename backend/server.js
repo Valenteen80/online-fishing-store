@@ -16,7 +16,7 @@ app.post('/api/authenticate', (reg,res) => {
         let user = reg.body;
 
         if (testUser.email === user.email && testUser.password === user.password) {
-            let token = jwt.sign(user, JWT_Secret, {expiresIn: 30});
+            let token = jwt.sign(user, JWT_Secret, {expiresIn: 60 * 30});
             res.status(200).send({token: token});
         } else if (testUser.email !== user.email){
             res.status(403).send({

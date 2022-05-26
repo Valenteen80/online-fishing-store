@@ -18,22 +18,22 @@ const routes: Routes = [
         path: RouteName.PRODUCT_DETAILS,
         loadChildren: () =>
           import('../pages/product-details-page/product-details.module').then(
-            (m) => m.ProductDetailsModule
-          ), canActivateChild: [GeneralGuardService],
+            (m) => m.ProductDetailsModule), 
+            canActivateChild: [GeneralGuardService],
       },
       {
         path: RouteName.PROFILE,
         loadChildren: () =>
           import('../pages/profile-page/profile-page.module').then(
-            (m) => m.ProfilePageModule
-          ), canActivateChild: [GeneralGuardService],
+            (m) => m.ProfilePageModule), 
+            canActivateChild: [GeneralGuardService],
       },
       {
         path: RouteName.SHOPPING_CART,
         loadChildren: () =>
           import('../pages/shopping-cart-page/shopping-cart.module').then(
-            (m) => m.ShoppingCartModule
-          ), canActivateChild: [GeneralGuardService],
+            (m) => m.ShoppingCartModule), 
+            canActivateChild: [GeneralGuardService],
       },
     ],
   },

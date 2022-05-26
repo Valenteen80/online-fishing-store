@@ -18,7 +18,7 @@ const routes: Routes = [
         (m) => m.AuthPageModule
       ), 
       canActivate: [AuthPageGuardService]
-  }
+  },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
