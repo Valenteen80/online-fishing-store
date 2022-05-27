@@ -19,6 +19,9 @@ const routes: Routes = [
       ), 
       canActivate: [AuthPageGuardService]
   },
+  {
+    path: "**", redirectTo: ''
+  },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
