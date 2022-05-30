@@ -54,8 +54,6 @@ export class ProductDetailsPageComponent implements OnInit {
   }
 
   private getProductById(): void {
-    this.route.data.subscribe((data: DataProduct) => {
-      this.product = data.product;
-    });
+    this.route.data.subscribe((data: DataProduct) => this.product = data.product);
   }
 }
