@@ -42,10 +42,8 @@ export class AuthService {
     return this.token;
   }
 
-  public checkToken(): void {
-    if(this.jwtHelper.isTokenExpired(this.token)) {
-      this.logout();
-    }
+  public checkTokenExpire(): boolean {
+    return this.jwtHelper.isTokenExpired(this.token); 
   }
 
   public decodeToken(): DecodedToken {
@@ -57,8 +55,6 @@ export class AuthService {
   }
 
   public isAuthenticated(): boolean {
-    this.checkToken();
-
     return !!this.token;
   }
 
@@ -67,5 +63,4 @@ export class AuthService {
     localStorage.clear();
     this.isUserLoggedIn.next(false);
   }
-
 }

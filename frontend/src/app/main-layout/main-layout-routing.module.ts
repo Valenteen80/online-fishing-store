@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RouteName } from '../enums/route-name-enun';
-import { GeneralGuardService } from '../services/general-guard/general-guard.service';
+import { RouteName } from '../enums/route-name-enum';
+import { GeneralGuardService } from '../guards/general-guard/general-guard.service';
 import { MainLayoutComponent } from './main-layout.component';
 
 const routes: Routes = [

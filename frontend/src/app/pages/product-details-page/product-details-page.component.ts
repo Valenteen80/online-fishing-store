@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product/product.service'; 
 import { ButtonLabel } from 'src/app/enums/button-label-enum';
+import { DataProduct } from 'src/app/interfaces/data-product';
 
 @Component({
   selector: 'app-product-details-page',
@@ -53,6 +54,8 @@ export class ProductDetailsPageComponent implements OnInit {
   }
 
   private getProductById(): void {
-    this.route.data.subscribe(data => this.product = data['product']);
+    this.route.data.subscribe((data: DataProduct) => {
+      this.product = data.product;
+    });
   }
 }

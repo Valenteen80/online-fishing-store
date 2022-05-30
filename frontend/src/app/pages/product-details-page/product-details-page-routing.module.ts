@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ResolverService } from 'src/app/services/resolver-servis/resolver.service';
+import { ProductResolver } from 'src/app/services/product-resolver/product-resolver.service';
 import { ProductDetailsPageComponent } from './product-details-page.component';
 
 const routes: Routes = [
@@ -8,7 +8,7 @@ const routes: Routes = [
     path: ':id', 
     component: ProductDetailsPageComponent,
     resolve: {
-      product: ResolverService
+      product: ProductResolver
     }
   },
 ];

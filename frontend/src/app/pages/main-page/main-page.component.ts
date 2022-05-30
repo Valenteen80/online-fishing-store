@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RouteName } from 'src/app/enums/route-name-enun';
+import { RouteName } from 'src/app/enums/route-name-enum';
 import { ButtonValue } from 'src/app/enums/button-value-enum';
 import { Category } from 'src/app/interfaces/category';
 import { Product } from 'src/app/interfaces/product';
