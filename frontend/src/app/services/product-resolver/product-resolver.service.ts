@@ -20,8 +20,8 @@ resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<P
   return this.productService.getProducts()
     .pipe(
       map((products: Product[])=> {
-        const currentProduct = products.find((product: Product) => {
-        return id === product.id;
+        const currentProduct: Product = products.find((product: Product) => {
+          return id === product.id;
         });
     
         if(!currentProduct){
