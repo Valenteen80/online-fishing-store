@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ButtonLabel } from 'src/app/enums/button-label-enum';
-import { RouteName } from 'src/app/enums/route-name-enun';
+import { RouteName } from 'src/app/enums/route-name-enum';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ButtonLabel } from 'src/app/enums/button-label-enum';
 import { ButtonValue } from 'src/app/enums/button-value-enum';
-import { RouteName } from 'src/app/enums/route-name-enun';
+import { RouteName } from 'src/app/enums/route-name-enum';
 import { Tab } from 'src/app/interfaces/tab';
 
 @Component({

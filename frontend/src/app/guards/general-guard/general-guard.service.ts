@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { RouteName } from 'src/app/enums/route-name-enun';
-import { AuthService } from '../auth/auth.service';
+import { RouteName } from 'src/app/enums/route-name-enum';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuardService implements CanActivate, CanActivateChild {
+export class GeneralGuardService implements CanActivate, CanActivateChild {
 
   constructor(
     private authService: AuthService, 
@@ -15,10 +15,12 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
   ) { } 
 
   public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    if(this.authService.isAuthenticated()) {
+    if(this.authService.isAuthenticated() && !this.authService.checkTokenExpire()) {
       return of(true);
     } else {
-      this.router.navigate([RouteName.AUTH], {queryParams: {accessDenied: true}});
+      this.authService.logout();
+      this.router.navigate([RouteName.AUTH]);
+
       return of(false);
     }
   }
@@ -26,5 +28,4 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
   public canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):  Observable<boolean> {
     return this.canActivate(route, state);
   }
-
 }

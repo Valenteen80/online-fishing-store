@@ -6,7 +6,7 @@ import { catchError, filter, of } from 'rxjs';
 import { ButtonLabel } from 'src/app/enums/button-label-enum';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { NotificationText } from '../enums/notification-text-enum';
-import { RouteName } from '../enums/route-name-enun';
+import { RouteName } from '../enums/route-name-enum';
 
 @Component({
   selector: 'app-auth-page',

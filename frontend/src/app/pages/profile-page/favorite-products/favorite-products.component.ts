@@ -1,7 +1,7 @@
 import { Component, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { RouteName } from 'src/app/enums/route-name-enun';
+import { RouteName } from 'src/app/enums/route-name-enum';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product/product.service';
 

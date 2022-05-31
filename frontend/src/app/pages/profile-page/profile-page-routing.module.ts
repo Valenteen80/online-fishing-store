@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProfilePageComponent } from './profile-page.component';
-import { RouteName } from 'src/app/enums/route-name-enun';
+import { RouteName } from 'src/app/enums/route-name-enum';
 
 const routes: Routes = [
   {

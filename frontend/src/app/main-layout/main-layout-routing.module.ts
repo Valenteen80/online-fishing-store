@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RouteName } from '../enums/route-name-enun';
+import { RouteName } from '../enums/route-name-enum';
+import { GeneralGuardService } from '../guards/general-guard/general-guard.service';
 import { MainLayoutComponent } from './main-layout.component';
 
 const routes: Routes = [
@@ -17,22 +18,22 @@ const routes: Routes = [
         path: RouteName.PRODUCT_DETAILS,
         loadChildren: () =>
           import('../pages/product-details-page/product-details.module').then(
-            (m) => m.ProductDetailsModule
-          ),
+            (m) => m.ProductDetailsModule), 
+            canActivateChild: [GeneralGuardService],
       },
       {
         path: RouteName.PROFILE,
         loadChildren: () =>
           import('../pages/profile-page/profile-page.module').then(
-            (m) => m.ProfilePageModule
-          ), 
+            (m) => m.ProfilePageModule), 
+            canActivateChild: [GeneralGuardService],
       },
       {
         path: RouteName.SHOPPING_CART,
         loadChildren: () =>
           import('../pages/shopping-cart-page/shopping-cart.module').then(
-            (m) => m.ShoppingCartModule
-          ), 
+            (m) => m.ShoppingCartModule), 
+            canActivateChild: [GeneralGuardService],
       },
     ],
   },
