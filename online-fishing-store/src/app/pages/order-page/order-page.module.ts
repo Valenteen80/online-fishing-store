@@ -8,6 +8,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     OrderPageRoutingModule,
     SharedModule,
-    ]
+  ]
 })
 export class OrderPageModule { }

@@ -46,7 +46,6 @@ export class OrderPageComponent implements OnInit {
   }
 
   public showNotification(): void {
-    this.notificationService.showSuccess(ReportMessage.SUCCESS_CHECKOUT,'', 3000);
+    this.notificationService.showSuccess(ReportMessage.SUCCESS_CHECKOUT, 3000);
   }
-
 }

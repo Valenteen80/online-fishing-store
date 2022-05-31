@@ -5,7 +5,6 @@ import { ButtonComponent } from './components/button/button.component';
 
 @NgModule({
   declarations: [ButtonComponent],
-
   imports: [CommonModule, FormsModule],
   exports: [CommonModule, FormsModule, ButtonComponent],
 })

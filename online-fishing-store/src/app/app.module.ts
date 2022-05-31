@@ -12,7 +12,7 @@ import { ToastrModule } from 'ngx-toastr';
     AppRoutingModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot()
-    ],
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
