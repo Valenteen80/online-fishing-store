@@ -10,7 +10,7 @@ export class NotificationService {
     private toastr: ToastrService
   ) { }
 
-  public showSuccess(message, timespan, title = ''): void {
+  public showSuccess(message, timespan, title?): void {
     this.toastr.success(message, title, {
       timeOut:  timespan,
       progressBar: true,
@@ -18,7 +18,7 @@ export class NotificationService {
     });
   }
 
-  public showError(message, timespan, title = ''): void {
+  public showError(message, timespan, title?): void {
     this.toastr.error(message, title, {
       timeOut:  timespan,
       progressBar: true,
@@ -26,7 +26,7 @@ export class NotificationService {
     });
   }
 
-  public showInfo(message, timespan, title = ''): void {
+  public showInfo(message, timespan, title?): void {
     this.toastr.info(message, title, {
       timeOut:  timespan,
       progressBar: true,
