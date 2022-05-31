@@ -16,10 +16,21 @@
         font-size: 1.2rem;
 
         .form-control {
+            @include display-flex($spaceBetween, $flexStart);
+            flex-direction: column;
             border: 0.5px solid $yellow;
             margin-bottom: 10px;
+            height: 55px;
             .container {
                 @include display-flex($flexStart, $center);
+            }
+
+            .input__error {
+                color: $red;
+            }
+            
+            .input__error::placeholder {
+                color: $red;
             }
 
             .inputAddress {

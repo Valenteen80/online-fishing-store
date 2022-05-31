@@ -6,6 +6,7 @@ import { UserService } from 'src/app/services/users/user.service';
 import { COUNTRIES } from '../profile-page/personal-data/countries';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { ReportMessage } from 'src/app/enums/report-message-enum';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-order-page',
@@ -13,34 +14,57 @@ import { ReportMessage } from 'src/app/enums/report-message-enum';
   styleUrls: ['./order-page.component.scss']
 })
 export class OrderPageComponent implements OnInit {
-  public user: User = {} as User;
+  public user: User;
   public countries: string[] = COUNTRIES;
   public headerValue: string = 'информация о доставке';
-  public notificationValue: string = 'Ваш заказ успешно оформлен, спасибо за покупку.';
-  public isEditFirstName: boolean = true;
-  public isEditLastName: boolean = true;
-  public isEditCountry: boolean = true;
-  public isEditAddress: boolean = true;
-  public isEditPhoneNumber: boolean = true;
   public checkoutButtonTitle: string = ButtonLabel.CHECKOUT;
+  public form: FormGroup;
 
   constructor(
     public userService: UserService,
     private router: Router,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private formBuilder: FormBuilder,
   ) { }
 
   ngOnInit(): void {
     this.getUser();
+    this.form = this.formBuilder.group({
+      firstName: [this.user.firstName, [Validators.required]],
+      lastName: [this.user.lastName, [Validators.required]],
+      country: [this.user.country, [Validators.required]],
+      address: [this.user.address, [Validators.required]],
+      phoneNumber: [this.user.phoneNumber, [Validators.required, Validators.pattern('[0-9]{3} [0-9]{2} [0-9]{7}')]],
+    })
   }
 
-  public getUser(): void{
+  public getUser(): void {
     this.userService.getUser().subscribe((user: User) => {
         this.user = user;
       })
   }
 
-  public redirectToMainPage(): void {
+  public get firstName() {
+    return this.form.get('firstName');
+  }
+
+  public get lastName() {
+    return this.form.get('lastName');
+  }
+
+  public get country() {
+    return this.form.get('country');
+  }
+
+  public get address() {
+    return this.form.get('address');
+  }
+
+  public get phoneNumber() {
+    return this.form.get('phoneNumber');
+  }
+
+  public onSubmit(): void {
     this.router.navigate(['']);
     this.showNotification();
   }
