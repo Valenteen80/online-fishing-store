@@ -30,10 +30,10 @@ export class OrderPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser();
-    this.formBuild();
+    this.buildForm();
   }
 
-  public formBuild(): void {
+  public buildForm(): void {
     this.form = this.formBuilder.group({
       firstName: [this.user.firstName, [Validators.required]],
       lastName: [this.user.lastName, [Validators.required]],
