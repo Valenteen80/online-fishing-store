@@ -7,6 +7,7 @@ import { COUNTRIES } from '../profile-page/personal-data/countries';
 import { NotificationService } from 'src/app/services/notification/notification.service';
 import { ReportMessage } from 'src/app/enums/report-message-enum';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormValidators } from 'src/app/utils/form-validators';
 
 @Component({
   selector: 'app-order-page',
@@ -29,13 +30,17 @@ export class OrderPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser();
+    this.formBuild();
+  }
+
+  public formBuild(): void {
     this.form = this.formBuilder.group({
       firstName: [this.user.firstName, [Validators.required]],
       lastName: [this.user.lastName, [Validators.required]],
       country: [this.user.country, [Validators.required]],
       address: [this.user.address, [Validators.required]],
-      phoneNumber: [this.user.phoneNumber, [Validators.required, Validators.pattern('[0-9]{3} [0-9]{2} [0-9]{7}')]],
-    })
+      phoneNumber: [this.user.phoneNumber, [Validators.required, Validators.pattern(FormValidators.phoneNumberPattern())]],
+    });
   }
 
   public getUser(): void {
