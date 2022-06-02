@@ -201,4 +201,3 @@ export const COUNTRIES: Array<string> = [
   "Ямайка",
   "Япония",
 ];
-
