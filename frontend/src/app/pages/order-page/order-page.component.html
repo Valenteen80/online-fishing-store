@@ -1,0 +1,116 @@
+<div class="order">
+    <h2 class="header">{{headerValue}}</h2> 
+    <form class="form"
+        [formGroup]="form"
+        > 
+        <div class="firstName form-control">
+            <div class="container" >
+                <h2 class="value" >{{firstName.value}}</h2>
+            </div>
+            <div>
+                <input type="text"
+                    formControlName="firstName"
+                    placeholder="firstName"
+                    [ngClass]="{'input__error': firstName.invalid && firstName.touched}"
+                    >
+                <span class="input__error"
+                    *ngIf="firstName.invalid && firstName.touched"
+                    >
+                    <span *ngIf="firstName.errors['required']">
+                        Введите имя
+                    </span>
+                </span>    
+            </div>
+        </div>
+        <div class="lastName form-control">
+            <div class="container">
+                <h2 class="value">{{lastName.value}}</h2>
+            </div>
+            <div>
+                <input type="text"
+                    formControlName="lastName"
+                    placeholder="lastName"
+                    [ngClass]="{'input__error': lastName.invalid && lastName.touched}"
+                    >
+                <span class="input__error"
+                    *ngIf="lastName.invalid && lastName.touched"
+                    >
+                    <span *ngIf="lastName.errors['required']">
+                        Введите фамилию
+                    </span>
+                </span>    
+            </div>
+        </div>
+        <div class="country form-control">
+            <div class="container">
+                <h2 class="value">{{country.value}}</h2>
+            </div>
+            <div>
+                <select
+                    formControlName="country"
+                    [ngClass]="{'input__error': country.invalid && country.touched}"
+                    >
+                    <option *ngFor="let country of countries; let i = index " [disabled]="i === 0">{{country}}</option>
+                </select>
+                <span class="input__error"
+                    *ngIf="country.invalid && country.touched"
+                    >
+                    <span *ngIf="country.errors['required']">
+                        Выберите страну
+                    </span>
+                </span>    
+            </div>
+        </div>
+        <div class="address form-control">
+            <div class="container">
+                <h2 class="value">{{address.value}}</h2>
+            </div>
+            <div>
+                <input 
+                    class="inputAddress"
+                    placeholder="address"
+                    formControlName="address"
+                    type="text" 
+                    [ngClass]="{'input__error': address.invalid && address.touched}"
+                >
+                <span class="input__error"
+                    *ngIf="address.invalid && address.touched"
+                    >
+                    <span *ngIf="address.errors['required']">
+                        Введите адрес
+                    </span>
+                </span>    
+            </div>
+        </div>
+        <div class="phoneNumber form-control">
+            <div class="container">
+                <h2 class="value"> {{phoneNumber.value}}</h2>
+            </div>
+            <div>
+                <input 
+                    formControlName="phoneNumber"
+                    appPhoneMask
+                    placeholder="phoneNumber"
+                    type="tel"
+                    [ngClass]="{'input__error': phoneNumber.invalid && phoneNumber.touched}" 
+                    >
+                <span class="input__error"
+                    *ngIf="phoneNumber.invalid && phoneNumber.touched"
+                    >
+                    <span *ngIf="phoneNumber.errors['required']">
+                        Введите номер телефона
+                    </span>
+                    <span *ngIf="phoneNumber.errors['pattern']">
+                        Формат ввода: "XXX ХХ XXXXXXX"
+                    </span>
+                </span>    
+            </div>
+        </div> 
+        <div class="checkout">
+            <app-button 
+                [title]="checkoutButtonTitle" 
+                (click)="onSubmit()"
+            ></app-button>    
+        </div>
+    </form>
+</div>

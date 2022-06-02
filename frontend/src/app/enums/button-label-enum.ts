@@ -11,5 +11,6 @@ export enum ButtonLabel {
   PROFILE = 'профиль',
   LOG_OUT = 'выйти',
   LOG_IN = 'вход',
+  CHECKOUT = 'купить',
   ORDER = 'оформить заказ'
 }

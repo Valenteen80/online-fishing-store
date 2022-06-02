@@ -35,6 +35,13 @@ const routes: Routes = [
             (m) => m.ShoppingCartModule), 
             canActivateChild: [GeneralGuardService],
       },
+      {
+        path: RouteName.ORDER,
+        loadChildren: () =>
+          import('../pages/order-page/order-page.module').then(
+            (m) => m.OrderPageModule
+          ),
+      },
     ],
   },
 ];

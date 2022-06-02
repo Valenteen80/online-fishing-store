@@ -5,13 +5,17 @@ import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS }   from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { TokenInterceptorService } from './services/token-interceptor/token-interceptor.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule, 
-    AppRoutingModule, 
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     HttpClientModule, 
     JwtModule.forRoot({
       config: {},

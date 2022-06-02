@@ -1,0 +1,50 @@
+@import "../../../assets/scss/colors";
+@import "../../../assets/scss/variables";
+@import "../../../assets/scss/mixins";
+
+.order {
+    margin: 20px;
+
+    .header {
+        color: $brown;
+        font-size: 2.2rem;
+        text-transform:uppercase;
+    }
+    
+    .form {
+        color: $brown;
+        font-size: 1.2rem;
+
+        .form-control {
+            @include display-flex($spaceBetween, $flexStart);
+            flex-direction: column;
+            border: 0.5px solid $yellow;
+            margin-bottom: 10px;
+            height: 55px;
+            .container {
+                @include display-flex($flexStart, $center);
+            }
+
+            .input__error {
+                color: $red;
+            }
+            
+            .input__error::placeholder {
+                color: $red;
+            }
+
+            .inputAddress {
+                width: 350px;
+            }
+
+            .value {
+                margin: 5px;
+            }
+        }
+
+        .checkout {
+            @include display-flex($flexEnd, $center);
+             margin: 5px;
+        }
+    }
+}
