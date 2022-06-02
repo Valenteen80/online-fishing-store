@@ -1,0 +1,61 @@
+<form class="auth"
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+    >
+    <h2 class="header">Авторизация</h2>
+    <div class="controls">
+        <div class="email">
+            <div class="label-input__wrapper">
+                <label class="label" for="email">Email</label>
+                <input type="email" 
+                    id="email"
+                    formControlName="email"
+                    placeholder="Email" 
+                    [ngClass]="{'label-input__error': form.get('email').invalid && form.get('email').touched}"
+                    >    
+            </div>
+            <span class="error-text"
+                *ngIf="email.invalid && email.touched"
+                >
+                <span *ngIf="email.errors['required']">
+                    Email не должен быть пустым
+                </span>
+                <span *ngIf="email.errors['email']">
+                    Введите корректный email адрес
+                </span>
+            </span>
+        </div>
+        <div class="password">
+            <div class="label-input__wrapper">
+                <label class="label" for="password">Password</label>
+                <input class="form-control" 
+                    type="password" 
+                    id="password"
+                    formControlName="password"
+                    placeholder="Password" 
+                    [ngClass]="{'label-input__error': form.get('password').invalid && form.get('password').touched}"
+                    >
+            </div>
+            <span class="error-text"
+                *ngIf="password.invalid && password.touched"
+                >
+                <span *ngIf="password.errors['required']">
+                    Пароль не должен быть пустым
+                </span>
+                <span *ngIf="password.errors['minlength']">
+                    Пароль должен быть  больше {{password.errors['minlength']['requiredLength']}} символов
+                    сейчас {{password.errors['minlength']['actualLength']}}
+                </span>
+            </span>
+        </div>
+    </div>
+    <div>
+        <app-button 
+            type="submit" 
+            [title]="logInButtonTitle"
+            [disabled]="form.invalid || form.disabled"
+            >
+        </app-button>
+    </div>
+    <span *ngIf="notification">{{notification}}</span>
+</form>

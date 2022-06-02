@@ -1,0 +1,32 @@
+@import "../../assets/scss/colors";
+@import "../../assets/scss/variables";
+@import "../../assets/scss/mixins";
+
+.auth {
+    @include display-flex($spaceBetween, $center);
+    flex-direction: column;
+    font-size: 1.8rem;
+    color: $brown;
+
+    .email, .password {
+        @include display-flex($spaceBetween, $center);
+        flex-direction: column;
+        height: 38px;
+        margin-bottom: 10px;
+        
+        .label-input__wrapper {
+            @include display-flex($spaceBetween, $center);
+            width: 260px;
+        }
+
+        .label-input__error {
+            color: $red;
+        }
+            
+        .error-text {
+            font-size: 1.2rem;
+            color: $red;
+            border-color: $red;
+        }
+    }
+}
