@@ -1,0 +1,74 @@
+<div class="product">
+        <img
+            class="product__img"
+            [src]="product.img"
+            [alt]="productAltImgAttribute"
+            />
+    <div class="product__info-wrapper">
+        <div class="control">
+            <h3 class="product__name" *ngIf="!isChangeProduct">
+                {{ product.name }}
+            </h3>
+            <textarea 
+                class="input"
+                type="text"
+                *ngIf="isChangeProduct"
+                [(ngModel)]="product.name"
+                >
+            </textarea>
+        </div>
+        <div class="control">
+            <p  *ngIf="!isChangeProduct">
+                {{ product.description }}
+            </p>
+            <textarea
+                class="input"
+                type="text"
+                *ngIf="isChangeProduct"
+                [(ngModel)]="product.description"
+                >
+            </textarea>
+        </div>
+        <div class="control">
+            <span>Цена: 
+                <span *ngIf="isChangeProduct">$</span>
+                <span *ngIf="!isChangeProduct"> {{ product.price | currency: "USD":"symbol-narrow":"1.2" }}</span>
+            </span>
+            <input 
+                class="input input-price"
+                type="number"
+                *ngIf="isChangeProduct"
+                [(ngModel)]="product.price"
+                >
+        </div>
+        <label *ngIf="isChangeProduct"> 
+            Url изображения
+            <input 
+                type="text"
+                [(ngModel)]="product.img"
+                >
+        </label>
+        <div class="buttons">
+            <app-button
+                *ngIf="!isChangeProduct"
+                class="product__button"
+                [title]="changeProductButtonText"
+                (click)="changeProduct()"
+                >
+            </app-button>
+            <app-button
+                *ngIf="isChangeProduct"
+                class="product__button"
+                [title]="saveChangesButtonText"
+                (click)="updateProduct(product)"
+                >
+            </app-button>
+            <app-button
+                class="product__button"
+                [title]="removingProductButtonText"
+                (click)="removeProduct(product)"
+                >
+            </app-button>
+        </div>
+    </div>
+</div>

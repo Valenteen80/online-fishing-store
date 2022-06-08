@@ -1,5 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable, of} from 'rxjs';
+import { BehaviorSubject, map, Observable, of } from 'rxjs';
 import { Product } from 'src/app/interfaces/product';
 import { PRODUCTS } from 'src/app/mocks/mock-products';
 import { SortService } from '../sort/sort.service';
@@ -7,13 +8,39 @@ import { SortService } from '../sort/sort.service';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ProductService{
   public products: Product[] = PRODUCTS;
-  public products$: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>(this.products);
+  public products$: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
 
   constructor(
     public sortServise: SortService,
+    public http: HttpClient
   ) {}
+  
+  public addProducts(product: Product): Observable<Product> {
+    return this.http.post<Product>('http://localhost:3333/', product);
+  }
+
+  public deleteProducts(product: Product): Observable<Product> {
+    return this.http.delete<Product>(`http://localhost:3333/${product.id}`);
+  }
+
+  public changeProduct(product: Product): Observable<Product> {
+    return this.http.put<Product>(`http://localhost:3333/`, product);
+  }
+
+  public getProductsFromServer(): Observable<Product[]> {
+    return  this.http.get<Product[]>('http://localhost:3333/')
+    .pipe(
+      map((products: Product[]) => {
+        this.products = products;
+        this.products$.next(products);
+        return this.products;
+        }
+      )
+    )
+  }
 
   public getProducts(): Observable<Product[]>{
     return of(this.products).pipe(map(products => this.sortServise.sortByFavorites(products)))

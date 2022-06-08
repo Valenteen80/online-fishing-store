@@ -30,11 +30,11 @@ export class MainPageComponent implements OnInit {
     private router: Router
     ) {}
 
-    ngOnInit(): void {
+  ngOnInit(): void {
       this.getProducts();
-    }
+  }
 
-  public getProducts(): void{
+  public getProducts(): void {
     this.productService.getProducts().subscribe((products:Product[]) => {
         this.products = products;
         this.іnitialProducts = products;

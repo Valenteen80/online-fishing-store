@@ -1,0 +1,68 @@
+<div class="add-product__button"
+    *ngIf="!isAddProduct"
+    >
+    <app-button
+        [title]="addingProductButtonText"
+        (click)="addProduct()"
+        >
+    </app-button>
+</div>
+<div 
+    *ngIf="isAddProduct"
+    class="input-changes"
+    >
+    <div class="control">
+        <label for="name" >Название: </label>
+        <textarea 
+            class="input-name"
+            id="name"
+            type="text"
+            [(ngModel)]="newProduct.name"
+            >
+        </textarea>
+    </div>
+    <div class="control">
+        <label for="description">Описание:</label>
+        <textarea
+            class="input-description"
+            id="description"
+            type="text"
+            [(ngModel)]="newProduct.description"
+            >
+        </textarea>
+    </div>
+    <div class="control">
+        <label for="price">Цена: $</label>
+        <input 
+            class="input-price"
+            id="price"
+            type="number"
+            [(ngModel)]="newProduct.price"
+            >
+    </div>
+    <div class="control">
+        <label for="category-id">№ категории:</label>
+        <input 
+            class="input-category"
+            id="category-id"
+            type="number"
+            [(ngModel)]="newProduct.categoryId"
+            >
+    </div>
+    <div class="control">
+        <label for="img">Фото</label>
+        <input 
+            class="input-img"
+            id="img"
+            type="text"
+            [(ngModel)]="newProduct.img"
+            >
+    </div>
+    <div class="save-product__button">
+        <app-button
+            [title]="saveProductButtonText"
+            (click)="saveProduct()"
+            >
+        </app-button>        
+    </div>
+</div>

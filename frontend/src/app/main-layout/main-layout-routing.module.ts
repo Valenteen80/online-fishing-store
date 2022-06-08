@@ -42,6 +42,13 @@ const routes: Routes = [
             (m) => m.OrderPageModule
           ),
       },
+      {
+        path: RouteName.CONTENT_MANAGEMENT,
+        loadChildren: () =>
+          import('../pages/content-management/content-management.module').then(
+            (m) => m.ContentManagementModule
+          ),
+      },
     ],
   },
 ];
