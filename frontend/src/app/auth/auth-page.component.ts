@@ -62,7 +62,6 @@ export class AuthPageComponent implements OnInit {
     )
     .subscribe(() => {
       this.router.navigate([RouteName.ROOT]);
-      this.authService.checkAuthenticatedAdmin();
       this.notificationService.showInfo(`${NotificationText.SUCCESS_LOGGED} ${this.authService.getUserEmail()}`, 3000);
     });
   }

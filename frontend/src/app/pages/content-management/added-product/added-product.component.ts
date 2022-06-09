@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ButtonLabel } from 'src/app/enums/button-label-enum';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product/product.service';
@@ -33,8 +33,12 @@ export class AddedProductComponent {
   }
 
   public saveProduct(): void {
+    if (this.newProduct.img === 'img' || '') {
+      this.newProduct.img = 'https://img2.freepng.ru/20180621/gjg/kisspng-business-click-ecommerce-web-agency-service-plas-no-photo-5b2c46587cca02.9930178315296282485112.jpg';
+    } 
+
     this.productService.addProducts(this.newProduct)
-      .subscribe((response) => {
+      .subscribe(() => {
         this.isAddProduct = false;
         location.reload();
       });

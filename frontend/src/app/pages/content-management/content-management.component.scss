@@ -2,11 +2,7 @@
 @import "../../../assets/scss/variables";
 @import "../../../assets/scss/mixins";
 
-.products {
-@include break-point($small-desktops) {
-    max-width: 100%;
-  }
-  
+.products {  
   max-width: 100%;
   margin: 5px;
   border: 2px solid $yellow;

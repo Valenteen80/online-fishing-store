@@ -2,15 +2,16 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable, of } from 'rxjs';
 import { Product } from 'src/app/interfaces/product';
-import { PRODUCTS } from 'src/app/mocks/mock-products';
+import { environment } from 'src/environments/environment';
 import { SortService } from '../sort/sort.service';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class ProductService{
-  public products: Product[] = PRODUCTS;
+export class ProductService {
+  private productApi: string = environment.productApiUrl;
+  public products: Product[] = [];
   public products$: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
 
   constructor(
@@ -19,19 +20,19 @@ export class ProductService{
   ) {}
   
   public addProducts(product: Product): Observable<Product> {
-    return this.http.post<Product>('http://localhost:3333/', product);
+    return this.http.post<Product>(this.productApi, product);
   }
 
   public deleteProducts(product: Product): Observable<Product> {
-    return this.http.delete<Product>(`http://localhost:3333/${product.id}`);
+    return this.http.delete<Product>(`${this.productApi} ${product.id}`);
   }
 
   public changeProduct(product: Product): Observable<Product> {
-    return this.http.put<Product>(`http://localhost:3333/`, product);
+    return this.http.put<Product>(this.productApi, product);
   }
 
   public getProductsFromServer(): Observable<Product[]> {
-    return  this.http.get<Product[]>('http://localhost:3333/')
+    return  this.http.get<Product[]>(this.productApi)
     .pipe(
       map((products: Product[]) => {
         this.products = products;

@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-  private api: string = environment.apiUrl;
+  private authApi: string = environment.authApiUrl;
   private token: string = null;
   public isUserLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public isAdminLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
@@ -21,7 +21,7 @@ export class AuthService {
     ) { }
 
   public login(email: string, password: string): Observable<Token> {
-    return this.http.post<{token: string}>(`${this.api}/authenticate`, {email: email, password: password})
+    return this.http.post<{token: string}>(`${this.authApi}/authenticate`, {email: email, password: password})
       .pipe(
         tap(
           (token: Token) => {
@@ -36,6 +36,7 @@ export class AuthService {
     this.token = token;
     if(this.token) {
       this.isUserLoggedIn.next(true);
+      this.getUserEmail() === 'Admin@gmai.com' ? this.isAdminLoggedIn.next(true) : this.isAdminLoggedIn.next(false);
     }
   }
 
@@ -58,15 +59,6 @@ export class AuthService {
   public isAuthenticated(): boolean {
     return !!this.token;
   }
-
-  public checkAuthenticatedAdmin(): void {
-    if(this.getUserEmail() === 'Admin@gmai.com') {
-      this.isAdminLoggedIn.next(true);
-    } else {
-      this.isAdminLoggedIn.next(false);
-    }
-  }
-
 
   public isAuthenticatedAdmin(): boolean {
     return this.getUserEmail() === 'Admin@gmai.com'
