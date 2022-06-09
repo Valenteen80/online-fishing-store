@@ -9,16 +9,33 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const JWT_Secret = 'secret_key';
-let testUser = { email: 'Valenteen@gmai.com', password: '1234'};
 
-app.post('/api/authenticate', (reg,res) => {
+const users = [
+    { email: 'Valenteen@gmai.com', password: '1234'},
+    { email: 'Admin@gmai.com', password: '4321'}
+];
+
+app.post('/api/authenticate', (reg, res) => {
     if(reg.body) {
-        let user = reg.body;
+        const user = reg.body;
+        let isPermission = false;
+        let isEmail = false;        
+        
+        users.forEach((item) => {
 
-        if (testUser.email === user.email && testUser.password === user.password) {
+            if (item.email === user.email) {
+                isEmail = true;
+
+                if(item.password === user.password) {
+                    isPermission = true;
+                }
+            }
+        });
+
+        if (isPermission) {
             let token = jwt.sign(user, JWT_Secret, {expiresIn: 60 * 30});
             res.status(200).send({token: token});
-        } else if (testUser.email !== user.email){
+        } else if (!isEmail){
             res.status(403).send({
                 errorMessage: 'Пользователь с таким адресом электронной почты не существует'
             });

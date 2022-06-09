@@ -13,6 +13,7 @@ export class AuthService {
   private api: string = environment.apiUrl;
   private token: string = null;
   public isUserLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public isAdminLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(
     private http: HttpClient,
@@ -56,6 +57,19 @@ export class AuthService {
 
   public isAuthenticated(): boolean {
     return !!this.token;
+  }
+
+  public checkAuthenticatedAdmin(): void {
+    if(this.getUserEmail() === 'Admin@gmai.com') {
+      this.isAdminLoggedIn.next(true);
+    } else {
+      this.isAdminLoggedIn.next(false);
+    }
+  }
+
+
+  public isAuthenticatedAdmin(): boolean {
+    return this.getUserEmail() === 'Admin@gmai.com'
   }
 
   public logout(): void {

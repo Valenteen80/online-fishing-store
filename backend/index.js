@@ -216,8 +216,8 @@ app.delete("/:id", (req, res) => {
 
     if (index > -1) {
         products.splice(index, 1);
-        products.forEach((product, index, array) => {
-            product.id = index + 1
+        products.forEach((product, index) => {
+            product.id = index + 1;
             });
 
         res.send({

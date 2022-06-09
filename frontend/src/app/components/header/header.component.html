@@ -18,6 +18,11 @@
       (click)="showMenuProfile()"
       ></div>
     <app-search class="header-item"></app-search>
+    <app-button class="button-editing" 
+      *ngIf="isActiveButtonEditing"
+      [title]="editingButtonTitle"
+      (click)="redirectToContentManagementPage()"
+      ></app-button>
     <app-button class="header-item" 
       *ngIf="isActiveButtonsAuth" 
       [title]="logInButtonTitle" 
