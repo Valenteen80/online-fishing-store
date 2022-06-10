@@ -22,7 +22,7 @@ export class AdminGuardService {
 
       return of(true);
     } else {
-      this.router.navigate([RouteName.ROOT]);
+      this.router.navigate([RouteName.AUTH]);
       this.notificationService.showError(NotificationText.ERROR_NOT_AUTHORIZED_ADMIN, 3000);
 
       return of(false);
