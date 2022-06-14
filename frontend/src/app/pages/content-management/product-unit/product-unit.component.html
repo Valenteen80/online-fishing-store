@@ -6,42 +6,42 @@
         />
     <div class="product__info-wrapper">
         <div class="control">
-            <h3 class="product__name" *ngIf="!isChangeProduct">
+            <h3 class="product__name" *ngIf="!isChanges">
                 {{ product.name }}
             </h3>
             <textarea 
                 class="input"
                 type="text"
-                *ngIf="isChangeProduct"
+                *ngIf="isChanges"
                 [(ngModel)]="product.name"
                 >
             </textarea>
         </div>
         <div class="control">
-            <p  *ngIf="!isChangeProduct">
+            <p  *ngIf="!isChanges">
                 {{ product.description }}
             </p>
             <textarea
                 class="input"
                 type="text"
-                *ngIf="isChangeProduct"
+                *ngIf="isChanges"
                 [(ngModel)]="product.description"
                 >
             </textarea>
         </div>
         <div class="control">
             <span>Цена: 
-                <span *ngIf="isChangeProduct">$</span>
-                <span *ngIf="!isChangeProduct"> {{ product.price | currency: "USD":"symbol-narrow":"1.2" }}</span>
+                <span *ngIf="isChanges">$</span>
+                <span *ngIf="!isChanges"> {{ product.price | currency: "USD":"symbol-narrow":"1.2" }}</span>
             </span>
             <input 
                 class="input input-price"
                 type="number"
-                *ngIf="isChangeProduct"
+                *ngIf="isChanges"
                 [(ngModel)]="product.price"
                 >
         </div>
-        <label *ngIf="isChangeProduct"> 
+        <label *ngIf="isChanges"> 
             Url изображения
             <input 
                 type="text"
@@ -50,14 +50,14 @@
         </label>
         <div class="buttons">
             <app-button
-                *ngIf="!isChangeProduct"
+                *ngIf="!isChanges"
                 class="product__button"
                 [title]="changeProductButtonText"
                 (click)="changeProduct()"
                 >
             </app-button>
             <app-button
-                *ngIf="isChangeProduct"
+                *ngIf="isChanges"
                 class="product__button"
                 [title]="saveChangesButtonText"
                 (click)="updateProduct(product)"
