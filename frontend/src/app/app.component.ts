@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageKey } from './enums/local-storage-key-enum';
 import { AuthService } from './services/auth/auth.service';
-import { ProductService } from './services/product/product.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +12,6 @@ export class AppComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private productService: ProductService,
     ){}
 
   ngOnInit(): void {
@@ -22,7 +20,5 @@ export class AppComponent implements OnInit {
     if(token) {
       this.authService.setToken(token);
     }
-
-    this.productService.getProductsFromServer().subscribe();
   }
 }

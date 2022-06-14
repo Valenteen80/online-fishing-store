@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ButtonLabel } from 'src/app/enums/button-label-enum';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/services/product/product.service';
@@ -10,12 +10,13 @@ import { ProductService } from 'src/app/services/product/product.service';
 })
 export class ProductUnitComponent {
   public productAltImgAttribute: string = 'photo';
-  public removingProductButtonText: string = ButtonLabel.REMOVE_PRODUCT;
+  public removeProductButtonText: string = ButtonLabel.REMOVE_PRODUCT;
   public changeProductButtonText: string = ButtonLabel.CHANGE_PRODUCT;
   public saveChangesButtonText: string = ButtonLabel.SAVE_CHANGES;
   public isChangeProduct: Boolean = false;
 
   @Input() public product: Product;
+  @Output() public deleteProduct: EventEmitter <Product> = new EventEmitter<Product>();
 
   constructor(
     public productService: ProductService,
@@ -27,17 +28,11 @@ export class ProductUnitComponent {
 
   public updateProduct(product: Product): void {
     this.productService.changeProduct(product)
-      .subscribe(() => {
-        this.isChangeProduct = false;
-        location.reload();
-      });
+      .subscribe(() => this.isChangeProduct = false);
   }
 
   public removeProduct(product: Product): void {
-    this.productService.deleteProducts(product)
-      .subscribe(() => {
-        this.removingProductButtonText = ButtonLabel.REMOVED_PRODUCT;
-        location.reload();
-      });
+    this.deleteProduct.emit(product);
+    this.removeProductButtonText = ButtonLabel.REMOVED_PRODUCT;
   }
 }

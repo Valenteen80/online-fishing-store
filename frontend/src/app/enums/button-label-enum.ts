@@ -19,5 +19,5 @@ export enum ButtonLabel {
   CHANGED_PRODUCT = 'продукт изменён',
   SAVE_CHANGES = 'сoхранить',
   ADD_PRODUCT = 'добавить продукт',
-  EDIT = 'редактировать'
+  CONTENT_MANAGEMENT = 'управление контентом',
 }

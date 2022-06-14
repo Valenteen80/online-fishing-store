@@ -16,8 +16,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
   public profilePicture: string = 'assets/img/profile_picture.png';
   public profileButtonTitle: string = ButtonLabel.PROFILE;
   public logOutButtonTitle: string = ButtonLabel.LOG_OUT;
-  public isActiveButtonsLogout: boolean = true;
   private subscription: Subscription;
+  public role: string = '';
 
   constructor(
     private router: Router,
@@ -25,9 +25,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     ) {} 
 
   ngOnInit(): void {
-    this.subscription = this.authService.isUserLoggedIn.subscribe((value: boolean) => {
-      this.isActiveButtonsLogout = value;
-    });
+    this.subscription = this.authService.role.subscribe((value: string) => this.role = value);
   }
 
   ngOnDestroy(): void {

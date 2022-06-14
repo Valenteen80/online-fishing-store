@@ -1,16 +1,5 @@
-<div class="add-product__button"
-    *ngIf="!isAddProduct"
-    >
-    <app-button
-        [title]="addingProductButtonText"
-        (click)="addProduct()"
-        >
-    </app-button>
-</div>
-<div 
-    *ngIf="isAddProduct"
-    class="input-changes"
-    >
+<p class="add-product__header">Для добавления продукта заполните форму</p>
+<div class="input-changes">
     <div class="control">
         <label for="name" >Название: </label>
         <textarea 
@@ -41,12 +30,12 @@
             >
     </div>
     <div class="control">
-        <label for="category-id">№ категории:</label>
+        <label for="category-id">категория:</label>
         <input 
             class="input-category"
             id="category-id"
-            type="number"
-            [(ngModel)]="newProduct.categoryId"
+            type="text"
+            [(ngModel)]="newProduct.category"
             >
     </div>
     <div class="control">

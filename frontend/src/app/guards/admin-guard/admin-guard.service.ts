@@ -21,12 +21,11 @@ export class AdminGuardService {
     if(this.authService.isAuthenticatedAdmin() && !this.authService.checkTokenExpire()) {
 
       return of(true);
-    } else {
+    } 
       this.router.navigate([RouteName.AUTH]);
-      this.notificationService.showError(NotificationText.ERROR_NOT_AUTHORIZED_ADMIN, 3000);
+      this.notificationService.showError(NotificationText.FORBIDDEN, 3000);
 
       return of(false);
-    }
   }
 
   public canActivateChild(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):  Observable<boolean> {

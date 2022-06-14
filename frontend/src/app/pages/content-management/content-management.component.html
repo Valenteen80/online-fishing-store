@@ -1,8 +1,11 @@
 <div class="products" *ngFor="let product of products">
   <div>
     <app-product-unit 
+      (deleteProduct)="removeProduct($event)"
       [product]="product"
     ></app-product-unit>
   </div>
 </div>
-<app-added-product class="product"></app-added-product>
+<app-create-product class="product" 
+  (createProduct)="saveProduct($event)"
+></app-create-product>

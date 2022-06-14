@@ -20,8 +20,14 @@ export class ContentManagementComponent implements OnInit {
   }
 
   public getProducts(): void {
-    this.productService.getProducts().subscribe((products:Product[]) => {
-        this.products = products;
-      });
+    this.productService.getProducts().subscribe((products: Product[]) => this.products = products);
+  }
+
+  public saveProduct(product: Product): void {
+    this.productService.addProducts(product).subscribe(() => this.getProducts());
+  }
+
+  public removeProduct(product: Product): void {
+    this.productService.deleteProducts(product).subscribe(() => this.getProducts());
   }
 }

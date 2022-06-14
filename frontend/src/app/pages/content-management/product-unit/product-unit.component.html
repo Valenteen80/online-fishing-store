@@ -1,9 +1,9 @@
 <div class="product">
-        <img
-            class="product__img"
-            [src]="product.img"
-            [alt]="productAltImgAttribute"
-            />
+    <img
+        class="product__img"
+        [src]="product.img"
+        [alt]="productAltImgAttribute"
+        />
     <div class="product__info-wrapper">
         <div class="control">
             <h3 class="product__name" *ngIf="!isChangeProduct">
@@ -65,7 +65,7 @@
             </app-button>
             <app-button
                 class="product__button"
-                [title]="removingProductButtonText"
+                [title]="removeProductButtonText"
                 (click)="removeProduct(product)"
                 >
             </app-button>

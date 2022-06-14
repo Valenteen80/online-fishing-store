@@ -15,10 +15,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public logoPicture: string = "assets/img/logo.png";
   public logInButtonTitle: string = ButtonLabel.LOG_IN;
   public isActiveButtonMenu: boolean = false;
-  public isActiveButtonsAuth: boolean = true;
   private subscription: Subscription;
-  public editingButtonTitle: string = ButtonLabel.EDIT;
-  public isActiveButtonEditing: boolean = false;
+  public editButtonTitle: string = ButtonLabel.CONTENT_MANAGEMENT;
+  public role: string = '';
 
   constructor(
     public router: Router,
@@ -26,13 +25,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.subscription = this.authService.isUserLoggedIn.subscribe((value: boolean) => {
-      this.isActiveButtonsAuth = !value;
-    });
-
-    this.subscription = this.authService.isAdminLoggedIn.subscribe((value: boolean) => {
-      this.isActiveButtonEditing = value;
-    });
+    this.subscription = this.authService.role.subscribe((value: string) => this.role = value);
   }
 
   ngOnDestroy(): void {

@@ -10,7 +10,7 @@ import { SortService } from '../sort/sort.service';
 })
 
 export class ProductService {
-  private productApi: string = environment.productApiUrl;
+  private productApi: string = environment.apiUrl;
   public products: Product[] = [];
   public products$: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
 
@@ -20,40 +20,28 @@ export class ProductService {
   ) {}
   
   public addProducts(product: Product): Observable<Product> {
-    return this.http.post<Product>(this.productApi, product);
+    return this.http.post<Product>(`${this.productApi}/products`, product);
   }
 
   public deleteProducts(product: Product): Observable<Product> {
-    return this.http.delete<Product>(`${this.productApi} ${product.id}`);
+    return this.http.delete<Product>(`${this.productApi}/products ${product.id}`);
   }
 
   public changeProduct(product: Product): Observable<Product> {
-    return this.http.put<Product>(this.productApi, product);
+    return this.http.put<Product>(`${this.productApi}/products`, product);
   }
 
-  public getProductsFromServer(): Observable<Product[]> {
-    return  this.http.get<Product[]>(this.productApi)
+  public getProducts(): Observable<Product[]> {
+    return  this.http.get<Product[]>(`${this.productApi}/products`)
     .pipe(
       map((products: Product[]) => {
         this.products = products;
+        this.sortServise.sortByFavorites(products)
         this.products$.next(products);
         return this.products;
         }
       )
-    )
-  }
-
-  public getProducts(): Observable<Product[]>{
-    return of(this.products).pipe(map(products => this.sortServise.sortByFavorites(products)))
-  }
-
-  public getProductsById(id: number): Observable<Product> {
-    return this.products$
-      .pipe(
-        map((products: Product[]) => {
-          return products.find((product: Product) => product.id === id )
-        })
-      )
+    );
   }
 
   public updateProduct(product: Product): void {
@@ -68,7 +56,7 @@ export class ProductService {
         map((products: Product[]) =>  {
           return products.filter((product: Product) => product.inShoppingCart)
         })
-      )
+      );
   }
   
   public getFavoriteProducts():Observable<Product[]> {
@@ -77,6 +65,6 @@ export class ProductService {
         map((products: Product[]) =>  {
           return products.filter((product: Product) => product.isFavorite)
         })
-      )
+      );
     }
 }

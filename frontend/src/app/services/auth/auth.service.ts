@@ -10,10 +10,9 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-  private authApi: string = environment.authApiUrl;
+  private authApi: string = environment.apiUrl;
   private token: string = null;
-  public isUserLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  public isAdminLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public role: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   constructor(
     private http: HttpClient,
@@ -32,12 +31,13 @@ export class AuthService {
       );
   }
 
+  public checkRoleUser(): void {
+    this.getUserEmail() === 'Admin@gmai.com' ? this.role.next('admin') : this.role.next('user');
+  }
+
   public setToken(token: string): void {
     this.token = token;
-    if(this.token) {
-      this.isUserLoggedIn.next(true);
-      this.getUserEmail() === 'Admin@gmai.com' ? this.isAdminLoggedIn.next(true) : this.isAdminLoggedIn.next(false);
-    }
+    this.checkRoleUser();
   }
 
   public getToken(): string {
@@ -61,12 +61,12 @@ export class AuthService {
   }
 
   public isAuthenticatedAdmin(): boolean {
-    return this.getUserEmail() === 'Admin@gmai.com'
+    return this.getUserEmail() === 'Admin@gmai.com';
   }
 
   public logout(): void {
     this.setToken(null);
     localStorage.clear();
-    this.isUserLoggedIn.next(false);
+    this.role.next('');
   }
 }
