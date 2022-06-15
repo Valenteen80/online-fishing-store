@@ -42,7 +42,7 @@ const products = [
           'Небольшая мультипликаторная катушка. Корпус выполнен из ударопрочного пластика. Может быть использоваться для зимних удочек, бортовых удилищ.',
         price: 17.37,
         rating: 7,
-        isFavorite: true,
+        isFavorite: false,
         inShoppingCart: false,
       },
       {
@@ -55,7 +55,7 @@ const products = [
         price: 72,
         rating: 2,
         isFavorite: false,
-        inShoppingCart: true,
+        inShoppingCart: false,
       },
       {
         id: 5,
@@ -67,7 +67,7 @@ const products = [
         price: 290,
         rating: 12,
         isFavorite: false,
-        inShoppingCart: true,
+        inShoppingCart: false,
       },
       {
         id: 6,
@@ -186,7 +186,7 @@ const products = [
           'Зарядное устройство предназначено для заряда 12В автомобильных аккумуляторных батарей любой емкости в автоматическом режиме (автоматическое уменьшение тока в конце заряда).',
         price: 89,
         rating: 17,
-        isFavorite: true,
+        isFavorite: false,
         inShoppingCart: false,
       },
 ];
@@ -255,7 +255,6 @@ app.delete("/products:id", (req, res) => {
 });
 
 app.put("/products", jsonParser, function(req, res){
-       
     if(!req.body) {
         return res.sendStatus(400);
     } else {
@@ -263,10 +262,7 @@ app.put("/products", jsonParser, function(req, res){
         const id = req.body.id;
         const index = products.findIndex((item) => item.id == id);
         products[index] = {...product};
-        res.send({
-            Message: `Продукт с id: ${id} изменён`,
-            Product: products[index]
-            });
+        res.send(product);
     };
 });
 

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { LocalStorageKey } from 'src/app/enums/local-storage-key-enum';
 import { DecodedToken } from 'src/app/interfaces/decoded-token';
 import { Token } from 'src/app/interfaces/token';
 import { environment } from 'src/environments/environment';
@@ -24,7 +25,7 @@ export class AuthService {
       .pipe(
         tap(
           (token: Token) => {
-            localStorage.setItem('auth_token', token.token);
+            localStorage.setItem(LocalStorageKey.AUTH_TOKEN, token.token);
             this.setToken(token.token);
           }
         ),
