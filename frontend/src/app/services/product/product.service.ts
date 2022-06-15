@@ -49,7 +49,6 @@ export class ProductService {
     this.changeProduct(product).subscribe();
     const index: number = this.products.findIndex((item: Product) => item.name === product.name);
     this.products[index] = { ...product };
-    
     this.products$.next(this.products);
   }
 

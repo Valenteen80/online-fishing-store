@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { AuthRole } from 'src/app/enums/auth-role-enum';
 import { LocalStorageKey } from 'src/app/enums/local-storage-key-enum';
 import { DecodedToken } from 'src/app/interfaces/decoded-token';
 import { Token } from 'src/app/interfaces/token';
@@ -33,7 +34,7 @@ export class AuthService {
   }
 
   public checkRoleUser(): void {
-    this.getUserEmail() === 'Admin@gmai.com' ? this.role.next('admin') : this.role.next('user');
+    this.getUserEmail() === 'Admin@gmai.com' ? this.role.next(AuthRole.ADMIN) : this.role.next(AuthRole.USER);
   }
 
   public setToken(token: string): void {
@@ -59,10 +60,6 @@ export class AuthService {
 
   public isAuthenticated(): boolean {
     return !!this.token;
-  }
-
-  public isAuthenticatedAdmin(): boolean {
-    return this.getUserEmail() === 'Admin@gmai.com';
   }
 
   public logout(): void {

@@ -262,7 +262,10 @@ app.put("/products", jsonParser, function(req, res){
         const id = req.body.id;
         const index = products.findIndex((item) => item.id == id);
         products[index] = {...product};
-        res.send(product);
+        res.send({
+          Message: `Продукт с id: ${id} изменён`,
+          Product: products[index]
+        });
     };
 });
 

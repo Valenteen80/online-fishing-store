@@ -18,7 +18,7 @@
       ></div>
     <app-search class="header-item"></app-search>
     <app-button class="button-edit" 
-      *ngIf="role === 'admin'"
+      *ngIf="role === adminRole"
       [title]="editButtonTitle"
       (click)="redirectToContentManagementPage()"
       ></app-button>

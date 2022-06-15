@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { AuthRole } from 'src/app/enums/auth-role-enum';
 import { ButtonLabel } from 'src/app/enums/button-label-enum';
 import { RouteName } from 'src/app/enums/route-name-enum';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -18,6 +19,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   public editButtonTitle: string = ButtonLabel.CONTENT_MANAGEMENT;
   public role: string = '';
+  public readonly adminRole: string = AuthRole.ADMIN;
 
   constructor(
     public router: Router,
