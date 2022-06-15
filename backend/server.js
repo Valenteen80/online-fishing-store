@@ -5,9 +5,21 @@ const jwt = require('jsonwebtoken');
 const request = require('https');
 const jsonParser = express.json();
 const app = express();
+
+const corsOptions = {
+  "origin": "http://localhost:4200",
+  "methods": "GET,PUT,POST,DELETE",
+  "credentials": "true",
+  "maxAge": "86400",
+  "optionsSuccessStatus": 200
+}
+
+app.options('*', cors(corsOptions))
+
 app.use(cors());
 app.use(bodyParser.json());
 const JWT_Secret = 'secret_key';
+
 const products = [
     {
         id: 1,
@@ -196,7 +208,7 @@ const users = [
     { email: 'Admin@gmai.com', password: '4321'}
 ];
 
-app.post('/authenticate', (reg, res) => {
+app.post('/authenticate', cors(corsOptions), (reg, res) => {
     if(reg.body) {
         const user = reg.body;
         let isEmail = users.find(item => item.email === user.email);
@@ -222,11 +234,11 @@ app.post('/authenticate', (reg, res) => {
     }
 })
 
-app.get('/products', (req, res) => {
+app.get('/products', (req, res)  => {
     res.send(products);
 });
 
-app.post('/products', (req, res) => {
+app.post('/products', cors(corsOptions), (req, res) => {
         const product = req.body;
         const id = products.length + 1;
         product.id = id;
@@ -234,7 +246,7 @@ app.post('/products', (req, res) => {
         res.send(product);
 })
 
-app.delete("/products:id", (req, res) => {
+app.delete("/products:id", cors(corsOptions), (req, res) => {
     const id = req.params.id;
     const index = products.findIndex((item) => item.id == id);
 
@@ -254,7 +266,7 @@ app.delete("/products:id", (req, res) => {
     }
 });
 
-app.put("/products", jsonParser, function(req, res){
+app.put("/products", cors(corsOptions), jsonParser, function(req, res){
     if(!req.body) {
         return res.sendStatus(400);
     } else {
