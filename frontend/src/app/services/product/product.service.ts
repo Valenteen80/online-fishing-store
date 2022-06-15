@@ -41,7 +41,6 @@ export class ProductService {
   }
 
   public changeProduct(product: Product): Observable<Product> {
-    console.log(product)
     return this.http.put<Product>(`${this.productApi}/products`, product);
   }
 
