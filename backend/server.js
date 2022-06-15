@@ -12,12 +12,12 @@ const corsOptions = {
   "credentials": "true",
   "maxAge": "86400",
   "optionsSuccessStatus": 200
-}
+};
 
-app.options('*', cors(corsOptions))
-
+app.options('*', cors(corsOptions));
 app.use(cors());
 app.use(bodyParser.json());
+
 const JWT_Secret = 'secret_key';
 
 const products = [
@@ -234,7 +234,7 @@ app.post('/authenticate', cors(corsOptions), (reg, res) => {
     }
 })
 
-app.get('/products', (req, res)  => {
+app.get('/products', (req, res) => {
     res.send(products);
 });
 
