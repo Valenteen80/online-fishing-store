@@ -20,16 +20,15 @@ export class AdminGuardService {
   ) { }
 
   public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    this.authService.role.subscribe((value) => {
-      if (value === AuthRole.ADMIN) {
-        this.isAdminRole = true;
-      }
-    })
+
+    if (this.authService.role.getValue() === AuthRole.ADMIN) {
+      this.isAdminRole = true;
+    }
 
     if(this.isAdminRole && !this.authService.checkTokenExpire()) {
-
       return of(true);
     } 
+    
       this.router.navigate([RouteName.AUTH]);
       this.notificationService.showError(NotificationText.FORBIDDEN, 3000);
 

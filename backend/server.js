@@ -267,6 +267,7 @@ app.delete("/products:id", cors(corsOptions), (req, res) => {
 });
 
 app.put("/products", cors(corsOptions), jsonParser, function(req, res){
+  
     if(!req.body) {
         return res.sendStatus(400);
     } else {
