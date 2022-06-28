@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { AuthRole } from 'src/app/enums/auth-role-enum';
 import { ButtonLabel } from 'src/app/enums/button-label-enum';
 import { RouteName } from 'src/app/enums/route-name-enum';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -17,7 +18,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   public profileButtonTitle: string = ButtonLabel.PROFILE;
   public logOutButtonTitle: string = ButtonLabel.LOG_OUT;
   private subscription: Subscription;
-  public role: string = '';
+  public role: AuthRole = null;
 
   constructor(
     private router: Router,
@@ -25,7 +26,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     ) {} 
 
   ngOnInit(): void {
-    this.subscription = this.authService.role.subscribe((value: string) => this.role = value);
+    this.subscription = this.authService.role.subscribe((value: AuthRole) => this.role = value);
   }
 
   ngOnDestroy(): void {

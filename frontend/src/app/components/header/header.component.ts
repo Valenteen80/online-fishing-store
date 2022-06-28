@@ -18,8 +18,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public isActiveButtonMenu: boolean = false;
   private subscription: Subscription;
   public editButtonTitle: string = ButtonLabel.CONTENT_MANAGEMENT;
-  public role: string = '';
-  public readonly adminRole: string = AuthRole.ADMIN;
+  public role: AuthRole = null;
+  public readonly adminRole: AuthRole = AuthRole.ADMIN;
 
   constructor(
     public router: Router,
@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.subscription = this.authService.role.subscribe((value: string) => this.role = value);
+    this.subscription = this.authService.role.subscribe((value: AuthRole) => this.role = value);
   }
 
   ngOnDestroy(): void {
@@ -46,7 +46,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.router.navigate([RouteName.AUTH]);
   }
 
-  public redirectToContentManagementPage() {
+  public redirectToContentManagementPage(): void {
     this.router.navigate([RouteName.CONTENT_MANAGEMENT]);
   }
 }

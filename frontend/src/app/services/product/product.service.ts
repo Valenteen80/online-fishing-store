@@ -12,7 +12,7 @@ import { SortService } from '../sort/sort.service';
 export class ProductService {
   private productApi: string = environment.apiUrl;
   public products: Product[];
-  public products$: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
+  public products$: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>(null);
 
   constructor(
     public sortServise: SortService,
@@ -21,15 +21,15 @@ export class ProductService {
 
   public getProducts(): Observable<Product[]> {
     return  this.http.get<Product[]>(`${this.productApi}/products`)
-    .pipe(
-      map((products: Product[]) => {
-        this.products = products;
-        this.sortServise.sortByFavorites(products)
-        this.products$.next(products);
-        return this.products;
-        }
-      )
-    );
+      .pipe(
+        map((products: Product[]) => {
+          this.products = products;
+          this.sortServise.sortByFavorites(products);
+          this.products$.next(products);
+          
+          return this.products;
+        })
+      );
   }
 
   public addProducts(product: Product): Observable<Product> {
@@ -55,7 +55,7 @@ export class ProductService {
     return this.products$
       .pipe(
         map((products: Product[]) =>  {
-          return products.filter((product: Product) => product.inShoppingCart)
+          return this.products$.getValue() ? products.filter((product: Product) => product.inShoppingCart) : products;
         })
       );
   }
@@ -64,7 +64,7 @@ export class ProductService {
     return this.products$
       .pipe(
         map((products: Product[]) =>  {
-          return products.filter((product: Product) => product.isFavorite)
+          return products.filter((product: Product) => product.isFavorite);
         })
       );
   }

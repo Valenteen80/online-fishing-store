@@ -14,7 +14,7 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
   private authApi: string = environment.apiUrl;
   private token: string = null;
-  public role: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  public role: BehaviorSubject<AuthRole> = new BehaviorSubject<AuthRole>(null);
 
   constructor(
     private http: HttpClient,
@@ -65,6 +65,6 @@ export class AuthService {
   public logout(): void {
     this.setToken(null);
     localStorage.clear();
-    this.role.next('');
+    this.role.next(null);
   }
 }
