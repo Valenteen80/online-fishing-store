@@ -10,21 +10,21 @@ import { SortService } from '../sort/sort.service';
 })
 
 export class ProductService {
-  private productApi: string = environment.apiUrl;
+  private apiUrl: string = environment.apiUrl;
   public products: Product[];
   public products$: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>(null);
 
   constructor(
-    public sortServise: SortService,
+    public sortService: SortService,
     public http: HttpClient,
   ) {}
 
   public getProducts(): Observable<Product[]> {
-    return  this.http.get<Product[]>(`${this.productApi}/products`)
+    return  this.http.get<Product[]>(`${this.apiUrl}/products`)
       .pipe(
         map((products: Product[]) => {
           this.products = products;
-          this.sortServise.sortByFavorites(products);
+          this.sortService.sortByFavorites(products);
           this.products$.next(products);
           
           return this.products;
@@ -32,16 +32,16 @@ export class ProductService {
       );
   }
 
-  public addProducts(product: Product): Observable<Product> {
-    return this.http.post<Product>(`${this.productApi}/products`, product);
+  public createProducts(product: Product): Observable<Product> {
+    return this.http.post<Product>(`${this.apiUrl}/products`, product);
   }
 
   public deleteProducts(product: Product): Observable<Product> {
-    return this.http.delete<Product>(`${this.productApi}/products ${product.id}`);
+    return this.http.delete<Product>(`${this.apiUrl}/products ${product.id}`);
   }
 
   public changeProduct(product: Product): Observable<Product> {
-    return this.http.put<Product>(`${this.productApi}/products`, product);
+    return this.http.put<Product>(`${this.apiUrl}/products`, product);
   }
 
   public updateProduct(product: Product): void {

@@ -9,7 +9,7 @@
             <textarea 
                 class="input"
                 type="text"
-                [disabled]="!isChanges"
+                [disabled]="!editable"
                 [(ngModel)]="product.name"
                 >
             </textarea>
@@ -18,7 +18,7 @@
             <textarea
                 class="input"
                 type="text"
-                [disabled]="!isChanges"
+                [disabled]="!editable"
                 [(ngModel)]="product.description"
                 >
             </textarea>
@@ -29,7 +29,7 @@
                     class="input input-price"
                     type="number"
                     [(ngModel)]="product.price"
-                    [disabled]="!isChanges"
+                    [disabled]="!editable"
                     > 
             </label>
         </div>
@@ -38,19 +38,19 @@
             <input 
                 type="text"
                 [(ngModel)]="product.img"
-                [disabled]="!isChanges"
+                [disabled]="!editable"
                 >
         </label>
         <div class="buttons">
             <app-button
-                *ngIf="!isChanges"
+                *ngIf="!editable"
                 class="product__button"
                 [title]="changeProductButtonText"
                 (click)="changeProduct()"
                 >
             </app-button>
             <app-button
-                *ngIf="isChanges"
+                *ngIf="editable"
                 class="product__button"
                 [title]="saveChangesButtonText"
                 (click)="updateProduct(product)"

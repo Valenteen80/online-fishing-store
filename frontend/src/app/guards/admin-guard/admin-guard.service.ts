@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
-import { concatAll, Observable, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { AuthRole } from 'src/app/enums/auth-role-enum';
 import { NotificationText } from 'src/app/enums/notification-text-enum';
 import { RouteName } from 'src/app/enums/route-name-enum';
@@ -11,7 +11,6 @@ import { NotificationService } from 'src/app/services/notification/notification.
   providedIn: 'root'
 })
 export class AdminGuardService {
-  private isAdminRole: boolean = false;
 
   constructor(
     private authService: AuthService, 
@@ -20,12 +19,7 @@ export class AdminGuardService {
   ) { }
 
   public canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-
-    if (this.authService.role.getValue() === AuthRole.ADMIN) {
-      this.isAdminRole = true;
-    }
-
-    if(this.isAdminRole && !this.authService.checkTokenExpire()) {
+    if((this.authService.role.getValue() === AuthRole.ADMIN) && !this.authService.checkTokenExpire()) {
       return of(true);
     } 
     

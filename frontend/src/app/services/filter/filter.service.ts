@@ -16,4 +16,5 @@ export class FilterService {
       ? products
       : products.filter((product) => product.category === category.name);
   }
+  
 }

@@ -23,11 +23,11 @@ export class ContentManagementComponent implements OnInit {
     this.productService.getProducts().subscribe((products: Product[]) => this.products = products);
   }
 
-  public saveProduct(product: Product): void {
-    this.productService.addProducts(product).subscribe(() => this.getProducts());
+  public createProduct(product: Product): void {
+    this.productService.createProducts(product).subscribe(() => this.getProducts());
   }
 
-  public removeProduct(product: Product): void {
+  public deleteProduct(product: Product): void {
     this.productService.deleteProducts(product).subscribe(() => this.getProducts());
   }
 }

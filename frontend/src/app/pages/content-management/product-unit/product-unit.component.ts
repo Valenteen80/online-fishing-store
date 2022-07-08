@@ -13,7 +13,7 @@ export class ProductUnitComponent {
   public removeProductButtonText: string = ButtonLabel.REMOVE_PRODUCT;
   public changeProductButtonText: string = ButtonLabel.CHANGE_PRODUCT;
   public saveChangesButtonText: string = ButtonLabel.SAVE_CHANGES;
-  public isChanges: Boolean = false;
+  public editable: Boolean = false;
 
   @Input() public product: Product;
   @Output() public deleteProduct: EventEmitter <Product> = new EventEmitter<Product>();
@@ -23,12 +23,12 @@ export class ProductUnitComponent {
   ) { }
 
   public changeProduct(): void {
-    this.isChanges = true;
+    this.editable = true;
   }
 
   public updateProduct(product: Product): void {
     this.productService.changeProduct(product)
-      .subscribe(() => this.isChanges = false);
+      .subscribe(() => this.editable = false);
   }
 
   public removeProduct(product: Product): void {
