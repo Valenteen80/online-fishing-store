@@ -10,7 +10,9 @@ import { AuthService } from './services/auth/auth.service';
 export class AppComponent implements OnInit {
   public title: string = 'online-fishing-store';
 
-  constructor(private authService: AuthService){}
+  constructor(
+    private authService: AuthService,
+    ){}
 
   ngOnInit(): void {
     const token: string = localStorage.getItem(LocalStorageKey.AUTH_TOKEN);

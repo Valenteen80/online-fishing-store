@@ -23,7 +23,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription = this.productService.getProductsInShoppingCart().subscribe((products: Product[]) => {
-      this.amountProductsAddedShoppingCart = products.length;
+      this.amountProductsAddedShoppingCart = products?.length;
     });
   }
 

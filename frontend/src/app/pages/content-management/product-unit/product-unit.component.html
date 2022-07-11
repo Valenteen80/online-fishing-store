@@ -1,0 +1,67 @@
+<div class="product">
+    <img
+        class="product__img"
+        [src]="product.img"
+        [alt]="productAltImgAttribute"
+        />
+    <div class="product__info-wrapper">
+        <div class="control">
+            <textarea 
+                class="input"
+                type="text"
+                [disabled]="!editable"
+                [(ngModel)]="product.name"
+                >
+            </textarea>
+        </div>
+        <div class="control">
+            <textarea
+                class="input"
+                type="text"
+                [disabled]="!editable"
+                [(ngModel)]="product.description"
+                >
+            </textarea>
+        </div>
+        <div class="control">
+            <label> Цена $:
+                <input 
+                    class="input input-price"
+                    type="number"
+                    [(ngModel)]="product.price"
+                    [disabled]="!editable"
+                    > 
+            </label>
+        </div>
+        <label> 
+            Url изображения
+            <input 
+                type="text"
+                [(ngModel)]="product.img"
+                [disabled]="!editable"
+                >
+        </label>
+        <div class="buttons">
+            <app-button
+                *ngIf="!editable"
+                class="product__button"
+                [title]="changeProductButtonText"
+                (click)="changeProduct()"
+                >
+            </app-button>
+            <app-button
+                *ngIf="editable"
+                class="product__button"
+                [title]="saveChangesButtonText"
+                (click)="updateProduct(product)"
+                >
+            </app-button>
+            <app-button
+                class="product__button"
+                [title]="removeProductButtonText"
+                (click)="removeProduct(product)"
+                >
+            </app-button>
+        </div>
+    </div>
+</div>
