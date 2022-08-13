@@ -6,5 +6,6 @@ export enum RouteName {
   AUTH = 'auth',
   ORDER = 'order',
   FAVORITE_PRODUCTS = 'favorites',
-  PERSONAL_DATA = 'personal-data'
+  PERSONAL_DATA = 'personal-data',
+  CONTENT_MANAGEMENT = 'content-management'
 }

@@ -10,16 +10,20 @@
         >
   </div>
   </div>
-  <div class="header-content-wrapper"
-    >
+  <div class="header-content-wrapper">
     <div
       class="burger_menu"
       [ngClass]="{ burger_menu__active: isActiveButtonMenu }"
       (click)="showMenuProfile()"
       ></div>
     <app-search class="header-item"></app-search>
+    <app-button class="button-edit" 
+      *ngIf="role === adminRole"
+      [title]="editButtonTitle"
+      (click)="redirectToContentManagementPage()"
+      ></app-button>
     <app-button class="header-item" 
-      *ngIf="isActiveButtonsAuth" 
+      *ngIf="!role" 
       [title]="logInButtonTitle" 
       (click)="redirectToAuthPage()"
       ></app-button>

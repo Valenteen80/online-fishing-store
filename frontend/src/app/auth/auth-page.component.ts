@@ -7,6 +7,7 @@ import { ButtonLabel } from 'src/app/enums/button-label-enum';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { NotificationText } from '../enums/notification-text-enum';
 import { RouteName } from '../enums/route-name-enum';
+import { NotificationService } from '../services/notification/notification.service';
 
 @Component({
   selector: 'app-auth-page',
@@ -22,6 +23,7 @@ export class AuthPageComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService, 
     private router: Router,
+    private notificationService: NotificationService,
     ) { }
 
   ngOnInit(): void {
@@ -58,6 +60,9 @@ export class AuthPageComponent implements OnInit {
       }),
       filter(Boolean)
     )
-    .subscribe(() => this.router.navigate([RouteName.ROOT]));
+    .subscribe(() => {
+      this.router.navigate([RouteName.ROOT]);
+      this.notificationService.showInfo(`${NotificationText.SUCCESS_LOGGED} ${this.authService.getUserEmail()}`, 3000);
+    });
   }
 }

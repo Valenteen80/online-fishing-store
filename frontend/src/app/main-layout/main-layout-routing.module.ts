@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RouteName } from '../enums/route-name-enum';
+import { AdminGuardService } from '../guards/admin-guard/admin-guard.service';
 import { GeneralGuardService } from '../guards/general-guard/general-guard.service';
 import { MainLayoutComponent } from './main-layout.component';
 
@@ -41,6 +42,15 @@ const routes: Routes = [
           import('../pages/order-page/order-page.module').then(
             (m) => m.OrderPageModule
           ),
+          canActivateChild: [GeneralGuardService],
+      },
+      {
+        path: RouteName.CONTENT_MANAGEMENT,
+        loadChildren: () =>
+          import('../pages/content-management/content-management.module').then(
+            (m) => m.ContentManagementModule
+          ),
+          canActivateChild: [GeneralGuardService, AdminGuardService],
       },
     ],
   },

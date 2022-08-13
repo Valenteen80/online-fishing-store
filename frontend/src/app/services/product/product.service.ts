@@ -1,34 +1,51 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable, of} from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { Product } from 'src/app/interfaces/product';
-import { PRODUCTS } from 'src/app/mocks/mock-products';
+import { environment } from 'src/environments/environment';
 import { SortService } from '../sort/sort.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService{
-  public products: Product[] = PRODUCTS;
-  public products$: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>(this.products);
+
+export class ProductService {
+  private apiUrl: string = environment.apiUrl;
+  public products: Product[];
+  public products$: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>(null);
 
   constructor(
-    public sortServise: SortService,
+    public sortService: SortService,
+    public http: HttpClient,
   ) {}
 
-  public getProducts(): Observable<Product[]>{
-    return of(this.products).pipe(map(products => this.sortServise.sortByFavorites(products)))
-  }
-
-  public getProductsById(id: number): Observable<Product> {
-    return this.products$
+  public getProducts(): Observable<Product[]> {
+    return  this.http.get<Product[]>(`${this.apiUrl}/products`)
       .pipe(
         map((products: Product[]) => {
-          return products.find((product: Product) => product.id === id )
+          this.products = products;
+          this.sortService.sortByFavorites(products);
+          this.products$.next(products);
+          
+          return this.products;
         })
-      )
+      );
+  }
+
+  public createProducts(product: Product): Observable<Product> {
+    return this.http.post<Product>(`${this.apiUrl}/products`, product);
+  }
+
+  public deleteProducts(product: Product): Observable<Product> {
+    return this.http.delete<Product>(`${this.apiUrl}/products ${product.id}`);
+  }
+
+  public changeProduct(product: Product): Observable<Product> {
+    return this.http.put<Product>(`${this.apiUrl}/products`, product);
   }
 
   public updateProduct(product: Product): void {
+    this.changeProduct(product).subscribe();
     const index: number = this.products.findIndex((item: Product) => item.name === product.name);
     this.products[index] = { ...product };
     this.products$.next(this.products);
@@ -38,17 +55,17 @@ export class ProductService{
     return this.products$
       .pipe(
         map((products: Product[]) =>  {
-          return products.filter((product: Product) => product.inShoppingCart)
+          return this.products$.getValue() ? products.filter((product: Product) => product.inShoppingCart) : products;
         })
-      )
+      );
   }
   
   public getFavoriteProducts():Observable<Product[]> {
     return this.products$
       .pipe(
         map((products: Product[]) =>  {
-          return products.filter((product: Product) => product.isFavorite)
+          return products.filter((product: Product) => product.isFavorite);
         })
-      )
-    }
+      );
+  }
 }

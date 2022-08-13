@@ -11,10 +11,10 @@ export class FilterService {
   constructor() { }
 
   public filterBySelectedCategory(category: Category, products: Product []): Product [] {
+
     return category.name === NameCategory.ALL_PRODUCTS
       ? products
-      : products.filter((product) => {
-          return product.categoryId === category.id
-    })    
+      : products.filter((product) => product.category === category.name);
   }
+  
 }

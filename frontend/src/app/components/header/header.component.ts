@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { AuthRole } from 'src/app/enums/auth-role-enum';
 import { ButtonLabel } from 'src/app/enums/button-label-enum';
 import { RouteName } from 'src/app/enums/route-name-enum';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -15,8 +16,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public logoPicture: string = "assets/img/logo.png";
   public logInButtonTitle: string = ButtonLabel.LOG_IN;
   public isActiveButtonMenu: boolean = false;
-  public isActiveButtonsAuth: boolean = true;
   private subscription: Subscription;
+  public editButtonTitle: string = ButtonLabel.CONTENT_MANAGEMENT;
+  public role: AuthRole = null;
+  public readonly adminRole: AuthRole = AuthRole.ADMIN;
 
   constructor(
     public router: Router,
@@ -24,9 +27,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.subscription = this.authService.isUserLoggedIn.subscribe((value: boolean) => {
-      this.isActiveButtonsAuth = !value;
-    });
+    this.subscription = this.authService.role.subscribe((value: AuthRole) => this.role = value);
   }
 
   ngOnDestroy(): void {
@@ -45,4 +46,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.router.navigate([RouteName.AUTH]);
   }
 
+  public redirectToContentManagementPage(): void {
+    this.router.navigate([RouteName.CONTENT_MANAGEMENT]);
+  }
 }

@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { AuthRole } from 'src/app/enums/auth-role-enum';
+import { LocalStorageKey } from 'src/app/enums/local-storage-key-enum';
 import { DecodedToken } from 'src/app/interfaces/decoded-token';
 import { Token } from 'src/app/interfaces/token';
 import { environment } from 'src/environments/environment';
@@ -10,9 +12,9 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AuthService {
-  private api: string = environment.apiUrl;
+  private authApi: string = environment.apiUrl;
   private token: string = null;
-  public isUserLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public role: BehaviorSubject<AuthRole> = new BehaviorSubject<AuthRole>(null);
 
   constructor(
     private http: HttpClient,
@@ -20,22 +22,24 @@ export class AuthService {
     ) { }
 
   public login(email: string, password: string): Observable<Token> {
-    return this.http.post<{token: string}>(`${this.api}/authenticate`, {email: email, password: password})
+    return this.http.post<{token: string}>(`${this.authApi}/authenticate`, {email: email, password: password})
       .pipe(
         tap(
           (token: Token) => {
-            localStorage.setItem('auth_token', token.token);
+            localStorage.setItem(LocalStorageKey.AUTH_TOKEN, token.token);
             this.setToken(token.token);
           }
         ),
       );
   }
 
+  public checkRoleUser(): void {
+    this.getUserEmail() === 'Admin@gmai.com' ? this.role.next(AuthRole.ADMIN) : this.role.next(AuthRole.USER);
+  }
+
   public setToken(token: string): void {
     this.token = token;
-    if(this.token) {
-      this.isUserLoggedIn.next(true);
-    }
+    this.checkRoleUser();
   }
 
   public getToken(): string {
@@ -61,6 +65,6 @@ export class AuthService {
   public logout(): void {
     this.setToken(null);
     localStorage.clear();
-    this.isUserLoggedIn.next(false);
+    this.role.next(null);
   }
 }

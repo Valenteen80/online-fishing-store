@@ -1,0 +1,11 @@
+<div class="products" *ngFor="let product of products">
+  <div>
+    <app-product-unit 
+      (deleteProduct)="deleteProduct($event)"
+      [product]="product"
+    ></app-product-unit>
+  </div>
+</div>
+<app-create-product class="product" 
+  (createProduct)="createProduct($event)"
+></app-create-product>

@@ -36,7 +36,7 @@ export class ProductDetailsPageComponent implements OnInit {
 
   public addShoppingCart(product: Product): void {
     product.inShoppingCart = !product.inShoppingCart;
-    this.productService.updateProduct(product); 
+    this.productService.updateProduct(product);
     this.product = {...product};
 
     this.shoppingCartButtonText = product.inShoppingCart

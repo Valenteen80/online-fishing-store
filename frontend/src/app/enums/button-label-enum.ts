@@ -12,5 +12,12 @@ export enum ButtonLabel {
   LOG_OUT = 'выйти',
   LOG_IN = 'вход',
   CHECKOUT = 'купить',
-  ORDER = 'оформить заказ'
+  ORDER = 'оформить заказ',
+  REMOVE_PRODUCT = 'удалить продукт',
+  REMOVED_PRODUCT = 'продукт удалён',
+  CHANGE_PRODUCT = 'изменить продукт',
+  CHANGED_PRODUCT = 'продукт изменён',
+  SAVE_CHANGES = 'сoхранить',
+  ADD_PRODUCT = 'добавить продукт',
+  CONTENT_MANAGEMENT = 'управление контентом',
 }
